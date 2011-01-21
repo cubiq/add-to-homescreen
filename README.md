@@ -1,7 +1,7 @@
 Add to Home Screen Floating Layer
 =================================
 
-The script place a floating balloon to your mobile website inviting the user to add your app to the home screen. This is compatible with iPhone/4/iPod-touch and iPad, iOS >= 3.1.2.
+The script places a floating balloon to your mobile website inviting the user to add your app to the home screen. This is compatible with iPhone/4/iPod-touch and iPad, iOS >= 3.1.1.
 
 Version: 0.9 beta
 
