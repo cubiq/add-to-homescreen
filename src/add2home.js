@@ -202,7 +202,7 @@ if (!options.expire || expired < new Date().getTime()) {
 	localStorage.setItem('_addToHome', expired);
 }
 
-if (hasHomescreen && !expired) {
+if (hasHomescreen && !expired && !isStandalone) {
 	document.addEventListener('DOMContentLoaded', ready, false);
 	window.addEventListener('load', loaded, false);
 }
