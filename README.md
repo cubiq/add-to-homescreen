@@ -10,9 +10,11 @@ Include the script and the stylesheet in your page HEAD. That's all. Look at the
 
 ## Localization
 The script auto-detects the user's locale and shows the message in the appropriate language. Currently the following languages are supported:
+
 - English [en_us]: Install this web app on your %device: tap '%icon' and then 'Add to Home Screen'.
 - French [fr_fr]: Ajoutez cette application sur votre %device en cliquant sur '%icon', puis 'Ajouter à l'écran d'accueil'.
 - Italian [it_it]: Installa questa applicazione sul tuo %device: premi su '%icon' e poi 'Aggiungi a Home'.
+
 **Please help us localizing the script in more languages!**
 
 ## License
