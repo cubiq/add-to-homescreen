@@ -6,6 +6,11 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
 
+	<!-- Of course it is advisable to have touch icons ready for each device -->
+	<link rel="apple-touch-icon" href="touch-icon-iphone.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="touch-icon-ipad.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="touch-icon-iphone4.png">
+
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 
@@ -15,7 +20,8 @@
 			animationIn:'bubble',		// Animation In
 			animationOut:'drop',		// Animation Out
 			lifespan:10000,				// The popup lives 10 seconds
-			expire:0					// The popup is shown only once every 2 minutes
+			expire:0,					// The popup is shown only once every 2 minutes
+			message:'This is a custom message. Your device is an <strong>%device</strong>. The action icon is `<span class="%icon">+</span>`.'
 		};
 	</script>
 	<script type="application/javascript" src="../../src/add2home.js?v1"></script>

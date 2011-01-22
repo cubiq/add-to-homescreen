@@ -6,19 +6,20 @@
  * Released under MIT license
  * http://cubiq.org/dropbox/mit-license.txt
  * 
- * Version 0.9 (beta) - Last updated: 2011.01.21
+ * Version 0.9.1 (beta) - Last updated: 2011.01.22
  * 
  * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * 
  */
-
 ;(function(){
-var	isIphone = (/iphone/gi).test(navigator.platform),
-	isIpod = (/ipod/gi).test(navigator.platform),
-	isIpad = (/ipad/gi).test(navigator.platform),
-	hasHomescreen = 'standalone' in navigator && (isIphone || isIpad || isIpod),
-	isStandalone = hasHomescreen && navigator.standalone,
-	OSVersion = navigator.appVersion.match(/OS \d+_\d+/g),
+var nav = navigator,
+	isIDevice = (/iphone|ipod|ipad/gi).test(nav.platform),
+	isIPad = (/ipad/gi).test(nav.platform),
+	hasHomescreen = 'standalone' in nav && isIDevice,
+	isStandalone = hasHomescreen && nav.standalone,
+	OSVersion = nav.appVersion.match(/OS \d+_\d+/g),
+	platform = nav.platform.split(' ')[0],
+	language = nav.language.replace('-', '_'),
 	startY = startX = 0,
 	expired = localStorage.getItem('_addToHome'),
 	theInterval,
@@ -31,11 +32,38 @@ var	isIphone = (/iphone/gi).test(navigator.platform),
 		lifespan: 20000,			// 20 seconds before it is automatically destroyed
 		bottomOffset: 14,			// Distance of the balloon from bottom
 		expire: 0,					// Minutes to wait before showing the popup again (0 = always displayed)
+		message: '',				// Customize your message or force a language ('' = automatic)
+		arrow: true,
 		iterations:100
+	},
+	/* Message in various languages, en_us is the default if a language does not exist */
+	intl = {
+		en_us: 'Install this web app on your %device: tap `<span class="%icon">+</span>` and then `<strong>Add to Home Screen</strong>`.',
+		fr_fr: 'Ajoutez cette application sur votre %device en cliquant sur `<span class="%icon">+</span>`, puis `<strong>Ajouter à l\'écran d\'accueil</strong>`.',
+		it_it: 'Installa questa applicazione sul tuo %device: premi su `<span class="%icon">+</span>` e poi `<strong>Aggiungi a Home</stron>`.'
 	};
-	
-	OSVersion = OSVersion ? OSVersion[0].replace(/[^\d_]/g,'').replace('_','.')*1 : 0;
-	expired = expired == 'null' ? 0 : expired;
+	// Handle some exceptions
+	intl.it_ch = intl.it_it;
+
+OSVersion = OSVersion ? OSVersion[0].replace(/[^\d_]/g,'').replace('_','.')*1 : 0;
+expired = expired == 'null' ? 0 : expired*1;
+
+/* Merge options */
+if (window.addToHomeConfig) {
+	for (i in window.addToHomeConfig) {
+		options[i] = window.addToHomeConfig[i];
+	}
+}
+
+/* Localize message */
+if (options.message in intl) {		// You may force a language despite the user's own language
+	language = options.message;
+	options.message = '';
+}
+
+if (options.message == '') {		// We look for a suitable language (defaulted to en_us)
+	options.message = language in intl ? intl[language] : intl['en_us'];
+}
 
 function ready () {
 	document.removeEventListener('DOMContentLoaded', ready, false);
@@ -43,19 +71,20 @@ function ready () {
 	var div = document.createElement('div'),
 		close;
 	div.id = 'addToHomeScreen';
-	div.className = isIpad ? 'ipad' : 'iphone';
+	div.className = isIPad ? 'ipad' : 'iphone';
 	div.style.cssText += 'position:absolute;-webkit-transition-property:-webkit-transform,opacity;-webkit-transition-duration:0;-webkit-transform:translate3d(0,0,0);';
 	div.style.left = '-9999px';		// Hide from view at startup
 	
-	div.innerHTML = 'Install this web app on your ' + navigator.platform.split(' ')[0] + ': tap `<span class="' + (OSVersion >= 4.2 ? 'share' : 'plus') + '">+</span>` and then `<strong>Add to Home Screen</strong>`.<span class="arrow"></span><span class="close">×</span>';
+	div.innerHTML = options.message.replace('%device', platform).replace('%icon', OSVersion >= 4.2 ? 'share' : 'plus') + (options.arrow ? '<span class="arrow"></span>' : '') + '<span class="close">×</span>';
 	
 	document.body.appendChild(div);
 	el = div;
+
+	// Add the close action
 	close = el.querySelector('.close');
-	if (close) {
-		close.addEventListener('click', addToHomeClose, false);
-	}
-	
+	if (close) close.addEventListener('click', addToHomeClose, false);
+
+	// Add expire date to the popup
 	if (options.expire) localStorage.setItem('_addToHome', new Date().getTime() + options.expire*60*1000);
 }
 
@@ -65,15 +94,15 @@ function loaded () {
 	setTimeout(function () {
 		var duration;
 		
-		startY = isIpad ? window.scrollY : window.innerHeight + window.scrollY;
-		startX = isIpad ? window.scrollX : Math.round((window.innerWidth - el.offsetWidth)/2) + window.scrollX;
+		startY = isIPad ? window.scrollY : window.innerHeight + window.scrollY;
+		startX = isIPad ? window.scrollX : Math.round((window.innerWidth - el.offsetWidth)/2) + window.scrollX;
 
-		el.style.top = isIpad ? startY + options.bottomOffset + 'px' : startY - el.offsetHeight - options.bottomOffset + 'px';
-		el.style.left = isIpad ? startX + 208 - Math.round(el.offsetWidth/2) + 'px' : startX + 'px';
+		el.style.top = isIPad ? startY + options.bottomOffset + 'px' : startY - el.offsetHeight - options.bottomOffset + 'px';
+		el.style.left = isIPad ? startX + 208 - Math.round(el.offsetWidth/2) + 'px' : startX + 'px';
 
 		switch (options.animationIn) {
 			case 'drop':
-				if (isIpad) {
+				if (isIPad) {
 					duration = '0.6s';
 					el.style.webkitTransform = 'translate3d(0,' + -(window.scrollY + options.bottomOffset + el.offsetHeight) + 'px,0)';
 				} else {
@@ -82,7 +111,7 @@ function loaded () {
 				}
 				break;
 			case 'bubble':
-				if (isIpad) {
+				if (isIPad) {
 					duration = '0.6s';
 					el.style.opacity = '0'
 					el.style.webkitTransform = 'translate3d(0,' + (startY + 50) + 'px,0)';
@@ -122,8 +151,8 @@ function transitionEnd () {
 
 function setPosition () {
 	var matrix = new WebKitCSSMatrix(window.getComputedStyle(el, null).webkitTransform),
-		posY = isIpad ? window.scrollY - startY : window.scrollY + window.innerHeight - startY,
-		posX = isIpad ? window.scrollX - startX : window.scrollX + Math.round((window.innerWidth - el.offsetWidth)/2) - startX;
+		posY = isIPad ? window.scrollY - startY : window.scrollY + window.innerHeight - startY,
+		posX = isIPad ? window.scrollX - startX : window.scrollX + Math.round((window.innerWidth - el.offsetWidth)/2) - startX;
 
 	if (posY == matrix.m42 && posX == matrix.m41) return;
 
@@ -144,22 +173,19 @@ function addToHomeClose () {
 	closeTimeout = null;
 	el.removeEventListener('webkitTransitionEnd', transitionEnd, false);
 	
-	var posY = isIpad ? window.scrollY - startY : window.scrollY + window.innerHeight - startY,
-		posX = isIpad ? window.scrollX - startX : window.scrollX + Math.round((window.innerWidth - el.offsetWidth)/2) - startX,
+	var posY = isIPad ? window.scrollY - startY : window.scrollY + window.innerHeight - startY,
+		posX = isIPad ? window.scrollX - startX : window.scrollX + Math.round((window.innerWidth - el.offsetWidth)/2) - startX,
 		opacity = '1',
 		duration = '0',
-		close;
+		close = el.querySelector('.close');
 
-	close = el.querySelector('.close');
-	if (close) {
-		close.removeEventListener('click', addToHomeClose, false);
-	}
+	if (close) close.removeEventListener('click', addToHomeClose, false);
 
 	el.style.webkitTransitionProperty = '-webkit-transform,opacity';
 
 	switch (options.animationOut) {
 		case 'drop':
-			if (isIpad) {
+			if (isIPad) {
 				duration = '0.4s';
 				opacity = '0';
 				posY = posY + 50;
@@ -169,7 +195,7 @@ function addToHomeClose () {
 			}
 			break;
 		case 'bubble':
-			if (isIpad) {
+			if (isIPad) {
 				duration = '0.8s';
 				posY = posY - el.offsetHeight - options.bottomOffset - 50;
 			} else {
@@ -189,19 +215,12 @@ function addToHomeClose () {
 	el.style.webkitTransform = 'translate3d(' + posX + 'px,' + posY + 'px,0)';
 }
 
-/* Bootstrap */
-if (window.addToHomeConfig) {
-	for (i in window.addToHomeConfig) {
-		options[i] = window.addToHomeConfig[i];
-	}
-}
-
-/* Is it expired */
+/* Is it expired? */
 if (!options.expire || expired < new Date().getTime()) {
 	expired = 0;
-	localStorage.setItem('_addToHome', expired);
 }
 
+/* Bootstrap */
 if (hasHomescreen && !expired && !isStandalone) {
 	document.addEventListener('DOMContentLoaded', ready, false);
 	window.addEventListener('load', loaded, false);
