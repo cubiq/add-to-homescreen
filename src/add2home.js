@@ -38,6 +38,7 @@ var nav = navigator,
 	},
 	/* Message in various languages, en_us is the default if a language does not exist */
 	intl = {
+    de_de: 'Installieren Sie diese App auf Ihrem %device: `<span class="%icon">+</span>` antippen und dann `<strong>Zum Home-Bildschirm</strong>`.',
 		en_us: 'Install this web app on your %device: tap `<span class="%icon">+</span>` and then `<strong>Add to Home Screen</strong>`.',
 		fr_fr: 'Ajoutez cette application sur votre %device en cliquant sur `<span class="%icon">+</span>`, puis `<strong>Ajouter à l\'écran d\'accueil</strong>`.',
 		it_it: 'Installa questa applicazione sul tuo %device: premi su `<span class="%icon">+</span>` e poi `<strong>Aggiungi a Home</strong>`.',
