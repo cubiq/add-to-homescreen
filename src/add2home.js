@@ -6,7 +6,7 @@
  * Released under MIT license
  * http://cubiq.org/dropbox/mit-license.txt
  * 
- * Version 0.9.1 (beta) - Last updated: 2011.01.22
+ * Version 0.9.2 (beta) - Last updated: 2011.01.23
  * 
  * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * 
@@ -15,6 +15,7 @@
 var nav = navigator,
 	isIDevice = (/iphone|ipod|ipad/gi).test(nav.platform),
 	isIPad = (/ipad/gi).test(nav.platform),
+	isRetina = 'devicePixelRatio' in window && window.devicePixelRatio > 1,
 	hasHomescreen = 'standalone' in nav && isIDevice,
 	isStandalone = hasHomescreen && nav.standalone,
 	OSVersion = nav.appVersion.match(/OS \d+_\d+/g),
@@ -22,9 +23,7 @@ var nav = navigator,
 	language = nav.language.replace('-', '_'),
 	startY = startX = 0,
 	expired = localStorage.getItem('_addToHome'),
-	theInterval,
-	closeTimeout,
-	el,
+	theInterval, closeTimeout, el, i, l,
 	options = {
 		animationIn: 'drop',		// drop || bubble || fade
 		animationOut: 'fade',		// drop || bubble || fade
@@ -33,6 +32,7 @@ var nav = navigator,
 		bottomOffset: 14,			// Distance of the balloon from bottom
 		expire: 0,					// Minutes to wait before showing the popup again (0 = always displayed)
 		message: '',				// Customize your message or force a language ('' = automatic)
+		touchIcon: false,
 		arrow: true,
 		iterations:100
 	},
@@ -41,43 +41,76 @@ var nav = navigator,
 		en_us: 'Install this web app on your %device: tap `<span class="%icon">+</span>` and then `<strong>Add to Home Screen</strong>`.',
 		fr_fr: 'Ajoutez cette application sur votre %device en cliquant sur `<span class="%icon">+</span>`, puis `<strong>Ajouter à l\'écran d\'accueil</strong>`.',
 		it_it: 'Installa questa applicazione sul tuo %device: premi su `<span class="%icon">+</span>` e poi `<strong>Aggiungi a Home</strong>`.',
-		sv_se: 'Lägg till denna webbapplikation på din %device: tryck på `<span class="%icon">+</span>` och därefter `<strong>Lägg till på hemskärmen</strong>`.'
+		nl_nl: 'Om deze web app te installeren op uw %device: tik `<span class="%icon">+</span>` en dan `<strong>Zet in beginscherm</strong>`.',
+		sv_se: 'Lägg till denna webbapplikation på din %device: tryck på `<span class="%icon">+</span>` och därefter `<strong>Lägg till på hemskärmen</strong>`.',
 	};
-	// Handle some exceptions
-	intl.it_ch = intl.it_it;
+
 
 OSVersion = OSVersion ? OSVersion[0].replace(/[^\d_]/g,'').replace('_','.')*1 : 0;
 expired = expired == 'null' ? 0 : expired*1;
 
-/* Merge options */
+// Merge options
 if (window.addToHomeConfig) {
 	for (i in window.addToHomeConfig) {
 		options[i] = window.addToHomeConfig[i];
 	}
 }
 
-/* Localize message */
-if (options.message in intl) {		// You may force a language despite the user's own language
-	language = options.message;
-	options.message = '';
+// Is it expired?
+if (!options.expire || expired < new Date().getTime()) {
+	expired = 0;
 }
 
-if (options.message == '') {		// We look for a suitable language (defaulted to en_us)
-	options.message = language in intl ? intl[language] : intl['en_us'];
+/* Bootstrap */
+if (hasHomescreen && !expired && !isStandalone) {
+	document.addEventListener('DOMContentLoaded', ready, false);
+	window.addEventListener('load', loaded, false);
 }
 
+
+/* on DOM ready */
 function ready () {
 	document.removeEventListener('DOMContentLoaded', ready, false);
 
 	var div = document.createElement('div'),
-		close;
+		close,
+		link = options.touchIcon ? document.querySelectorAll('head link[rel=apple-touch-icon]') : [],
+		sizes, touchIcon = '';
+
 	div.id = 'addToHomeScreen';
-	div.className = isIPad ? 'ipad' : 'iphone';
 	div.style.cssText += 'position:absolute;-webkit-transition-property:-webkit-transform,opacity;-webkit-transition-duration:0;-webkit-transform:translate3d(0,0,0);';
 	div.style.left = '-9999px';		// Hide from view at startup
-	
-	div.innerHTML = options.message.replace('%device', platform).replace('%icon', OSVersion >= 4.2 ? 'share' : 'plus') + (options.arrow ? '<span class="arrow"></span>' : '') + '<span class="close">×</span>';
-	
+
+	// Localize message
+	if (options.message in intl) {		// You may force a language despite the user's locale
+		language = options.message;
+		options.message = '';
+	}
+	if (options.message == '') {		// We look for a suitable language (defaulted to en_us)
+		options.message = language in intl ? intl[language] : intl['en_us'];
+	}
+
+	// Search for the apple-touch-icon
+	if (link.length) {
+		for (i=0, l=link.length; i<l; i++) {
+			sizes = link[i].getAttribute('sizes');
+
+			if (sizes) {
+				if (isRetina && sizes == '114x114') { 
+					touchIcon = link[i].href;
+					break;
+				}
+			} else {
+				touchIcon = link[i].href;
+			}
+		}
+
+		touchIcon = '<span style="background-image:url(' + touchIcon + ')" class="touchIcon"></span>';
+	}
+
+	div.className = (isIPad ? 'ipad' : 'iphone') + (touchIcon ? ' wide' : '');
+	div.innerHTML = touchIcon + options.message.replace('%device', platform).replace('%icon', OSVersion >= 4.2 ? 'share' : 'plus') + (options.arrow ? '<span class="arrow"></span>' : '') + '<span class="close">×</span>';
+
 	document.body.appendChild(div);
 	el = div;
 
@@ -89,6 +122,8 @@ function ready () {
 	if (options.expire) localStorage.setItem('_addToHome', new Date().getTime() + options.expire*60*1000);
 }
 
+
+/* on window load */
 function loaded () {
 	window.removeEventListener('load', loaded, false);
 
@@ -214,17 +249,6 @@ function addToHomeClose () {
 	el.style.opacity = opacity;
 	el.style.webkitTransitionDuration = duration;
 	el.style.webkitTransform = 'translate3d(' + posX + 'px,' + posY + 'px,0)';
-}
-
-/* Is it expired? */
-if (!options.expire || expired < new Date().getTime()) {
-	expired = 0;
-}
-
-/* Bootstrap */
-if (hasHomescreen && !expired && !isStandalone) {
-	document.addEventListener('DOMContentLoaded', ready, false);
-	window.addEventListener('load', loaded, false);
 }
 
 /* Public function */
