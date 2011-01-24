@@ -6,7 +6,7 @@
  * Released under MIT license
  * http://cubiq.org/dropbox/mit-license.txt
  * 
- * Version 0.9.2 (beta) - Last updated: 2011.01.23
+ * Version 0.9.3 (beta) - Last updated: 2011.01.24
  * 
  * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * 
@@ -38,8 +38,10 @@ var nav = navigator,
 	},
 	/* Message in various languages, en_us is the default if a language does not exist */
 	intl = {
+		da_dk: 'Tilføj denne side til din %device: tryk på `<span class="%icon">+</span>` og derefter `<strong>Tilføj til hjemmeskærm</strong>`.',
 		de_de: 'Installieren Sie diese App auf Ihrem %device: `<span class="%icon">+</span>` antippen und dann `<strong>Zum Home-Bildschirm</strong>`.',
 		en_us: 'Install this web app on your %device: tap `<span class="%icon">+</span>` and then `<strong>Add to Home Screen</strong>`.',
+		es_es: 'Para instalar esta app en su %device, pulse `<span class="%icon">+</span>` y seleccione `<strong>Añadir a pantalla de inicio</strong>`.',
 		fr_fr: 'Ajoutez cette application sur votre %device en cliquant sur `<span class="%icon">+</span>`, puis `<strong>Ajouter à l\'écran d\'accueil</strong>`.',
 		it_it: 'Installa questa applicazione sul tuo %device: premi su `<span class="%icon">+</span>` e poi `<strong>Aggiungi a Home</strong>`.',
 		nl_nl: 'Installeer deze webapp op uw %device: tik `<span class="%icon">+</span>` en dan `<strong>Zet in beginscherm</strong>`.',
@@ -75,7 +77,7 @@ function ready () {
 
 	var div = document.createElement('div'),
 		close,
-		link = options.touchIcon ? document.querySelectorAll('head link[rel=apple-touch-icon]') : [],
+		link = options.touchIcon ? document.querySelectorAll('head link[rel=apple-touch-icon],head link[rel=apple-touch-icon-precomposed]') : [],
 		sizes, touchIcon = '';
 
 	div.id = 'addToHomeScreen';
