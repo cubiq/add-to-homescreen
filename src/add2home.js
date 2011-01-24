@@ -44,6 +44,7 @@ var nav = navigator,
 		it_it: 'Installa questa applicazione sul tuo %device: premi su `<span class="%icon">+</span>` e poi `<strong>Aggiungi a Home</strong>`.',
 		nl_nl: 'Installeer deze webapp op uw %device: tik `<span class="%icon">+</span>` en dan `<strong>Zet in beginscherm</strong>`.',
 		sv_se: 'Lägg till denna webbapplikation på din %device: tryck på `<span class="%icon">+</span>` och därefter `<strong>Lägg till på hemskärmen</strong>`.',
+		da_dk: 'Tilføj denne hjemmeside til din %device: tryk på `<span class="%icon">+</span>` og derefter `<strong>Tilføj til hjemmeskærm</strong>`.',
 	};
 
 
