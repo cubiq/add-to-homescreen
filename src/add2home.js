@@ -6,7 +6,7 @@
  * Released under MIT license
  * http://cubiq.org/dropbox/mit-license.txt
  * 
- * Version 0.9.3 (beta) - Last updated: 2011.01.24
+ * Version 0.9.4 (beta) - Last updated: 2011.01.25
  * 
  * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * 
@@ -38,16 +38,17 @@ var nav = navigator,
 	},
 	/* Message in various languages, en_us is the default if a language does not exist */
 	intl = {
-		da_dk: 'Tilføj denne side til din %device: tryk på `<span class="%icon">+</span>` og derefter `<strong>Tilføj til hjemmeskærm</strong>`.',
-		de_de: 'Installieren Sie diese App auf Ihrem %device: `<span class="%icon">+</span>` antippen und dann `<strong>Zum Home-Bildschirm</strong>`.',
-		en_us: 'Install this web app on your %device: tap `<span class="%icon">+</span>` and then `<strong>Add to Home Screen</strong>`.',
-		es_es: 'Para instalar esta app en su %device, pulse `<span class="%icon">+</span>` y seleccione `<strong>Añadir a pantalla de inicio</strong>`.',
-		fr_fr: 'Ajoutez cette application sur votre %device en cliquant sur `<span class="%icon">+</span>`, puis `<strong>Ajouter à l\'écran d\'accueil</strong>`.',
-		it_it: 'Installa questa applicazione sul tuo %device: premi su `<span class="%icon">+</span>` e poi `<strong>Aggiungi a Home</strong>`.',
-		nl_nl: 'Installeer deze webapp op uw %device: tik `<span class="%icon">+</span>` en dan `<strong>Zet in beginscherm</strong>`.',
-		sv_se: 'Lägg till denna webbapplikation på din %device: tryck på `<span class="%icon">+</span>` och därefter `<strong>Lägg till på hemskärmen</strong>`.',
+		da_dk: 'Tilføj denne side til din %device: tryk på `%icon` og derefter `<strong>Tilføj til hjemmeskærm</strong>`.',
+		de_de: 'Installieren Sie diese App auf Ihrem %device: `%icon` antippen und dann `<strong>Zum Home-Bildschirm</strong>`.',
+		en_us: 'Install this web app on your %device: tap `%icon` and then `<strong>Add to Home Screen</strong>`.',
+		es_es: 'Para instalar esta app en su %device, pulse `%icon` y seleccione `<strong>Añadir a pantalla de inicio</strong>`.',
+		fr_fr: 'Ajoutez cette application sur votre %device en cliquant sur `%icon`, puis `<strong>Ajouter à l\'écran d\'accueil</strong>`.',
+		he_il: '<span dir="rtl">התקן אפליקציה זו על ה-%device שלך: הקש `%icon` ואז `<strong>הוסף למסך הבית</strong>`.</span>',
+		it_it: 'Installa questa applicazione sul tuo %device: premi su `%icon` e poi `<strong>Aggiungi a Home</strong>`.',
+		ja_jp: 'このウェブアプリをあなたの%deviceにインストールするには`%icon`をタップして`<strong>ホーム画面に追加</strong>`を選んでください。',
+		nl_nl: 'Installeer deze webapp op uw %device: tik `%icon` en dan `<strong>Zet in beginscherm</strong>`.',
+		sv_se: 'Lägg till denna webbapplikation på din %device: tryck på `%icon` och därefter `<strong>Lägg till på hemskärmen</strong>`.',
 	};
-
 
 OSVersion = OSVersion ? OSVersion[0].replace(/[^\d_]/g,'').replace('_','.')*1 : 0;
 expired = expired == 'null' ? 0 : expired*1;
@@ -112,7 +113,7 @@ function ready () {
 	}
 
 	div.className = (isIPad ? 'ipad' : 'iphone') + (touchIcon ? ' wide' : '');
-	div.innerHTML = touchIcon + options.message.replace('%device', platform).replace('%icon', OSVersion >= 4.2 ? 'share' : 'plus') + (options.arrow ? '<span class="arrow"></span>' : '') + '<span class="close">×</span>';
+	div.innerHTML = touchIcon + options.message.replace('%device', platform).replace('%icon', OSVersion >= 4.2 ? '<span class="share"></span>' : '<span class="plus">+</span>') + (options.arrow ? '<span class="arrow"></span>' : '') + '<span class="close">×</span>';
 
 	document.body.appendChild(div);
 	el = div;

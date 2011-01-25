@@ -11,18 +11,18 @@ Include the script and the stylesheet in your page HEAD. That's all. Look at the
 ## Localization
 The script auto-detects the user's locale and shows the message in the appropriate language. Currently the following languages are supported:
 
-- Danish [da_dk]: Tilføj denne side til din %device: tryk på '%icon' og derefter 'Tilføj til hjemmeskærm'.
-- German [de_de]: Installieren Sie diese App auf Ihrem %device: '%icon' antippen und dann 'Zum Home-Bildschirm'.
+- Danish [da_dk]: Tilføj denne side til din %device: tryk på '%icon' og derefter 'Tilføj til hjemmeskærm'. (thans to [jimmiw](https://github.com/jimmiw))
+- German [de_de]: Installieren Sie diese App auf Ihrem %device: '%icon' antippen und dann 'Zum Home-Bildschirm'. (thanks to [@dombn](http://twitter.com/#!/dombn))
 - English [en_us]: Install this web app on your %device: tap '%icon' and then 'Add to Home Screen'.
-- Spanish [es_es]: Para instalar esta app en su %device, pulse '%icon' y seleccione 'Añadir a pantalla de inicio'.
-- French [fr_fr]: Ajoutez cette application sur votre %device en cliquant sur '%icon', puis 'Ajouter à l'écran d'accueil'.
+- Spanish [es_es]: Para instalar esta app en su %device, pulse '%icon' y seleccione 'Añadir a pantalla de inicio'. (thanks to Roberto)
+- French [fr_fr]: Ajoutez cette application sur votre %device en cliquant sur '%icon', puis 'Ajouter à l'écran d'accueil'. (thanks to [@bdufresne](http://twitter.com/#!/bdufresne))
+- Hebrew [he\_li]: _for some reasons I have troubles displaying the Hebrew version here, but it is working on the app_ (thanks to [@roitiger](http://twitter.com/#!/roitiger))
 - Italian [it_it]: Installa questa applicazione sul tuo %device: premi su '%icon' e poi 'Aggiungi a Home'.
-- Dutch [nl_nl]: Installeer deze webapp op uw %device: tik '%icon' en dan 'Zet in beginscherm'.
-- Swedish [sv_se]: Lägg till denna webbapplikation på din %device: tryck på '%icon' och därefter 'Lägg till på hemskärmen'.
+- Japanese [ja_jp]: このウェブアプリをあなたの%deviceにインストールするには'%icon'をタップして'ホーム画面に追加'を選んでください。(thanks to [@takatama](http://twitter.com/#!/takatama))
+- Dutch [nl_nl]: Installeer deze webapp op uw %device: tik '%icon' en dan 'Zet in beginscherm'. (thanks to [@Kracht0147](http://twitter.com/#!/Kracht0147))
+- Swedish [sv_se]: Lägg till denna webbapplikation på din %device: tryck på '%icon' och därefter 'Lägg till på hemskärmen'. (thanks to [@fransrosen](http://twitter.com/#!/fransrosen))
 
 **Please help us localizing the script in more languages!**
-
-_To all those who sent a translation, please let me know if I can put your name/twitter into the credits._
 
 ## License
 
