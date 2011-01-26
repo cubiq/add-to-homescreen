@@ -46,7 +46,9 @@ var nav = navigator,
 		he_il: '<span dir="rtl">התקן אפליקציה זו על ה-%device שלך: הקש `%icon` ואז `<strong>הוסף למסך הבית</strong>`.</span>',
 		it_it: 'Installa questa applicazione sul tuo %device: premi su `%icon` e poi `<strong>Aggiungi a Home</strong>`.',
 		ja_jp: 'このウェブアプリをあなたの%deviceにインストールするには`%icon`をタップして`<strong>ホーム画面に追加</strong>`を選んでください。',
+		ko_kr: '%device에 웹앱을 설치하려면 %icon을 터치 후 "홈화면에 추가"를 선택하세요',
 		nl_nl: 'Installeer deze webapp op uw %device: tik `%icon` en dan `<strong>Zet in beginscherm</strong>`.',
+		pt_br: 'Instale este web app em seu %device: aperte `%icon` e selecione `<strong>Adicionar à Tela Inicial</strong>`.',
 		sv_se: 'Lägg till denna webbapplikation på din %device: tryck på `%icon` och därefter `<strong>Lägg till på hemskärmen</strong>`.',
 	};
 
