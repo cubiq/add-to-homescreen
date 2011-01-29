@@ -14,11 +14,11 @@ The script auto-detects the user's locale and shows the message in the appropria
 - Danish [da_dk]: Tilføj denne side til din %device: tryk på '%icon' og derefter 'Tilføj til hjemmeskærm'. (thans to [jimmiw](https://github.com/jimmiw))
 - German [de_de]: Installieren Sie diese App auf Ihrem %device: '%icon' antippen und dann 'Zum Home-Bildschirm'. (thanks to [@dombn](http://twitter.com/#!/dombn))
 - Greek [el_gr]: Εγκαταστήσετε αυτήν την Εφαρμογή στήν συσκευή σας %device: '%icon' μετά πατάτε 'Προσθήκη σε Αφετηρία'. (thanks to [@rolandguelle](http://twitter.com/#!/rolandguelle))
-- *English [en_us]*: Install this web app on your %device: tap '%icon' and then 'Add to Home Screen'.
+- **English [en_us]**: Install this web app on your %device: tap '%icon' and then 'Add to Home Screen'.
 - Spanish [es_es]: Para instalar esta app en su %device, pulse '%icon' y seleccione 'Añadir a pantalla de inicio'. (thanks to Roberto)
 - French [fr_fr]: Ajoutez cette application sur votre %device en cliquant sur '%icon', puis 'Ajouter à l'écran d'accueil'. (thanks to [@bdufresne](http://twitter.com/#!/bdufresne))
 - Hebrew [he\_li]: _for some reasons I have troubles displaying the Hebrew version here, but it is working on the app_ (thanks to [@roitiger](http://twitter.com/#!/roitiger))
-- *Italian [it_it]*: Installa questa applicazione sul tuo %device: premi su '%icon' e poi 'Aggiungi a Home'.
+- **Italian [it_it]**: Installa questa applicazione sul tuo %device: premi su '%icon' e poi 'Aggiungi a Home'.
 - Japanese [ja_jp]: このウェブアプリをあなたの%deviceにインストールするには'%icon'をタップして'ホーム画面に追加'を選んでください。(thanks to [@takatama](http://twitter.com/#!/takatama))
 - Korean [ko_kr]: %device에 웹앱을 설치하려면 %icon을 터치 후 "홈화면에 추가"를 선택하세요, (thanks to [@evashork](http://twitter.com/#!/evashork))
 - Dutch [nl_nl]: Installeer deze webapp op uw %device: tik '%icon' en dan 'Zet in beginscherm'. (thanks to [@Kracht0147](http://twitter.com/#!/Kracht0147))
@@ -26,7 +26,7 @@ The script auto-detects the user's locale and shows the message in the appropria
 - Portuguese [pt_pt]: Para instalar esta aplicação no seu %device, prima o '%icon' e depois o 'Adicionar ao ecrã principal'. (thanks to [@maboa](http://twitter.com/#!/maboa))
 - Swedish [sv_se]: Lägg till denna webbapplikation på din %device: tryck på '%icon' och därefter 'Lägg till på hemskärmen'. (thanks to [@fransrosen](http://twitter.com/#!/fransrosen))
 
-**Please help us localizing the script in more languages!** Also, confirmation for already translated languages is welcome (*bold languages are confirmed*).
+**Please help us localizing the script in more languages!** Also, confirmation for already translated languages is welcome (**bold languages are confirmed**).
 
 ## License
 
