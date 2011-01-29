@@ -6,7 +6,7 @@
  * Released under MIT license
  * http://cubiq.org/dropbox/mit-license.txt
  * 
- * Version 0.9.4 (beta) - Last updated: 2011.01.25
+ * Version 1.0 - Last updated: 2011.01.29
  * 
  * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * 
@@ -16,6 +16,7 @@ var nav = navigator,
 	isIDevice = (/iphone|ipod|ipad/gi).test(nav.platform),
 	isIPad = (/ipad/gi).test(nav.platform),
 	isRetina = 'devicePixelRatio' in window && window.devicePixelRatio > 1,
+	isSafari = nav.appVersion.match(/Safari/gi),
 	hasHomescreen = 'standalone' in nav && isIDevice,
 	isStandalone = hasHomescreen && nav.standalone,
 	OSVersion = nav.appVersion.match(/OS \d+_\d+/g),
@@ -32,14 +33,15 @@ var nav = navigator,
 		bottomOffset: 14,			// Distance of the balloon from bottom
 		expire: 0,					// Minutes to wait before showing the popup again (0 = always displayed)
 		message: '',				// Customize your message or force a language ('' = automatic)
-		touchIcon: false,
-		arrow: true,
-		iterations:100
+		touchIcon: false,			// Display the touch icon
+		arrow: true,				// Display the balloon arrow
+		iterations:100				// Internal/debug use
 	},
 	/* Message in various languages, en_us is the default if a language does not exist */
 	intl = {
 		da_dk: 'Tilføj denne side til din %device: tryk på `%icon` og derefter `<strong>Tilføj til hjemmeskærm</strong>`.',
 		de_de: 'Installieren Sie diese App auf Ihrem %device: `%icon` antippen und dann `<strong>Zum Home-Bildschirm</strong>`.',
+		el_gr: 'Εγκαταστήσετε αυτήν την Εφαρμογή στήν συσκευή σας %device: `%icon` μετά πατάτε `<strong>Προσθήκη σε Αφετηρία</strong>`.',
 		en_us: 'Install this web app on your %device: tap `%icon` and then `<strong>Add to Home Screen</strong>`.',
 		es_es: 'Para instalar esta app en su %device, pulse `%icon` y seleccione `<strong>Añadir a pantalla de inicio</strong>`.',
 		fr_fr: 'Ajoutez cette application sur votre %device en cliquant sur `%icon`, puis `<strong>Ajouter à l\'écran d\'accueil</strong>`.',
@@ -48,7 +50,8 @@ var nav = navigator,
 		ja_jp: 'このウェブアプリをあなたの%deviceにインストールするには`%icon`をタップして`<strong>ホーム画面に追加</strong>`を選んでください。',
 		ko_kr: '%device에 웹앱을 설치하려면 %icon을 터치 후 "홈화면에 추가"를 선택하세요',
 		nl_nl: 'Installeer deze webapp op uw %device: tik `%icon` en dan `<strong>Zet in beginscherm</strong>`.',
-		pt_br: 'Instale este web app em seu %device: aperte `%icon` e selecione `<strong>Adicionar à Tela Inicial</strong>`.',
+		pt_br: 'Instale este web app em seu %device: aperte `%icon` e selecione `<strong>Adicionar à Tela Inicio</strong>`.',
+		pt_pt: 'Para instalar esta aplicação no seu %device, prima o `%icon` e depois o `<strong>Adicionar ao ecrã principal</strong>`.',
 		sv_se: 'Lägg till denna webbapplikation på din %device: tryck på `%icon` och därefter `<strong>Lägg till på hemskärmen</strong>`.',
 	};
 
@@ -68,7 +71,7 @@ if (!options.expire || expired < new Date().getTime()) {
 }
 
 /* Bootstrap */
-if (hasHomescreen && !expired && !isStandalone) {
+if (hasHomescreen && !expired && !isStandalone && isSafari) {
 	document.addEventListener('DOMContentLoaded', ready, false);
 	window.addEventListener('load', loaded, false);
 }
