@@ -3,15 +3,16 @@ Add to Home Screen Floating Layer
 
 The script places a floating balloon to your mobile website inviting the user to add your app to the home screen. This is compatible with iPhone/4/iPod-touch and iPad, iOS >= 3.1.1.
 
-Version: 1.0 - [Official homepage](http://cubiq.org/add-to-home-screen) - [Video](http://vimeo.com/19090537)
+Version: 1.0.1 - [Official homepage](http://cubiq.org/add-to-home-screen) - [Video](http://vimeo.com/19090537)
 
 ## Usage
-Include the script and the stylesheet in your page HEAD. That's all. Look at the examples for advanced features. Documentation soon to come.
+Include the script and the stylesheet in your page HEAD. That's all. Look at the examples for advanced features. Documentation on [cubiq.org](http://cubiq.org/add-to-home-screen).
 
 ## Localization
 The script auto-detects the user's locale and shows the message in the appropriate language. Currently the following languages are supported:
 
-- Danish [da_dk]: Tilføj denne side til din %device: tryk på '%icon' og derefter 'Tilføj til hjemmeskærm'. (thans to [jimmiw](https://github.com/jimmiw))
+- Catalan [ca_es]: Per instal·lar aquesta aplicació al vostre %device premeu '%icon' i llavors 'Afegir a pantalla d'inici'. (thanks to [@canuda10](http://twitter.com/#!/canuda10))
+- Danish [da_dk]: Tilføj denne side til din %device: tryk på '%icon' og derefter 'Tilføj til hjemmeskærm'. (thanks to [jimmiw](https://github.com/jimmiw))
 - German [de_de]: Installieren Sie diese App auf Ihrem %device: '%icon' antippen und dann 'Zum Home-Bildschirm'. (thanks to [@dombn](http://twitter.com/#!/dombn))
 - Greek [el_gr]: Εγκαταστήσετε αυτήν την Εφαρμογή στήν συσκευή σας %device: '%icon' μετά πατάτε 'Προσθήκη σε Αφετηρία'. (thanks to [@rolandguelle](http://twitter.com/#!/rolandguelle))
 - **English [en_us]**: Install this web app on your %device: tap '%icon' and then 'Add to Home Screen'.
