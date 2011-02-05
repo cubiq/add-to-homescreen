@@ -6,7 +6,7 @@
  * Released under MIT license
  * http://cubiq.org/dropbox/mit-license.txt
  * 
- * Version 1.0 - Last updated: 2011.01.29
+ * Version 1.0.1 - Last updated: 2011.02.05
  * 
  * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * 
@@ -39,6 +39,7 @@ var nav = navigator,
 	},
 	/* Message in various languages, en_us is the default if a language does not exist */
 	intl = {
+		ca_es: 'Per instal·lar aquesta aplicació al vostre %device premeu `%icon` i llavors `Afegir a pantalla d\'inici`',
 		da_dk: 'Tilføj denne side til din %device: tryk på `%icon` og derefter `<strong>Tilføj til hjemmeskærm</strong>`.',
 		de_de: 'Installieren Sie diese App auf Ihrem %device: `%icon` antippen und dann `<strong>Zum Home-Bildschirm</strong>`.',
 		el_gr: 'Εγκαταστήσετε αυτήν την Εφαρμογή στήν συσκευή σας %device: `%icon` μετά πατάτε `<strong>Προσθήκη σε Αφετηρία</strong>`.',
