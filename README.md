@@ -25,6 +25,7 @@ The script auto-detects the user's locale and shows the message in the appropria
 - Dutch [nl_nl]: Installeer deze webapp op uw %device: tik '%icon' en dan 'Zet in beginscherm'. (thanks to [@Kracht0147](http://twitter.com/#!/Kracht0147))
 - Portuguese [pt_br]: Instale este web app em seu %device: aperte '%icon' e selecione 'Adicionar à Tela Inicio'. (thanks to [@mariozuany](http://twitter.com/#!/mariozuany))
 - Portuguese [pt_pt]: Para instalar esta aplicação no seu %device, prima o '%icon' e depois o 'Adicionar ao ecrã principal'. (thanks to [@maboa](http://twitter.com/#!/maboa))
+- Russian [ru_ru]: Установите это веб-приложение на ваш %device: нажмите `%icon`, затем `<strong>Добавить в &laquo;Домой&raquo;</strong>`. (thanks to [@myfreeweb](http://twitter.com/#!/myfreeweb))
 - Swedish [sv_se]: Lägg till denna webbapplikation på din %device: tryck på '%icon' och därefter 'Lägg till på hemskärmen'. (thanks to [@fransrosen](http://twitter.com/#!/fransrosen))
 
 **Please help us localizing the script in more languages!** Also, confirmation for already translated languages is welcome (**bold languages are confirmed**).

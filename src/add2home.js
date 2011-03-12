@@ -53,6 +53,7 @@ var nav = navigator,
 		nl_nl: 'Installeer deze webapp op uw %device: tik `%icon` en dan `<strong>Zet in beginscherm</strong>`.',
 		pt_br: 'Instale este web app em seu %device: aperte `%icon` e selecione `<strong>Adicionar à Tela Inicio</strong>`.',
 		pt_pt: 'Para instalar esta aplicação no seu %device, prima o `%icon` e depois o `<strong>Adicionar ao ecrã principal</strong>`.',
+        ru_ru: 'Установите это веб-приложение на ваш %device: нажмите `%icon`, затем `<strong>Добавить в &laquo;Домой&raquo;</strong>`.',
 		sv_se: 'Lägg till denna webbapplikation på din %device: tryck på `%icon` och därefter `<strong>Lägg till på hemskärmen</strong>`.',
 	};
 
