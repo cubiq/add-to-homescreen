@@ -6,7 +6,7 @@
  * Released under MIT license
  * http://cubiq.org/dropbox/mit-license.txt
  * 
- * Version 1.0.1 - Last updated: 2011.02.05
+ * Version 1.0.2 - Last updated: 2011.04.09
  * 
  * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * 
@@ -50,6 +50,7 @@ var nav = navigator,
 		it_it: 'Installa questa applicazione sul tuo %device: premi su `%icon` e poi `<strong>Aggiungi a Home</strong>`.',
 		ja_jp: 'このウェブアプリをあなたの%deviceにインストールするには`%icon`をタップして`<strong>ホーム画面に追加</strong>`を選んでください。',
 		ko_kr: '%device에 웹앱을 설치하려면 %icon을 터치 후 "홈화면에 추가"를 선택하세요',
+		nb_no: 'Installer denne appen på din %device: trykk på `%icon` og deretter `<strong>Legg til på Hjem-skjerm</strong>`',
 		nl_nl: 'Installeer deze webapp op uw %device: tik `%icon` en dan `<strong>Zet in beginscherm</strong>`.',
 		pt_br: 'Instale este web app em seu %device: aperte `%icon` e selecione `<strong>Adicionar à Tela Inicio</strong>`.',
 		pt_pt: 'Para instalar esta aplicação no seu %device, prima o `%icon` e depois o `<strong>Adicionar ao ecrã principal</strong>`.',
