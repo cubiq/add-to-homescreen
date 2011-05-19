@@ -3,7 +3,7 @@ Add to Home Screen Floating Layer
 
 The script places a floating balloon to your mobile website inviting the user to add your app to the home screen. This is compatible with iPhone/4/iPod-touch and iPad, iOS >= 3.1.1.
 
-Version: 1.0.4 - [Official homepage](http://cubiq.org/add-to-home-screen) - [Video](http://vimeo.com/19090537)
+Version: 1.0.5 - [Official homepage](http://cubiq.org/add-to-home-screen) - [Video](http://vimeo.com/19090537)
 
 ## Usage
 Include the script and the stylesheet in your page HEAD. That's all. Look at the examples for advanced features. Documentation on [cubiq.org](http://cubiq.org/add-to-home-screen).
@@ -15,11 +15,12 @@ The script auto-detects the user's locale and shows the message in the appropria
 - Danish [da_dk]: Tilføj denne side til din %device: tryk på '%icon' og derefter 'Tilføj til hjemmeskærm'. (thanks to [jimmiw](https://github.com/jimmiw))
 - German [de_de]: Installieren Sie diese App auf Ihrem %device: '%icon' antippen und dann 'Zum Home-Bildschirm'. (thanks to [@dombn](http://twitter.com/#!/dombn))
 - Greek [el_gr]: Εγκαταστήσετε αυτήν την Εφαρμογή στήν συσκευή σας %device: '%icon' μετά πατάτε 'Προσθήκη σε Αφετηρία'. (thanks to [@rolandguelle](http://twitter.com/#!/rolandguelle))
-- **English [en_us]**: Install this web app on your %device: tap '%icon' and then 'Add to Home Screen'.
+- English [en_us]: Install this web app on your %device: tap '%icon' and then 'Add to Home Screen'.
 - Spanish [es_es]: Para instalar esta app en su %device, pulse '%icon' y seleccione 'Añadir a pantalla de inicio'. (thanks to Roberto)
 - French [fr_fr]: Ajoutez cette application sur votre %device en cliquant sur '%icon', puis 'Ajouter à l'écran d'accueil'. (thanks to [@bdufresne](http://twitter.com/#!/bdufresne))
 - Hebrew [he\_li]: _for some reasons I have troubles displaying the Hebrew version here, but it is working on the app_ (thanks to [@roitiger](http://twitter.com/#!/roitiger))
-- **Italian [it_it]**: Installa questa applicazione sul tuo %device: premi su '%icon' e poi 'Aggiungi a Home'.
+- Hungarian [hu_hu]: Telepítse ezt a web-alkalmazást az Ön %device-jára: nyomjon a %icon-ra majd a 'Főképernyőhöz adás' gombra. (thanks to [Szabó Szabolcs](http://www.szabika.hu))
+- Italian [it_it]: Installa questa applicazione sul tuo %device: premi su '%icon' e poi 'Aggiungi a Home'.
 - Japanese [ja_jp]: このウェブアプリをあなたの%deviceにインストールするには'%icon'をタップして'ホーム画面に追加'を選んでください。(thanks to [@takatama](http://twitter.com/#!/takatama))
 - Korean [ko_kr]: %device에 웹앱을 설치하려면 %icon을 터치 후 "홈화면에 추가"를 선택하세요, (thanks to [@evashork](http://twitter.com/#!/evashork))
 - Norwegian [nb_no]: Installer denne appen på din %device: trykk på '%icon' og deretter 'Legg til på Hjem-skjerm' (thanks to Thomas)
@@ -31,7 +32,7 @@ The script auto-detects the user's locale and shows the message in the appropria
 - Chinese simplified [zh_cn]: 您可以将此应用程式安装到您的 %device 上。请按 %icon 然后点选<strong>添加至主屏幕</strong>。 (thanks to Macro Yau)
 - Chinese traditional [zh_tw]: 您可以將此應用程式安裝到您的 %device 上。請按 %icon 然後點選<strong>加入主畫面螢幕</strong>。 (thanks to Macro Yau)
 
-**Please help us localizing the script in more languages!** Also, confirmation for already translated languages is welcome (**bold languages are confirmed**).
+**Please help us localizing the script in more languages!**
 
 ## License
 
