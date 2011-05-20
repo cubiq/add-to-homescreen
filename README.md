@@ -3,7 +3,7 @@ Add to Home Screen Floating Layer
 
 The script places a floating balloon to your mobile website inviting the user to add your app to the home screen. This is compatible with iPhone/4/iPod-touch and iPad, iOS >= 3.1.1.
 
-Version: 1.0.5 - [Official homepage](http://cubiq.org/add-to-home-screen) - [Video](http://vimeo.com/19090537)
+Version: 1.0.6 - [Official homepage](http://cubiq.org/add-to-home-screen) - [Video](http://vimeo.com/19090537)
 
 ## Usage
 Include the script and the stylesheet in your page HEAD. That's all. Look at the examples for advanced features. Documentation on [cubiq.org](http://cubiq.org/add-to-home-screen).
@@ -29,6 +29,7 @@ The script auto-detects the user's locale and shows the message in the appropria
 - Portuguese [pt_pt]: Para instalar esta aplicação no seu %device, prima o '%icon' e depois o 'Adicionar ao ecrã principal'. (thanks to [@maboa](http://twitter.com/#!/maboa))
 - Russian [ru_ru]: Установите это веб-приложение на ваш %device: нажмите '%icon', затем 'Добавить в «Домой»'. (thanks to [@myfreeweb](http://twitter.com/#!/myfreeweb))
 - Swedish [sv_se]: Lägg till denna webbapplikation på din %device: tryck på '%icon' och därefter 'Lägg till på hemskärmen'. (thanks to [@fransrosen](http://twitter.com/#!/fransrosen))
+- Tukish [tr_tr]: %device için bu uygulamayı kurduktan sonra %icon simgesine dokunarak Ev Ekranına Ekleyin.
 - Chinese simplified [zh_cn]: 您可以将此应用程式安装到您的 %device 上。请按 %icon 然后点选<strong>添加至主屏幕</strong>。 (thanks to Macro Yau)
 - Chinese traditional [zh_tw]: 您可以將此應用程式安裝到您的 %device 上。請按 %icon 然後點選<strong>加入主畫面螢幕</strong>。 (thanks to Macro Yau)
 
