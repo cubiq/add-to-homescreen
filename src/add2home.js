@@ -6,7 +6,7 @@
  * Released under MIT license
  * http://cubiq.org/dropbox/mit-license.txt
  * 
- * Version 1.0.7 - Last updated: 2011.05.24
+ * Version 1.0.7 - Last updated: 2011.07.12
  * 
  * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * 
@@ -45,7 +45,7 @@ var nav = navigator,
 		el_gr: 'Εγκαταστήσετε αυτήν την Εφαρμογή στήν συσκευή σας %device: %icon μετά πατάτε <strong>Προσθήκη σε Αφετηρία</strong>.',
 		en_us: 'Install this web app on your %device: tap %icon and then <strong>Add to Home Screen</strong>.',
 		es_es: 'Para instalar esta app en su %device, pulse %icon y seleccione <strong>Añadir a pantalla de inicio</strong>.',
-		fi_fi: 'Asenna tämä web-sovellus laitteeseesi %device: paina `%icon` ja sen jälkeen valitse `<strong>Lisää Koti-valikkoon</strong>`.',
+		fi_fi: 'Asenna tämä web-sovellus laitteeseesi %device: paina %icon ja sen jälkeen valitse <strong>Lisää Koti-valikkoon</strong>.',
 		fr_fr: 'Ajoutez cette application sur votre %device en cliquant sur %icon, puis <strong>Ajouter à l\'écran d\'accueil</strong>.',
 		he_il: '<span dir="rtl">התקן אפליקציה זו על ה-%device שלך: הקש %icon ואז <strong>הוסף למסך הבית</strong>.</span>',
 		hu_hu: 'Telepítse ezt a web-alkalmazást az Ön %device-jára: nyomjon a %icon-ra majd a <strong>Főképernyőhöz adás</strong> gombra.',

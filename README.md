@@ -18,6 +18,7 @@ The script auto-detects the user's locale and shows the message in the appropria
 - English [en_us]: Install this web app on your %device: tap '%icon' and then 'Add to Home Screen'.
 - Spanish [es_es]: Para instalar esta app en su %device, pulse '%icon' y seleccione 'Añadir a pantalla de inicio'. (thanks to Roberto)
 - French [fr_fr]: Ajoutez cette application sur votre %device en cliquant sur '%icon', puis 'Ajouter à l'écran d'accueil'. (thanks to [@bdufresne](http://twitter.com/#!/bdufresne))
+- Finnish [fi_fi]: Asenna tämä web-sovellus laitteeseesi %device: paina %icon ja sen jälkeen valitse <strong>Lisää Koti-valikkoon</strong> (thanks to [Santeri Vesalainen](https://github.com/santeriv)
 - Hebrew [he\_li]: _for some reasons I have troubles displaying the Hebrew version here, but it is working on the app_ (thanks to [@roitiger](http://twitter.com/#!/roitiger))
 - Hungarian [hu_hu]: Telepítse ezt a web-alkalmazást az Ön %device-jára: nyomjon a %icon-ra majd a 'Főképernyőhöz adás' gombra. (thanks to [Szabó Szabolcs](http://www.szabika.hu))
 - Italian [it_it]: Installa questa applicazione sul tuo %device: premi su '%icon' e poi 'Aggiungi a Home'.
