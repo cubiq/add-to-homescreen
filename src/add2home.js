@@ -1,17 +1,8 @@
-/**
- * 
- * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- *
- * Copyright (c) 2011 Matteo Spinelli, http://cubiq.org/
- * Released under MIT license
- * http://cubiq.org/dropbox/mit-license.txt
- * 
- * Version 1.0.7 - Last updated: 2011.07.12
- * 
- * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * 
+/*!
+ * Add to Homescreen v1.0.8 ~ Copyright (c) 2011 Matteo Spinelli, http://cubiq.org
+ * Released under MIT license, http://cubiq.org/license
  */
-;(function(){
+(function(){
 var nav = navigator,
 	isIDevice = (/iphone|ipod|ipad/gi).test(nav.platform),
 	isIPad = (/ipad/gi).test(nav.platform),
@@ -152,7 +143,7 @@ function loaded () {
 		startX = isIPad ? window.scrollX : Math.round((window.innerWidth - el.offsetWidth)/2) + window.scrollX;
 
 		el.style.top = isIPad ? startY + options.bottomOffset + 'px' : startY - el.offsetHeight - options.bottomOffset + 'px';
-		el.style.left = isIPad ? startX + 208 - Math.round(el.offsetWidth/2) + 'px' : startX + 'px';
+		el.style.left = isIPad ? startX + (OSVersion >=5 ? 160 : 208) - Math.round(el.offsetWidth/2) + 'px' : startX + 'px';
 
 		switch (options.animationIn) {
 			case 'drop':
@@ -212,11 +203,9 @@ function setPosition () {
 
 	clearInterval(theInterval);
 	el.removeEventListener('webkitTransitionEnd', transitionEnd, false);
-//	el.style.webkitTransitionDuration = '0';
 
 	setTimeout(function () {
 		el.addEventListener('webkitTransitionEnd', transitionEnd, false);
-//		el.style.webkitTransitionDuration = '0.2s';
 		el.style.webkitTransform = 'translate3d(' + posX + 'px,' + posY + 'px,0)';
 	}, 0);
 }
@@ -269,6 +258,6 @@ function addToHomeClose () {
 	el.style.webkitTransform = 'translate3d(' + posX + 'px,' + posY + 'px,0)';
 }
 
-/* Public function */
+/* Public functions */
 window.addToHomeClose = addToHomeClose;
 })();
