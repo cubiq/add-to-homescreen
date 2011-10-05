@@ -17,6 +17,7 @@ var nav = navigator,
 	expired = localStorage.getItem('_addToHome'),
 	theInterval, closeTimeout, el, i, l,
 	options = {
+        showOnLoad: true,           // Should the popup be displayed automatically onload of the page
 		animationIn: 'drop',		// drop || bubble || fade
 		animationOut: 'fade',		// drop || bubble || fade
 		startDelay: 2000,			// 2 seconds from page load before the balloon appears
@@ -73,7 +74,9 @@ if (!options.expire || expired < new Date().getTime()) {
 /* Bootstrap */
 if (hasHomescreen && !expired && !isStandalone && isSafari) {
 	document.addEventListener('DOMContentLoaded', ready, false);
-	window.addEventListener('load', loaded, false);
+    if (options.showOnLoad) {
+    	window.addEventListener('load', addToHomeShow, false);
+    }
 }
 
 
@@ -132,9 +135,8 @@ function ready () {
 }
 
 
-/* on window load */
-function loaded () {
-	window.removeEventListener('load', loaded, false);
+function addToHomeShow () {
+	window.removeEventListener('load', addToHomeShow, false);
 
 	setTimeout(function () {
 		var duration;
@@ -260,4 +262,8 @@ function addToHomeClose () {
 
 /* Public functions */
 window.addToHomeClose = addToHomeClose;
+window.addToHomeShow = addToHomeShow;
+
 })();
+
+
