@@ -14,7 +14,7 @@ var nav = navigator,
 	platform = nav.platform.split(' ')[0],
 	language = nav.language.replace('-', '_'),
 	startY = startX = 0,
-	expired = localStorage.getItem('_addToHome'),
+	expired = (('localStorage' in window) && typeof localStorage.getItem === 'function') ? localStorage.getItem('_addToHome') : null,
 	theInterval, closeTimeout, el, i, l,
 	options = {
 		animationIn: 'drop',		// drop || bubble || fade
