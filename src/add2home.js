@@ -27,7 +27,8 @@ var nav = navigator,
 		message: '',				// Customize your message or force a language ('' = automatic)
 		touchIcon: false,			// Display the touch icon
 		arrow: true,				// Display the balloon arrow
-		iterations:100				// Internal/debug use
+		iterations:100,				// Internal/debug use
+		showOnPathOnly: []
 	},
 	/* Message in various languages, en_us is the default if a language does not exist */
 	intl = {
@@ -128,14 +129,31 @@ function ready () {
 	close = el.querySelector('.close');
 	if (close) close.addEventListener('click', addToHomeClose, false);
 
-	// Add expire date to the popup
-	if (options.expire) localStorage.setItem('_addToHome', new Date().getTime() + options.expire*60*1000);
 }
 
+function isAllowedPath() {
+	if (options.showOnPathOnly.length == 0) {
+		return true;
+	}
+	for (i = 0; i < options.showOnPathOnly.length; i++) {
+		if (null !== window.location.pathname.match(options.showOnPathOnly[i])) {
+			return true;
+		}
+	}
+	return false;
+}
 
 /* on window load */
 function loaded () {
 	window.removeEventListener('load', loaded, false);
+
+	// Don't Load when yet Path is wrong
+	if (!isAllowedPath()) {
+		return;
+	}
+
+	// Add expire date to the popup
+	if (options.expire) localStorage.setItem('_addToHome', new Date().getTime() + options.expire*60*1000);
 
 	setTimeout(function () {
 		var duration;
@@ -261,4 +279,5 @@ function addToHomeClose () {
 
 /* Public functions */
 window.addToHomeClose = addToHomeClose;
+window.addToHomeCheck = loaded;
 })();
