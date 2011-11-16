@@ -28,7 +28,7 @@ var nav = navigator,
 		touchIcon: false,			// Display the touch icon
 		arrow: true,				// Display the balloon arrow
 		iterations:100,				// Internal/debug use
-		showOnPathOnly: []
+		showOnPathOnly: []			// Collection of Regexes, on which the bubble should be shown. Ignored if empty.
 	},
 	/* Message in various languages, en_us is the default if a language does not exist */
 	intl = {
@@ -107,7 +107,7 @@ function ready () {
 			sizes = link[i].getAttribute('sizes');
 
 			if (sizes) {
-				if (isRetina && sizes == '114x114') { 
+				if (isRetina && sizes == '114x114') {
 					touchIcon = link[i].href;
 					break;
 				}
@@ -157,7 +157,7 @@ function loaded () {
 
 	setTimeout(function () {
 		var duration;
-		
+
 		startY = isIPad ? window.scrollY : window.innerHeight + window.scrollY;
 		startX = isIPad ? window.scrollX : Math.round((window.innerWidth - el.offsetWidth)/2) + window.scrollX;
 
@@ -234,7 +234,7 @@ function addToHomeClose () {
 	clearTimeout(closeTimeout);
 	closeTimeout = null;
 	el.removeEventListener('webkitTransitionEnd', transitionEnd, false);
-	
+
 	var posY = isIPad ? window.scrollY - startY : window.scrollY + window.innerHeight - startY,
 		posX = isIPad ? window.scrollX - startX : window.scrollX + Math.round((window.innerWidth - el.offsetWidth)/2) - startX,
 		opacity = '1',
