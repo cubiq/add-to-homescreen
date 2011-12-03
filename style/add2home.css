@@ -130,7 +130,7 @@ html { -webkit-text-size-adjust:none; }
 	-webkit-border-radius:8px;
 	-webkit-box-shadow:0 1px 3px rgba(0,0,0,0.5),
 		inset 0 0 2px rgba(255,255,255,0.9);
-	background-repeat:none;
+	background-repeat:no-repeat;
 	width:44px; height:44px;
 	-webkit-background-size:44px 44px;
 	margin:0 10px 5px 0;
