@@ -159,7 +159,7 @@ function loaded () {
 			case 'bubble':
 				if (isIPad) {
 					duration = '0.6s';
-					el.style.opacity = '0'
+					el.style.opacity = '0';
 					el.style.webkitTransform = 'translate3d(0,' + (startY + 50) + 'px,0)';
 				} else {
 					duration = '0.6s';
