@@ -25,6 +25,7 @@ var nav = navigator,
 		bottomOffset: 14,			// Distance of the balloon from bottom
 		expire: 0,					// Minutes to wait before showing the popup again (0 = always displayed)
 		message: '',				// Customize your message or force a language ('' = automatic)
+		disableLoading: false,		// Disable loading of balloon
 		touchIcon: false,			// Display the touch icon
 		arrow: true,				// Display the balloon arrow
 		iterations:100				// Internal/debug use
@@ -72,7 +73,7 @@ if (!options.expire || expired < new Date().getTime()) {
 }
 
 /* Bootstrap */
-if (hasHomescreen && !expired && !isStandalone && isSafari) {
+if (hasHomescreen && !expired && !isStandalone && isSafari && !options.disableLoading) {
 	document.addEventListener('DOMContentLoaded', ready, false);
 	window.addEventListener('load', loaded, false);
 }
