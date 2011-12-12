@@ -28,7 +28,8 @@ var nav = navigator,
 		disableLoading: false,		// Disable loading of balloon
 		touchIcon: false,			// Display the touch icon
 		arrow: true,				// Display the balloon arrow
-		iterations:100				// Internal/debug use
+		iterations:100,				// Internal/debug use
+		showOnPathOnly: []			// Collection of Regexes, on which the bubble should be shown. Ignored if empty.
 	},
 	/* Message in various languages, en_us is the default if a language does not exist */
 	intl = {
@@ -107,7 +108,7 @@ function ready () {
 			sizes = link[i].getAttribute('sizes');
 
 			if (sizes) {
-				if (isRetina && sizes == '114x114') { 
+				if (isRetina && sizes == '114x114') {
 					touchIcon = link[i].href;
 					break;
 				}
@@ -129,18 +130,35 @@ function ready () {
 	close = el.querySelector('.close');
 	if (close) close.addEventListener('click', addToHomeClose, false);
 
-	// Add expire date to the popup
-	if (options.expire) localStorage.setItem('_addToHome', new Date().getTime() + options.expire*60*1000);
 }
 
+function isAllowedPath() {
+	if (options.showOnPathOnly.length == 0) {
+		return true;
+	}
+	for (i = 0; i < options.showOnPathOnly.length; i++) {
+		if (null !== window.location.pathname.match(options.showOnPathOnly[i])) {
+			return true;
+		}
+	}
+	return false;
+}
 
 /* on window load */
 function loaded () {
 	window.removeEventListener('load', loaded, false);
 
+	// Don't Load when yet Path is wrong
+	if (!isAllowedPath()) {
+		return;
+	}
+
+	// Add expire date to the popup
+	if (options.expire) localStorage.setItem('_addToHome', new Date().getTime() + options.expire*60*1000);
+
 	setTimeout(function () {
 		var duration;
-		
+
 		startY = isIPad ? window.scrollY : window.innerHeight + window.scrollY;
 		startX = isIPad ? window.scrollX : Math.round((window.innerWidth - el.offsetWidth)/2) + window.scrollX;
 
@@ -217,7 +235,7 @@ function addToHomeClose () {
 	clearTimeout(closeTimeout);
 	closeTimeout = null;
 	el.removeEventListener('webkitTransitionEnd', transitionEnd, false);
-	
+
 	var posY = isIPad ? window.scrollY - startY : window.scrollY + window.innerHeight - startY,
 		posX = isIPad ? window.scrollX - startX : window.scrollX + Math.round((window.innerWidth - el.offsetWidth)/2) - startX,
 		opacity = '1',
@@ -262,4 +280,5 @@ function addToHomeClose () {
 
 /* Public functions */
 window.addToHomeClose = addToHomeClose;
+window.addToHomeCheck = loaded;
 })();
