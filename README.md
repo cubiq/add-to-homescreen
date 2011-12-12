@@ -16,6 +16,7 @@ The script auto-detects the user's locale and shows the message in the appropria
 - German [de_de]: Installieren Sie diese App auf Ihrem %device: '%icon' antippen und dann 'Zum Home-Bildschirm'. (thanks to [@dombn](http://twitter.com/#!/dombn))
 - Greek [el_gr]: Εγκαταστήσετε αυτήν την Εφαρμογή στήν συσκευή σας %device: '%icon' μετά πατάτε 'Προσθήκη σε Αφετηρία'. (thanks to [@rolandguelle](http://twitter.com/#!/rolandguelle))
 - English [en_us]: Install this web app on your %device: tap '%icon' and then 'Add to Home Screen'.
+- Esperanto [eo_eo]: Instali tiun retaplikaĵon en via %device: frapetu %icon, tiam 'Aldoni al Hejmekrano'.
 - Spanish [es_es]: Para instalar esta app en su %device, pulse '%icon' y seleccione 'Añadir a pantalla de inicio'. (thanks to Roberto)
 - French [fr_fr]: Ajoutez cette application sur votre %device en cliquant sur '%icon', puis 'Ajouter à l'écran d'accueil'. (thanks to [@bdufresne](http://twitter.com/#!/bdufresne))
 - Finnish [fi_fi]: Asenna tämä web-sovellus laitteeseesi %device: paina %icon ja sen jälkeen valitse <strong>Lisää Koti-valikkoon</strong> (thanks to [Santeri Vesalainen](https://github.com/santeriv)
