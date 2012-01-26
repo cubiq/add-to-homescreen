@@ -3,7 +3,7 @@ Add to Home Screen Floating Layer
 
 The script places a floating balloon to your mobile website inviting the user to add your app to the home screen. This is compatible with iPhone/4/iPod-touch and iPad, iOS >= 3.1.1.
 
-Version: 1.0.8 - [Official homepage](http://cubiq.org/add-to-home-screen) - [Video](http://vimeo.com/19090537)
+Version: 2.0 - [Official homepage](http://cubiq.org/add-to-home-screen) - [Video](http://vimeo.com/19090537)
 
 ## Usage
 Include the script and the stylesheet in your page HEAD. That's all. Look at the examples for advanced features. Documentation on [cubiq.org](http://cubiq.org/add-to-home-screen).
@@ -26,6 +26,7 @@ The script auto-detects the user's locale and shows the message in the appropria
 - Korean [ko_kr]: %device에 웹앱을 설치하려면 %icon을 터치 후 "홈화면에 추가"를 선택하세요, (thanks to [@evashork](http://twitter.com/#!/evashork))
 - Norwegian [nb_no]: Installer denne appen på din %device: trykk på '%icon' og deretter 'Legg til på Hjem-skjerm' (thanks to Thomas)
 - Dutch [nl_nl]: Installeer deze webapp op uw %device: tik '%icon' en dan 'Zet in beginscherm'. (thanks to [@Kracht0147](http://twitter.com/#!/Kracht0147))
+- Polish [pl_pl]: Aby zainstalować tę aplikacje na %device: naciśnij %icon a następnie 'Dodaj jako ikonę'. (thanks to [Damian B](http://dbielawski.com/))
 - Portuguese [pt_br]: Instale este web app em seu %device: aperte '%icon' e selecione 'Adicionar à Tela Inicio'. (thanks to [@mariozuany](http://twitter.com/#!/mariozuany))
 - Portuguese [pt_pt]: Para instalar esta aplicação no seu %device, prima o '%icon' e depois o 'Adicionar ao ecrã principal'. (thanks to [@maboa](http://twitter.com/#!/maboa))
 - Russian [ru_ru]: Установите это веб-приложение на ваш %device: нажмите '%icon', затем 'Добавить в «Домой»'. (thanks to [@myfreeweb](http://twitter.com/#!/myfreeweb))
