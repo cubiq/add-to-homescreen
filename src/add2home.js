@@ -68,11 +68,12 @@ var addToHome = (function (w) {
 		// Preliminary check, prevents all further checks to be performed on iDevices only
 		if ( !isIDevice ) return;
 
-		var now = Date.now();
+		var now = Date.now(),
+			i;
 
 		// Merge local with global options
 		if (w.addToHomeConfig) {
-			for ( var i in w.addToHomeConfig ) {
+			for ( i in w.addToHomeConfig ) {
 				options[i] = w.addToHomeConfig[i];
 			}
 		}
