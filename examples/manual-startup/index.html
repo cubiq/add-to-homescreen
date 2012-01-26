@@ -7,30 +7,30 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
 
 	<!-- Of course it is advisable to have touch icons ready for each device -->
-	<link rel="apple-touch-icon" href="touch-icon-iphone.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="touch-icon-ipad.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="touch-icon-iphone4.png">
+	<link rel="apple-touch-icon" href="../images/touch-icon-iphone.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="../images/touch-icon-ipad.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="../images/touch-icon-iphone4.png">
+
 
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-	<script type="text/javascript">
-		var addToHomeConfig = {
-			touchIcon:true
-		};
-		// Disable loading of ballon if not on start page or if device is an iPad
-		if (window.location.pathname != '/' || (/ipad/gi).test(navigator.platform)) {
-			addToHomeConfig.disableLoading = true;
-		};	
+<script type="text/javascript">
 
-	</script>
+var addToHomeConfig = {
+	autostart: false,
+	startDelay: 0
+};
+
+</script>
+
 	<link rel="stylesheet" href="../../style/add2home.css">
 	<script type="application/javascript" src="../../src/add2home.js" charset="utf-8"></script>
 </head>
 
 <body>
 	<p>scroll</p>
-	<p>scroll</p>
+	<p><button onclick="addToHome.show()">Show the message</button></p>
 	<p>scroll</p>
 	<p>scroll</p>
 	<p>scroll</p>
