@@ -75,6 +75,18 @@
 	top:-9px; bottom:auto; left:50%;
 }
 
+/*
+ * The baloon arrow for MeeGo
+ * TODO: modificare/definire addToHomeArrow in modo che per MeeGo sia top: -9px, left: 93%, -webkit-transform: rotateZ(-135deg), posizionare in alto a destra con animazione
+ */
+#addToHomeScreen.addToHomeMeeGo .addToHomeArrow {
+	-webkit-transform:rotateZ(-135deg);
+	background-image:-webkit-gradient(linear,0 0,100% 100%,color-stop(0,rgba(238,238,238,0)),color-stop(0.4,rgba(238,238,238,0)),color-stop(0.4,#eee));
+	-webkit-box-shadow:inset -1px -1px 0 #fff;
+	top:-9px; bottom:auto; left:93%;
+}
+
+
 
 /**
  *
@@ -156,3 +168,15 @@
 		background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAeCAQAAADu6HTYAAADPElEQVR4Xq3TX2gcRRzA8e/M7mVv2+TSNpc/TZtrY6jUGqgaSAmEChKLrYK0YH0RFC2CSCkEfCghiKU04J8qNigq6os+iQV98MHWFwVBrQQRWs21lBw5cw3NNb1/udu72RGG5Y77IzXW77D7sAwf5scyYoL6BGXSDKFZwaGpLvIUaeoCkvX1MmsM0Ny6oRSQYOLuIS+YZOpfQdqslpUxcZrzTVAz4qPwW2O3CeIwC/RSzeY6Ow1QhUrkr+YOWfEKDkEP8Rij7CHKJmrFSDHBdwGEE5wiGChPN+PnT8VdRtEIl1d4gRj/1EVe5ZSBKGh8iqQpo/Fo5+3C/gz0MYg4zgwbqday1/Q4B8BGQ45d/Hi54lakCrU5obOcidJpu1+Lg9whjabyaOYLnrIBFFaRD+xe2ybMDWY66GmP/WA9cGfGp0CWhy0wkMN8inepFiH2rV1j0NQSNQbFLRQnS8/8YSDBBpadfv4CYDub2fmeHDNAsL1MBWUel0iA+Xik6eHcyvD3vAMSU1TGuA/YRS+dD7ovCQN43GKRFCU20Kd3V/avDVVyAZ5niTEuLA5/zBGWg9EEEhfJKN200Tat8CmRAQb9+wv7soPlHt2tQorsz1uPbr0HTY4sJwrH47zJZwABBAKLMBoQXepwgTwdHCo+fXMkQ4lrxEmQ5AaXipPqDY9V2vn09tgvTPI71EEGYxM+/uMJLJ4svpgaWGKOi/xKgmqLSUGSUd5f2vIVJ/CgBaTIUsZ7ZBsn0+NzfMOXLFCXQyTcybN6ep5ZZgUOHn7jpfUpsZshdugPGf+E5zjbyHTSRyQ8xfRPPM/s63RHeuknSoT22mjmmnAOIMkUZ6D1xSfPPAfd1WFKM3sO2CMaHx8M1NjnXKHaAGGkOW0C02WeYHUz4qMtx+w5gUDS8NckYe5lHsMYwCZEPyEEmjLDZFmAS7CDviMdxyTkMNVBKEmYLvbiQQBIBBbCQG04bGQvFWz6CfsCQLWCigILFwcfkGYBiOpbYuOizTAyYyDdCtrGaRG1LCkIgMYEFhI0WqQZoSlbGRyHKe4qOx7iv2bVQW9dp4dlM/x6kmwnWQcd/Q3FCqwTEiT5s+6D5v/pb0SSHyg7uhMWAAAAAElFTkSuQmCC);
 	}
 }
+
+#addToHomeScreen .addToHomeMeeGo {
+	display:inline-block;
+	width:18px;
+	height:15px;
+	background-repeat:no-repeat;
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAQAAACR313BAAABMklEQVQYGQXBsW7TYBiF4fd8/+/ajikFparoQOYuXBoTEteAOnJXsLIyAkKUSFEgtkPs7/A8aneyRbHgYoBGILPKVpUdWm7/dMseAHipQ26a35u2UardbXLppvsykLAYqgjGqx91zlIpeRgf/NGvGZ0AF2nwt/Pbm8/ztsJ1mdd/v4BRRmC5075NAtTuehzT8xhWVy5utFCUp/6otAIAGhaKAACgAQAqZT2Mb/I9t+uMQzNo6WLPh+HL+UWFSEpsufeITRHKHqhKULtTujm/KjdrFlYDQhzbn7o4KvQslWsPkWlcFFJkXtV6SVVKHsaHfNQdIw6ZVWx4Gt89+zRvK+6b08RXTTo7kWTUrd+badMYtTvZkYP7xRWAhSpNcVJaVW4j8vwU612M/DVsCI7RdqPk/9SlnKD0LqNHAAAAAElFTkSuQmCC);
+	background-size:18px 15px;
+	text-indent:-9999em;
+	overflow:hidden;
+}
+

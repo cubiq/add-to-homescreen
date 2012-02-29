@@ -10,6 +10,8 @@ var addToHome = (function (w) {
 		isSafari,
 		isStandalone,
 		OSVersion,
+		isMeeGo = 'userAgent' in nav && (/MeeGo; NokiaN/gi).test(nav.userAgent),
+		// Andrea: I don't think you can add to home // isKindleFire = 'userAgent' in nav && (/Silk/gi).test(nav.userAgent),
 		startX = 0,
 		startY = 0,
 		isExpired,
@@ -66,7 +68,7 @@ var addToHome = (function (w) {
 
 	function init () {
 		// Preliminary check, prevents all further checks to be performed on iDevices only
-		if ( !isIDevice ) return;
+		if ( !overrideChecks && !isIDevice && !isMeeGo) return;
 
 		var now = Date.now(),
 			i;
@@ -83,9 +85,13 @@ var addToHome = (function (w) {
 		isRetina = w.devicePixelRatio && w.devicePixelRatio > 1;
 		isSafari = nav.appVersion.match(/Safari/gi);
 		isStandalone = nav.standalone;
-		
-		OSVersion = nav.appVersion.match(/OS (\d+_\d+)/i);
-		OSVersion = OSVersion[1] ? +OSVersion[1].replace('_', '.') : 0;
+		isMeeGo = (/MeeGo; NokiaN9/gi).test(nav.appVersion);
+
+		// Andrea: should we have a check on WP7 version? Does the baloon and transition work on IE7?		
+		if (isIDevice) {
+			OSVersion = nav.appVersion.match(/OS (\d+_\d+)/i);
+			OSVersion = OSVersion[1] ? +OSVersion[1].replace('_', '.') : 0;
+		}
 		
 		isExpired = +w.localStorage.getItem('addToHome') || now;
 		isSessionActive = w.sessionStorage.getItem('addToHomeSession');
@@ -115,6 +121,9 @@ var addToHome = (function (w) {
 			language = nav.language.replace('-', '_'),
 			i, l;
 
+		if (isMeeGo) {
+			platform = 'MeeGo'; // need to force this because the platform name the browser declares is Linux
+		}
 		balloon = document.createElement('div');
 		balloon.id = 'addToHomeScreen';
 		balloon.style.cssText += 'left:-9999px;-webkit-transition-property:-webkit-transform,opacity;-webkit-transition-duration:0;-webkit-transform:translate3d(0,0,0);position:' + (OSVersion < 5 ? 'absolute' : 'fixed');
@@ -146,9 +155,20 @@ var addToHome = (function (w) {
 			touchIcon = '<span style="background-image:url(' + touchIcon + ')" class="addToHomeTouchIcon"></span>';
 		}
 
-		balloon.className = (isIPad ? 'addToHomeIpad' : 'addToHomeIphone') + (touchIcon ? ' addToHomeWide' : '');
+		if (isIDevice) {
+			balloon.className = (isIPad ? 'addToHomeIpad' : 'addToHomeIphone') + (touchIcon ? ' addToHomeWide' : '');
+			balloonIcon = OSVersion >= 4.2 ? '<span class="addToHomeShare"></span>' : '<span class="addToHomePlus">+</span>';
+		} else if (isMeeGo) {
+			balloon.className = 'addToHomeMeeGo';
+			balloonIcon = '<span class="addToHomeMeeGo"></span>'
+		} else {
+			// making sure all variables are set
+			balloonIcon = '';
+			balloon.className = '';
+		}
+		
 		balloon.innerHTML = touchIcon +
-			options.message.replace('%device', platform).replace('%icon', OSVersion >= 4.2 ? '<span class="addToHomeShare"></span>' : '<span class="addToHomePlus">+</span>') +
+			options.message.replace('%device', platform).replace('%icon', balloonIcon) +
 			(options.arrow ? '<span class="addToHomeArrow"></span>' : '') +
 			'<span class="addToHomeClose">\u00D7</span>';
 
@@ -175,6 +195,25 @@ var addToHome = (function (w) {
 
 			balloon.style.top = startY + options.bottomOffset + 'px';
 			balloon.style.left = startX + iPadXShift - Math.round(balloon.offsetWidth / 2) + 'px';
+
+			switch ( options.animationIn ) {
+				case 'drop':
+					duration = '0.6s';
+					balloon.style.webkitTransform = 'translate3d(0,' + -(w.scrollY + options.bottomOffset + balloon.offsetHeight) + 'px,0)';
+					break;
+				case 'bubble':
+					duration = '0.6s';
+					balloon.style.opacity = '0';
+					balloon.style.webkitTransform = 'translate3d(0,' + (startY + 50) + 'px,0)';
+					break;
+				default:
+					duration = '1s';
+					balloon.style.opacity = '0';
+			}
+		} else if ( isMeeGo ) {
+			startX = w.innerWidth;
+			balloon.style.top = startY + options.bottomOffset + 'px';
+			balloon.style.left = startX - balloon.offsetWidth - 2 + 'px';
 
 			switch ( options.animationIn ) {
 				case 'drop':
@@ -225,6 +264,7 @@ var addToHome = (function (w) {
 		balloon.addEventListener('webkitTransitionEnd', transitionEnd, false);
 
 		closeTimeout = setTimeout(close, options.lifespan);
+//		closeTimeout = setTimeout(close, 9999999999);
 	}
 
 	function manualShow (override) {
@@ -336,3 +376,4 @@ var addToHome = (function (w) {
 		reset: reset
 	};
 })(this);
+
