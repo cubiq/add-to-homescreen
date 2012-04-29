@@ -85,10 +85,10 @@ var addToHome = (function (w) {
 		isRetina = w.devicePixelRatio && w.devicePixelRatio > 1;
 		isSafari = nav.appVersion.match(/Safari/gi);
 		isStandalone = nav.standalone;
-		
+
 		OSVersion = nav.appVersion.match(/OS (\d+_\d+)/i);
 		OSVersion = OSVersion[1] ? +OSVersion[1].replace('_', '.') : 0;
-		
+
 		lastVisit = +w.localStorage.getItem('addToHome');
 
 		isSessionActive = w.sessionStorage.getItem('addToHomeSession');
@@ -114,7 +114,6 @@ var addToHome = (function (w) {
 		var icons = options.touchIcon ? document.querySelectorAll('head link[rel=apple-touch-icon],head link[rel=apple-touch-icon-precomposed]') : [],
 			sizes,
 			touchIcon = '',
-			closeButton,
 			platform = nav.platform.split(' ')[0],
 			language = nav.language.replace('-', '_'),
 			i, l;
@@ -159,8 +158,7 @@ var addToHome = (function (w) {
 		document.body.appendChild(balloon);
 
 		// Add the close action
-		closeButton = balloon.querySelector('.addToHomeClose');
-		if ( closeButton ) closeButton.addEventListener('click', clicked, false);
+		balloon.addEventListener('click', clicked, false);
 
 		setTimeout(show, options.startDelay);
 	}
@@ -246,10 +244,9 @@ var addToHome = (function (w) {
 		var posY = 0,
 			posX = 0,
 			opacity = '1',
-			duration = '0',
-			closeButton = balloon.querySelector('.addToHomeClose');
+			duration = '0';
 
-		if ( closeButton ) closeButton.removeEventListener('click', close, false);
+		balloon.removeEventListener('click', clicked, false);
 
 		if ( OSVersion < 5 ) {
 			posY = isIPad ? w.scrollY - startY : w.scrollY + w.innerHeight - startY;
