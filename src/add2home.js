@@ -85,7 +85,6 @@ var addToHome = (function (w) {
 		isRetina = w.devicePixelRatio && w.devicePixelRatio > 1;
 		isSafari = nav.appVersion.match(/Safari/gi);
 		isStandalone = nav.standalone;
-		isMeeGo = (/MeeGo; NokiaN9/gi).test(nav.appVersion);
 
 		// Andrea: should we have a check on WP7 version? Does the baloon and transition work on IE7?		
 		if (isIDevice) {
@@ -229,6 +228,14 @@ var addToHome = (function (w) {
 					duration = '1s';
 					balloon.style.opacity = '0';
 			}
+/*
+ * Andrea: make the balloon scroll as appropriate
+window.onscroll = function() {
+	balloon.style.webkitTransform = 'translate3d(0,' + (startY + 50) + 'px,0)';
+  document.getElementById('addToHomeScreen').style.top =
+     (window.pageYOffset + window.innerHeight - 25) + 'px';
+};
+*/
 		} else {
 			startY = w.innerHeight + w.scrollY;
 
