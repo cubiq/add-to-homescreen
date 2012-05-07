@@ -4,7 +4,8 @@
  */
 var addToHome = (function (w) {
 	var nav = w.navigator,
-		isIDevice = 'platform' in nav && (/iphone|ipod|ipad/gi).test(nav.platform),
+		isSupportedDevice,
+		devicePlatform,
 		isIPad,
 		isRetina,
 		isSafari,
@@ -39,36 +40,51 @@ var addToHome = (function (w) {
 		},
 
 		intl = {
-			ca_es: 'Per instal·lar aquesta aplicació al vostre %device premeu %icon i llavors <strong>Afegir a pantalla d\'inici</strong>.',
-			cs_cz: 'Pro instalaci aplikace na Váš %device, stiskněte %icon a v nabídce <strong>Přidat na plochu</strong>.',
-			da_dk: 'Tilføj denne side til din %device: tryk på %icon og derefter <strong>Føj til hjemmeskærm</strong>.',
-			de_de: 'Installieren Sie diese App auf Ihrem %device: %icon antippen und dann <strong>Zum Home-Bildschirm</strong>.',
-			el_gr: 'Εγκαταστήσετε αυτήν την Εφαρμογή στήν συσκευή σας %device: %icon μετά πατάτε <strong>Προσθήκη σε Αφετηρία</strong>.',
-			en_us: 'Install this web app on your %device: tap %icon and then <strong>Add to Home Screen</strong>.',
-			es_es: 'Para instalar esta app en su %device, pulse %icon y seleccione <strong>Añadir a pantalla de inicio</strong>.',
-			fi_fi: 'Asenna tämä web-sovellus laitteeseesi %device: paina %icon ja sen jälkeen valitse <strong>Lisää Koti-valikkoon</strong>.',
-			fr_fr: 'Ajoutez cette application sur votre %device en cliquant sur %icon, puis <strong>Ajouter à l\'écran d\'accueil</strong>.',
-			he_il: '<span dir="rtl">התקן אפליקציה זו על ה-%device שלך: הקש %icon ואז <strong>הוסף למסך הבית</strong>.</span>',
-			hu_hu: 'Telepítse ezt a web-alkalmazást az Ön %device-jára: nyomjon a %icon-ra majd a <strong>Főképernyőhöz adás</strong> gombra.',
-			it_it: 'Installa questa applicazione sul tuo %device: premi su %icon e poi <strong>Aggiungi a Home</strong>.',
-			ja_jp: 'このウェブアプリをあなたの%deviceにインストールするには%iconをタップして<strong>ホーム画面に追加</strong>を選んでください。',
-			ko_kr: '%device에 웹앱을 설치하려면 %icon을 터치 후 "홈화면에 추가"를 선택하세요',
-			nb_no: 'Installer denne appen på din %device: trykk på %icon og deretter <strong>Legg til på Hjem-skjerm</strong>',
-			nl_nl: 'Installeer deze webapp op uw %device: tik %icon en dan <strong>Zet in beginscherm</strong>.',
-			pl_pl: 'Aby zainstalować tę aplikacje na %device: naciśnij %icon a następnie <strong>Dodaj jako ikonę</strong>.',
-			pt_br: 'Instale este web app em seu %device: aperte %icon e selecione <strong>Adicionar à Tela Inicio</strong>.',
-			pt_pt: 'Para instalar esta aplicação no seu %device, prima o %icon e depois o <strong>Adicionar ao ecrã principal</strong>.',
-			ru_ru: 'Установите это веб-приложение на ваш %device: нажмите %icon, затем <strong>Добавить в «Домой»</strong>.',
-			sv_se: 'Lägg till denna webbapplikation på din %device: tryck på %icon och därefter <strong>Lägg till på hemskärmen</strong>.',
-			th_th: 'ติดตั้งเว็บแอพฯ นี้บน %device ของคุณ: แตะ %icon และ <strong>เพิ่มที่หน้าจอโฮม</strong>',
-			tr_tr: '%device için bu uygulamayı kurduktan sonra %icon simgesine dokunarak <strong>Ana Ekrana Ekle</strong>yin.',
-			zh_cn: '您可以将此应用程式安装到您的 %device 上。请按 %icon 然后点选<strong>添加至主屏幕</strong>。',
-			zh_tw: '您可以將此應用程式安裝到您的 %device 上。請按 %icon 然後點選<strong>加入主畫面螢幕</strong>。'
+			iOS: {
+				ca_es: 'Per instal·lar aquesta aplicació al vostre %device premeu %icon i llavors <strong>Afegir a pantalla d\'inici</strong>.',
+				da_dk: 'Tilføj denne side til din %device: tryk på %icon og derefter <strong>Tilføj til hjemmeskærm</strong>.',
+				de_de: 'Installieren Sie diese App auf Ihrem %device: %icon antippen und dann <strong>Zum Home-Bildschirm</strong>.',
+				el_gr: 'Εγκαταστήσετε αυτήν την Εφαρμογή στήν συσκευή σας %device: %icon μετά πατάτε <strong>Προσθήκη σε Αφετηρία</strong>.',
+				en_us: 'Install this web app on your %device: tap %icon and then <strong>Add to Home Screen</strong>.',
+				es_es: 'Para instalar esta app en su %device, pulse %icon y seleccione <strong>Añadir a pantalla de inicio</strong>.',
+				fi_fi: 'Asenna tämä web-sovellus laitteeseesi %device: paina %icon ja sen jälkeen valitse <strong>Lisää Koti-valikkoon</strong>.',
+				fr_fr: 'Ajoutez cette application sur votre %device en cliquant sur %icon, puis <strong>Ajouter à l\'écran d\'accueil</strong>.',
+				he_il: '<span dir="rtl">התקן אפליקציה זו על ה-%device שלך: הקש %icon ואז <strong>הוסף למסך הבית</strong>.</span>',
+				hu_hu: 'Telepítse ezt a web-alkalmazást az Ön %device-jára: nyomjon a %icon-ra majd a <strong>Főképernyőhöz adás</strong> gombra.',
+				it_it: 'Installa questa applicazione sul tuo %device: premi su %icon e poi <strong>Aggiungi a Home</strong>.',
+				ja_jp: 'このウェブアプリをあなたの%deviceにインストールするには%iconをタップして<strong>ホーム画面に追加</strong>を選んでください。',
+				ko_kr: '%device에 웹앱을 설치하려면 %icon을 터치 후 "홈화면에 추가"를 선택하세요',
+				nb_no: 'Installer denne appen på din %device: trykk på %icon og deretter <strong>Legg til på Hjem-skjerm</strong>',
+				nl_nl: 'Installeer deze webapp op uw %device: tik %icon en dan <strong>Zet in beginscherm</strong>.',
+				pl_pl: 'Aby zainstalować tę aplikacje na %device: naciśnij %icon a następnie <strong>Dodaj jako ikonę</strong>.',
+				pt_br: 'Instale este web app em seu %device: aperte %icon e selecione <strong>Adicionar à Tela Inicio</strong>.',
+				pt_pt: 'Para instalar esta aplicação no seu %device, prima o %icon e depois o <strong>Adicionar ao ecrã principal</strong>.',
+				ru_ru: 'Установите это веб-приложение на ваш %device: нажмите %icon, затем <strong>Добавить в «Домой»</strong>.',
+				sv_se: 'Lägg till denna webbapplikation på din %device: tryck på %icon och därefter <strong>Lägg till på hemskärmen</strong>.',
+				th_th: 'ติดตั้งเว็บแอพฯ นี้บน %device ของคุณ: แตะ %icon และ <strong>เพิ่มที่หน้าจอโฮม</strong>',
+				tr_tr: '%device için bu uygulamayı kurduktan sonra %icon simgesine dokunarak <strong>Ev Ekranına Ekle</strong>yin.',
+				zh_cn: '您可以将此应用程式安装到您的 %device 上。请按 %icon 然后点选<strong>添加至主屏幕</strong>。',
+				zh_tw: '您可以將此應用程式安裝到您的 %device 上。請按 %icon 然後點選<strong>加入主畫面螢幕</strong>。'
+			}
 		};
 
 	function init () {
+		// setup some basic variables
+		if ('platform' in nav && (/iphone|ipod|ipad/gi).test(nav.platform)) {
+			isSupportedDevice = true;
+			devicePlatform = 'iOS';
+			isIPad = (/ipad/gi).test(nav.platform);
+			// is isRetina useful for other platforms?
+			isRetina = w.devicePixelRatio && w.devicePixelRatio > 1;
+		} else if ('userAgent' in nav && (/MeeGo; NokiaN/gi).test(nav.userAgent)) {
+			isSupportedDevice = true;
+			devicePlatform = 'MeeGo';
+		} else if (0 && 'userAgent' in nav && (/Silk/gi).test(nav.userAgent)) {
+			// Andrea: I don't think you can add to home on Silk, can you?
+		}
+
 		// Preliminary check, prevents all further checks to be performed on iDevices only
-		if ( !isIDevice ) return;
+		if ( !overrideChecks && !isSupportedDevice) return;
 
 		var now = Date.now(),
 			i;
@@ -81,13 +97,15 @@ var addToHome = (function (w) {
 		}
 		if ( !options.autostart ) options.hookOnLoad = false;
 
-		isIPad = (/ipad/gi).test(nav.platform);
-		isRetina = w.devicePixelRatio && w.devicePixelRatio > 1;
+		// TODO: Andrea, isSafari tells us if it's mobile Safari or a WebView, we should look at how the other platforms behave
 		isSafari = nav.appVersion.match(/Safari/gi);
 		isStandalone = nav.standalone;
-		
-		OSVersion = nav.appVersion.match(/OS (\d+_\d+)/i);
-		OSVersion = OSVersion[1] ? +OSVersion[1].replace('_', '.') : 0;
+
+		// Andrea: should we have a check on WP7 version? Does the baloon and transition work on IE7?		
+		if (devicePlatform == 'iOS') {
+			OSVersion = nav.appVersion.match(/OS (\d+_\d+)/i);
+			OSVersion = OSVersion[1] ? +OSVersion[1].replace('_', '.') : 0;
+		}
 		
 		lastVisit = +w.localStorage.getItem('addToHome');
 
@@ -119,11 +137,18 @@ var addToHome = (function (w) {
 			language = nav.language.replace('-', '_'),
 			i, l;
 
+		if (devicePlatform == 'MeeGo') {
+			platform = 'MeeGo'; // need to force this because the platform name the browser declares is Linux
+		}
 		balloon = document.createElement('div');
 		balloon.id = 'addToHomeScreen';
-		balloon.style.cssText += 'left:-9999px;-webkit-transition-property:-webkit-transform,opacity;-webkit-transition-duration:0;-webkit-transform:translate3d(0,0,0);position:' + (OSVersion < 5 ? 'absolute' : 'fixed');
+		balloon.style.cssText += 'left:-9999px;-webkit-transition-property:-webkit-transform,opacity;-webkit-transition-duration:0;-webkit-transform:translate3d(0,0,0);position:' + ((OSVersion < 5 || devicePlatform == 'MeeGo') ? 'absolute' : 'fixed');
 
 		// Localize message
+		if (devicePlatform == 'iOS' || devicePlatform == 'MeeGo') {
+			// use the same messages of iOS for MeeGo 
+			intl = intl['iOS'];
+		}
 		if ( options.message in intl ) {		// You may force a language despite the user's locale
 			language = options.message;
 			options.message = '';
@@ -150,9 +175,20 @@ var addToHome = (function (w) {
 			touchIcon = '<span style="background-image:url(' + touchIcon + ')" class="addToHomeTouchIcon"></span>';
 		}
 
-		balloon.className = (isIPad ? 'addToHomeIpad' : 'addToHomeIphone') + (touchIcon ? ' addToHomeWide' : '');
+		if (devicePlatform == 'iOS') {
+			balloon.className = (isIPad ? 'addToHomeIpad' : 'addToHomeIphone') + (touchIcon ? ' addToHomeWide' : '');
+			balloonIcon = OSVersion >= 4.2 ? '<span class="addToHomeShare"></span>' : '<span class="addToHomePlus">+</span>';
+		} else if (devicePlatform == 'MeeGo') {
+			balloon.className = 'addToHomeMeeGo';
+			balloonIcon = '<span class="addToHomeMeeGo"></span>'
+		} else {
+			// making sure all variables are set
+			balloonIcon = '';
+			balloon.className = '';
+		}
+		
 		balloon.innerHTML = touchIcon +
-			options.message.replace('%device', platform).replace('%icon', OSVersion >= 4.2 ? '<span class="addToHomeShare"></span>' : '<span class="addToHomePlus">+</span>') +
+			options.message.replace('%device', platform).replace('%icon', balloonIcon) +
 			(options.arrow ? '<span class="addToHomeArrow"></span>' : '') +
 			'<span class="addToHomeClose">\u00D7</span>';
 
@@ -194,6 +230,33 @@ var addToHome = (function (w) {
 					duration = '1s';
 					balloon.style.opacity = '0';
 			}
+		} else if ( devicePlatform == 'MeeGo' ) {
+			startX = w.innerWidth;
+			balloon.style.top = startY + options.bottomOffset + 'px';
+			balloon.style.left = startX - balloon.offsetWidth - 2 + 'px';
+
+			switch ( options.animationIn ) {
+				case 'drop':
+					duration = '0.6s';
+					balloon.style.webkitTransform = 'translate3d(0,' + -(w.scrollY + options.bottomOffset + balloon.offsetHeight) + 'px,0)';
+					break;
+				case 'bubble':
+					duration = '0.6s';
+					balloon.style.opacity = '0';
+					balloon.style.webkitTransform = 'translate3d(0,' + (startY + 50) + 'px,0)';
+					break;
+				default:
+					duration = '1s';
+					balloon.style.opacity = '0';
+			}
+/*
+ * Andrea: make the balloon scroll as appropriate
+window.onscroll = function() {
+	balloon.style.webkitTransform = 'translate3d(0,' + (startY + 50) + 'px,0)';
+  document.getElementById('addToHomeScreen').style.top =
+     (window.pageYOffset + window.innerHeight - 25) + 'px';
+};
+*/
 		} else {
 			startY = w.innerHeight + w.scrollY;
 
@@ -229,10 +292,11 @@ var addToHome = (function (w) {
 		balloon.addEventListener('webkitTransitionEnd', transitionEnd, false);
 
 		closeTimeout = setTimeout(close, options.lifespan);
+//		closeTimeout = setTimeout(close, 9999999999);
 	}
 
 	function manualShow (override) {
-		if ( !isIDevice || balloon ) return;
+		if ( devicePlatform != 'iOS' || balloon ) return;
 
 		overrideChecks = override;
 		loaded();
@@ -310,14 +374,20 @@ var addToHome = (function (w) {
 			return;
 		}
 
-		// On iOS 4 we start checking the element position
-		if ( OSVersion < 5 && closeTimeout ) positionInterval = setInterval(setPosition, options.iterations);
+		// On iOS 4 and MeeGo we start checking the element position
+		if ( (OSVersion < 5 || devicePlatform == 'MeeGo') && closeTimeout ) positionInterval = setInterval(setPosition, options.iterations);
 	}
 
-	function setPosition () {
-		var matrix = new WebKitCSSMatrix(w.getComputedStyle(balloon, null).webkitTransform),
-			posY = isIPad ? w.scrollY - startY : w.scrollY + w.innerHeight - startY,
-			posX = isIPad ? w.scrollX - startX : w.scrollX + Math.round((w.innerWidth - balloon.offsetWidth) / 2) - startX;
+	function setPosition () { 
+                if (devicePlatform == 'MeeGo') {
+                        var matrix = new WebKitCSSMatrix(w.getComputedStyle(balloon, null).webkitTransform),
+                                posY = w.scrollY - startY;
+                                posX = w.innerWidth + w.scrollX - balloon.offsetWidth - 80;
+                } else {
+			var matrix = new WebKitCSSMatrix(w.getComputedStyle(balloon, null).webkitTransform),
+				posY = isIPad ? w.scrollY - startY : w.scrollY + w.innerHeight - startY,
+				posX = isIPad ? w.scrollX - startX : w.scrollX + Math.round((w.innerWidth - balloon.offsetWidth) / 2) - startX;
+		}
 
 		// Screen didn't move
 		if ( posY == matrix.m42 && posX == matrix.m41 ) return;
@@ -340,3 +410,4 @@ var addToHome = (function (w) {
 		reset: reset
 	};
 })(this);
+
