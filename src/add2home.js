@@ -117,8 +117,6 @@ var addToHome = (function (w) {
 		// If it is expired we need to reissue a new balloon
 		isExpired = isReturningVisitor && lastVisit <= now;
 
-		intl = JSON.parse();
-
 		if ( options.hookOnLoad ) w.addEventListener('load', loaded, false);
 		else if ( !options.hookOnLoad && options.autostart ) loaded();
 	}
@@ -147,6 +145,10 @@ var addToHome = (function (w) {
 		balloon.style.cssText += 'left:-9999px;-webkit-transition-property:-webkit-transform,opacity;-webkit-transition-duration:0;-webkit-transform:translate3d(0,0,0);position:' + ((OSVersion < 5 || devicePlatform == 'MeeGo') ? 'absolute' : 'fixed');
 
 		// Localize message
+		if (devicePlatform == 'iOS' || devicePlatform == 'MeeGo') {
+			// use the same messages of iOS for MeeGo 
+			intl = intl['iOS'];
+		}
 		if ( options.message in intl ) {		// You may force a language despite the user's locale
 			language = options.message;
 			options.message = '';
