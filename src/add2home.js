@@ -35,7 +35,8 @@ var addToHome = (function (w) {
 			touchIcon: false,			// Display the touch icon
 			arrow: true,				// Display the balloon arrow
 			hookOnLoad: true,			// Should we hook to onload event? (really advanced usage)
-			iterations: 100				// Internal/debug use
+			iterations: 100,			// Internal/debug use
+			showOnPathOnly: []			// Collection of Regexes, on which the bubble should be shown. Ignored if empty.
 		},
 
 		intl = {
@@ -105,6 +106,8 @@ var addToHome = (function (w) {
 
 	function loaded () {
 		w.removeEventListener('load', loaded, false);
+
+		if ( !overrideChecks && !isAllowedPath()) return;
 
 		if ( !isReturningVisitor ) w.localStorage.setItem('addToHome', Date.now());
 		else if ( options.expire && isExpired ) w.localStorage.setItem('addToHome', Date.now() + options.expire * 60000);
@@ -329,6 +332,18 @@ var addToHome = (function (w) {
 	function reset () {
 		w.localStorage.removeItem('addToHome');
 		w.sessionStorage.removeItem('addToHomeSession');
+	}
+
+	function isAllowedPath() {
+		if (0 === options.showOnPathOnly.length) {
+			return true;
+		}
+		for (var i = 0; i < options.showOnPathOnly.length; i++) {
+			if (null !== window.location.pathname.match(options.showOnPathOnly[i])) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	// Bootstrap!
