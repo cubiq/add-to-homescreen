@@ -1,3 +1,4 @@
+/*********** add2home *************/ 
 /**
  *
  * Main container
@@ -7,25 +8,26 @@
 	z-index:9999;
 	-webkit-user-select:none;
 	-webkit-box-sizing:border-box;
-	width:240px;
-	font-size:15px;
+	width:230px;
+	font-size:11px;
 	padding:12px 14px;
 	text-align:left;
 	font-family:helvetica;
-	background-image:-webkit-gradient(linear,0 0,0 100%,color-stop(0,#fff),color-stop(0.02,#eee),color-stop(0.98,#ccc),color-stop(1,#a3a3a3));
+	background-image:-webkit-gradient(linear,0 0,0 100%,color-stop(0,#f3f3f6),color-stop(1,#c3c6d0));
 	border:1px solid #505050;
 	-webkit-border-radius:8px;
 	-webkit-background-clip:padding-box;
 	color:#333;
 	text-shadow:0 1px 0 rgba(255,255,255,0.75);
-	line-height:130%;
+	line-height:120%;
 	-webkit-box-shadow:0 0 4px rgba(0,0,0,0.5);
 }
 
 #addToHomeScreen.addToHomeIpad {
-	width:268px;
-	font-size:18px;
-	padding:14px;
+	width:278px;
+	font-size:16px;
+	padding:12px;
+	padding-right:22px;
 }
 
 /**
@@ -38,9 +40,10 @@
 }
 
 #addToHomeScreen.addToHomeIpad.addToHomeWide {
-	width:320px;
-	font-size:18px;
-	padding:14px;
+	width:300px;
+	font-size:15px;
+	padding:11px;
+	padding-right:22px;
 }
 
 /**
@@ -84,17 +87,21 @@
 #addToHomeScreen .addToHomeClose {
 	-webkit-box-sizing:border-box;
 	position:absolute;
-	right:4px;
-	top:4px;
-	width:18px;
-	height:18px; line-height:14px;
+	right:0px;
+	top:0px;
+	width:25px;
+	height:25px; 
+	line-height:18px;
 	text-align:center;
-	text-indent:1px;
-	-webkit-border-radius:9px;
-	background:rgba(0,0,0,0.12);
+	text-indent:0px;
+	-webkit-border-radius:5px;
+	-webkit-border-radius:0px 5px 0px 5px;
+	background:#c5c7d1;
 	color:#707070;
 	-webkit-box-shadow:0 1px 0 #fff;
-	font-size:16px;
+	font-size:22px;
+	font-weight:bold;
+	border:1px solid #b4b4b4;
 }
 
 
@@ -153,6 +160,6 @@
  */
 @media all and (-webkit-min-device-pixel-ratio: 2) {
 	#addToHomeScreen .addToHomeShare {
-		background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAeCAQAAADu6HTYAAADPElEQVR4Xq3TX2gcRRzA8e/M7mVv2+TSNpc/TZtrY6jUGqgaSAmEChKLrYK0YH0RFC2CSCkEfCghiKU04J8qNigq6os+iQV98MHWFwVBrQQRWs21lBw5cw3NNb1/udu72RGG5Y77IzXW77D7sAwf5scyYoL6BGXSDKFZwaGpLvIUaeoCkvX1MmsM0Ny6oRSQYOLuIS+YZOpfQdqslpUxcZrzTVAz4qPwW2O3CeIwC/RSzeY6Ow1QhUrkr+YOWfEKDkEP8Rij7CHKJmrFSDHBdwGEE5wiGChPN+PnT8VdRtEIl1d4gRj/1EVe5ZSBKGh8iqQpo/Fo5+3C/gz0MYg4zgwbqday1/Q4B8BGQ45d/Hi54lakCrU5obOcidJpu1+Lg9whjabyaOYLnrIBFFaRD+xe2ybMDWY66GmP/WA9cGfGp0CWhy0wkMN8inepFiH2rV1j0NQSNQbFLRQnS8/8YSDBBpadfv4CYDub2fmeHDNAsL1MBWUel0iA+Xik6eHcyvD3vAMSU1TGuA/YRS+dD7ovCQN43GKRFCU20Kd3V/avDVVyAZ5niTEuLA5/zBGWg9EEEhfJKN200Tat8CmRAQb9+wv7soPlHt2tQorsz1uPbr0HTY4sJwrH47zJZwABBAKLMBoQXepwgTwdHCo+fXMkQ4lrxEmQ5AaXipPqDY9V2vn09tgvTPI71EEGYxM+/uMJLJ4svpgaWGKOi/xKgmqLSUGSUd5f2vIVJ/CgBaTIUsZ7ZBsn0+NzfMOXLFCXQyTcybN6ep5ZZgUOHn7jpfUpsZshdugPGf+E5zjbyHTSRyQ8xfRPPM/s63RHeuknSoT22mjmmnAOIMkUZ6D1xSfPPAfd1WFKM3sO2CMaHx8M1NjnXKHaAGGkOW0C02WeYHUz4qMtx+w5gUDS8NckYe5lHsMYwCZEPyEEmjLDZFmAS7CDviMdxyTkMNVBKEmYLvbiQQBIBBbCQG04bGQvFWz6CfsCQLWCigILFwcfkGYBiOpbYuOizTAyYyDdCtrGaRG1LCkIgMYEFhI0WqQZoSlbGRyHKe4qOx7iv2bVQW9dp4dlM/x6kmwnWQcd/Q3FCqwTEiT5s+6D5v/pb0SSHyg7uhMWAAAAAElFTkSuQmCC);
+		background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAeCAQAAADu6HTYAAADPElEQVR4Xq3TX2gcRRzA8e/M7mVv2+TSNpc/TZtrY6jUGqgaSAmEChKLrYK0YH0RFC2CSCkEfCghiKU04J8qNigq6os+iQV98MHWFwVBrQQRWs21lBw5cw3NNb1/udu72RGG5Y77IzXW77D7sAwf5scyYoL6BGXSDKFZwaGpLvIUaeoCkvX1MmsM0Ny6oRSQYOLuIS+YZOpfQdqslpUxcZrzTVAz4qPwW2O3CeIwC/RSzeY6Ow1QhUrkr+YOWfEKDkEP8Rij7CHKJmrFSDHBdwGEE5wiGChPN+PnT8VdRtEIl1d4gRj/1EVe5ZSBKGh8iqQpo/Fo5+3C/gz0MYg4zgwbqday1/Q4B8BGQ45d/Hi54lakCrU5obOcidJpu1+Lg9whjabyaOYLnrIBFFaRD+xe2ybMDWY66GmP/WA9cGfGp0CWhy0wkMN8inepFiH2rV1j0NQSNQbFLRQnS8/8YSDBBpadfv4CYDub2fmeHDNAsL1MBWUel0iA+Xik6eHcyvD3vAMSU1TGuA/YRS+dD7ovCQN43GKRFCU20Kd3V/avDVVyAZ5niTEuLA5/zBGWg9EEEhfJKN200Tat8CmRAQb9+wv7soPlHt2tQorsz1uPbr0HTY4sJwrH47zJZwABBAKLMBoQXepwgTwdHCo+fXMkQ4lrxEmQ5AaXipPqDY9V2vn09tgvTPI71EEGYxM+/uMJLJ4svpgaWGKOi/xKgmqLSUGSUd5f2vIVJ/CgBaTIUsZ7ZBsn0+NzfMOXLFCXQyTcybN6ep5ZZgUOHn7jpfUpsZshdugPGf+E5zjbyHTSRyQ8xfRPPM/s63RHeuknSoT22mjmmnAOIMkUZ6D1xSfPPAfd1WFKM3sO2CMaHx8M1NjnXKHaAGGkOW0C02WeYHUz4qMtx+w5gUDS8NckYe5lHsMYwCZEPyEEmjLDZFmAS7CDviMdxyTkMNVBKEmYLvbiQQBIBBbCQG04bGQvFWz6CfsCQLWCigILFwcfkGYBiOpbYuOizTAyYyDdCtrGaRG1LCkIgMYEFhI0WqQZoSlbGRyHKe4qOx7iv2bVQW9dp4dlM/x6kmwnWQcd/Q3FCqwTEiT5s+6D5v/pb0SSHyg7uhMWAAAAAElFTkSuQmCC
 	}
 }
