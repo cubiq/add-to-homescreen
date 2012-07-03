@@ -8,6 +8,7 @@ var addToHome = (function (w) {
 		isIPad,
 		isRetina,
 		isSafari,
+		isChromeiOS,
 		isStandalone,
 		OSVersion,
 		startX = 0,
@@ -84,6 +85,7 @@ var addToHome = (function (w) {
 		isIPad = (/ipad/gi).test(nav.platform);
 		isRetina = w.devicePixelRatio && w.devicePixelRatio > 1;
 		isSafari = nav.appVersion.match(/Safari/gi);
+		isChromeiOS = nav.appVersion.match(/CriOS/gi);
 		isStandalone = nav.standalone;
 		
 		OSVersion = nav.appVersion.match(/OS (\d+_\d+)/i);
@@ -109,7 +111,7 @@ var addToHome = (function (w) {
 		if ( !isReturningVisitor ) w.localStorage.setItem('addToHome', Date.now());
 		else if ( options.expire && isExpired ) w.localStorage.setItem('addToHome', Date.now() + options.expire * 60000);
 
-		if ( !overrideChecks && ( !isSafari || !isExpired || isSessionActive || isStandalone || !isReturningVisitor ) ) return;
+		if ( !overrideChecks && ( !isSafari || !isExpired || isSessionActive || isChromeiOS || isStandalone || !isReturningVisitor ) ) return;
 
 		var icons = options.touchIcon ? document.querySelectorAll('head link[rel=apple-touch-icon],head link[rel=apple-touch-icon-precomposed]') : [],
 			sizes,
