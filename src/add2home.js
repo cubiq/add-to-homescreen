@@ -166,14 +166,15 @@ var addToHome = (function (w) {
 
 	function show () {
 		var duration,
-			iPadXShift = 160;
+			iPadXShift = 208;
 
 		// Set the initial position
 		if ( isIPad ) {
 			if ( OSVersion < 5 ) {
 				startY = w.scrollY;
 				startX = w.scrollX;
-				iPadXShift = 208;
+			} else if ( OSVersion < 6 ) {
+				iPadXShift = 160;
 			}
 
 			balloon.style.top = startY + options.bottomOffset + 'px';
