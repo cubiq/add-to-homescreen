@@ -35,7 +35,8 @@ var addToHome = (function (w) {
 			touchIcon: false,			// Display the touch icon
 			arrow: true,				// Display the balloon arrow
 			hookOnLoad: true,			// Should we hook to onload event? (really advanced usage)
-			iterations: 100				// Internal/debug use
+			iterations: 100,				// Internal/debug use
+			desktop: false          // Display the balloon in safari desktop browser for development purpose
 		},
 
 		intl = {
@@ -68,7 +69,7 @@ var addToHome = (function (w) {
 
 	function init () {
 		// Preliminary check, prevents all further checks to be performed on iDevices only
-		if ( !isIDevice ) return;
+		if ( !isIDevice && !options.desktop ) return;
 
 		var now = Date.now(),
 			i;
@@ -85,7 +86,7 @@ var addToHome = (function (w) {
 		isRetina = w.devicePixelRatio && w.devicePixelRatio > 1;
 		isSafari = (/Safari/i).test(nav.appVersion) && !(/CriOS/i).test(nav.appVersion);
 		isStandalone = nav.standalone;
-		OSVersion = nav.appVersion.match(/OS (\d+_\d+)/i);
+		OSVersion = !options.desktop ? nav.appVersion.match(/OS (\d+_\d+)/i) : 999;
 		OSVersion = OSVersion[1] ? +OSVersion[1].replace('_', '.') : 0;
 
 		lastVisit = +w.localStorage.getItem('addToHome');
