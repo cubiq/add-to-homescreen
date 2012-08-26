@@ -86,8 +86,8 @@ var addToHome = (function (w) {
 		isRetina = w.devicePixelRatio && w.devicePixelRatio > 1;
 		isSafari = (/Safari/i).test(nav.appVersion) && !(/CriOS/i).test(nav.appVersion);
 		isStandalone = nav.standalone;
-		OSVersion = !options.desktop ? nav.appVersion.match(/OS (\d+_\d+)/i) : 999;
-		OSVersion = OSVersion[1] ? +OSVersion[1].replace('_', '.') : 0;
+		OSVersion = nav.appVersion.match(/OS (\d+_\d+)/i);
+		OSVersion = !options.desktop ? ( OSVersion[1] ? +OSVersion[1].replace('_', '.') : 0 ) : 999;
 
 		lastVisit = +w.localStorage.getItem('addToHome');
 
