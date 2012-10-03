@@ -105,8 +105,8 @@ var addToHome = (function (w) {
 	function loaded () {
 		w.removeEventListener('load', loaded, false);
 
-		if ( !isReturningVisitor ) w.localStorage.setItem('addToHome', Date.now());
-		else if ( options.expire && isExpired ) w.localStorage.setItem('addToHome', Date.now() + options.expire * 60000);
+		if ( !isReturningVisitor ) try { w.localStorage.setItem('addToHome', Date.now()); } catch(e) {}
+		else if ( options.expire && isExpired ) try { w.localStorage.setItem('addToHome', Date.now() + options.expire * 60000); } catch(e) {}
 
 		if ( !overrideChecks && ( !isSafari || !isExpired || isSessionActive || isStandalone || !isReturningVisitor ) ) return;
 
@@ -292,7 +292,7 @@ var addToHome = (function (w) {
 
 
 	function clicked () {
-		w.sessionStorage.setItem('addToHomeSession', '1');
+		try { w.sessionStorage.setItem('addToHomeSession', '1'); } catch(e) {}
 		isSessionActive = true;
 		close();
 	}
@@ -327,8 +327,10 @@ var addToHome = (function (w) {
 
 	// Clear local and session storages (this is useful primarily in development)
 	function reset () {
-		w.localStorage.removeItem('addToHome');
-		w.sessionStorage.removeItem('addToHomeSession');
+        try {
+		    w.localStorage.removeItem('addToHome');
+		    w.sessionStorage.removeItem('addToHomeSession');
+        } catch(e) {}
 	}
 
 	// Bootstrap!
