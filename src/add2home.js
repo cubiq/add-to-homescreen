@@ -201,8 +201,24 @@ var addToHome = (function (w) {
 				startX = Math.round((w.innerWidth - balloon.offsetWidth) / 2) + w.scrollX;
 				balloon.style.left = startX + 'px';
 				balloon.style.top = startY - balloon.offsetHeight - options.bottomOffset + 'px';
-			} else {
+			} else if ( OSVersion < 6 ) {
 				balloon.style.left = '50%';
+				balloon.style.marginLeft = -Math.round(balloon.offsetWidth / 2) + 'px';
+				balloon.style.bottom = options.bottomOffset + 'px';
+			} else {
+				//Landscape mode on iOS6 adds an extra button so targeting the center is no longer appropriate
+				if (w.orientation === 90 || w.orientation === -90) {
+					//iPhone 5 has a longer screen
+					if (w.screen.height >= 568) {
+						startX = 245;
+					}
+					else {
+						startX = 200;
+					}
+					balloon.style.left = startX + 'px';
+				} else {
+					balloon.style.left = '50%';
+				}
 				balloon.style.marginLeft = -Math.round(balloon.offsetWidth / 2) + 'px';
 				balloon.style.bottom = options.bottomOffset + 'px';
 			}
