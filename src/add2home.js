@@ -67,14 +67,14 @@ var addToHome = (function (w) {
 		};
 
 	function init () {
-		// Preliminary check, prevents all further checks to be performed on iDevices only
+		// Preliminary check, all further checks are performed on iDevices only
 		if ( !isIDevice ) return;
 
 		var now = Date.now(),
 			i;
 
 		// Merge local with global options
-		if (w.addToHomeConfig) {
+		if ( w.addToHomeConfig ) {
 			for ( i in w.addToHomeConfig ) {
 				options[i] = w.addToHomeConfig[i];
 			}
@@ -161,6 +161,8 @@ var addToHome = (function (w) {
 		closeButton = balloon.querySelector('.addToHomeClose');
 		if ( closeButton ) closeButton.addEventListener('click', clicked, false);
 
+		if ( !isIPad && OSVersion > 5 ) window.addEventListener('orientationchange', orientationCheck, false);
+
 		setTimeout(show, options.startDelay);
 	}
 
@@ -203,7 +205,7 @@ var addToHome = (function (w) {
 				balloon.style.top = startY - balloon.offsetHeight - options.bottomOffset + 'px';
 			} else {
 				balloon.style.left = '50%';
-				balloon.style.marginLeft = -Math.round(balloon.offsetWidth / 2) + 'px';
+				balloon.style.marginLeft = -Math.round(balloon.offsetWidth / 2) - ( w.orientation%180 && OSVersion > 5 ? 40 : 0 ) + 'px';
 				balloon.style.bottom = options.bottomOffset + 'px';
 			}
 
@@ -250,6 +252,7 @@ var addToHome = (function (w) {
 			closeButton = balloon.querySelector('.addToHomeClose');
 
 		if ( closeButton ) closeButton.removeEventListener('click', close, false);
+		if ( !isIPad && OSVersion > 5 ) window.removeEventListener('orientationchange', orientationCheck, false);
 
 		if ( OSVersion < 5 ) {
 			posY = isIPad ? w.scrollY - startY : w.scrollY + w.innerHeight - startY;
@@ -331,6 +334,10 @@ var addToHome = (function (w) {
 		w.sessionStorage.removeItem('addToHomeSession');
 	}
 
+	function orientationCheck () {
+		balloon.style.marginLeft = -Math.round(balloon.offsetWidth / 2) - ( w.orientation%180 && OSVersion > 5 ? 40 : 0 ) + 'px';
+	}
+
 	// Bootstrap!
 	init();
 
@@ -339,4 +346,4 @@ var addToHome = (function (w) {
 		close: close,
 		reset: reset
 	};
-})(this);
+})(window);
