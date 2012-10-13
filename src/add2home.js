@@ -36,7 +36,7 @@ var addToHome = (function (w) {
 			arrow: true,				// Display the balloon arrow
 			hookOnLoad: true,			// Should we hook to onload event? (really advanced usage)
 			iOS6AppBanner: true,		// Skip the default popup and show the iOS 6 built-in Smart App Banner
-			appId: '',					// App ID defined in iTunes. Must be present if iOS6AppBanner is true
+			appId: 0,					// App ID defined in iTunes. Must be present if iOS6AppBanner is true
 			iterations: 100				// Internal/debug use
 		},
 
@@ -91,13 +91,10 @@ var addToHome = (function (w) {
 		OSVersion = OSVersion[1] ? +OSVersion[1].replace('_', '.') : 0;
 
 		if ( options.iOS6AppBanner && OSVersion >= 6 && parseInt( options.appId ) > 0 ) {
-			console.log(options.iOS6AppBanner);
-			console.log(OSVersion);
 			var appBannerMetaTag = document.createElement( 'meta' );
 			appBannerMetaTag.setAttribute( 'name', 'apple-itunes-app' );
 			appBannerMetaTag.setAttribute( 'content', 'app-id=' + options.appId );
 			document.getElementsByTagName( 'head' )[0].appendChild( appBannerMetaTag );
-			console.log(appBannerMetaTag);
 		} else {
 			lastVisit = +w.localStorage.getItem('addToHome');
 
