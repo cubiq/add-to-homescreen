@@ -35,6 +35,8 @@ var addToHome = (function (w) {
 			touchIcon: false,			// Display the touch icon
 			arrow: true,				// Display the balloon arrow
 			hookOnLoad: true,			// Should we hook to onload event? (really advanced usage)
+			iOS6AppBanner: true,		// Skip the default popup and show the iOS 6 built-in Smart App Banner
+			appId: 0,					// App ID defined in iTunes. Must be present if iOS6AppBanner is true
 			iterations: 100				// Internal/debug use
 		},
 
@@ -89,18 +91,25 @@ var addToHome = (function (w) {
 		OSVersion = nav.appVersion.match(/OS (\d+_\d+)/i);
 		OSVersion = OSVersion[1] ? +OSVersion[1].replace('_', '.') : 0;
 
-		lastVisit = +w.localStorage.getItem('addToHome');
+		if ( options.iOS6AppBanner && OSVersion >= 6 && parseInt( options.appId ) > 0 ) {
+			var appBannerMetaTag = document.createElement( 'meta' );
+			appBannerMetaTag.setAttribute( 'name', 'apple-itunes-app' );
+			appBannerMetaTag.setAttribute( 'content', 'app-id=' + options.appId );
+			document.getElementsByTagName( 'head' )[0].appendChild( appBannerMetaTag );
+		} else {
+			lastVisit = +w.localStorage.getItem('addToHome');
 
-		isSessionActive = w.sessionStorage.getItem('addToHomeSession');
-		isReturningVisitor = options.returningVisitor ? lastVisit && lastVisit + 28*24*60*60*1000 > now : true;
+			isSessionActive = w.sessionStorage.getItem('addToHomeSession');
+			isReturningVisitor = options.returningVisitor ? lastVisit && lastVisit + 28*24*60*60*1000 > now : true;
 
-		if ( !lastVisit ) lastVisit = now;
+			if ( !lastVisit ) lastVisit = now;
 
-		// If it is expired we need to reissue a new balloon
-		isExpired = isReturningVisitor && lastVisit <= now;
+			// If it is expired we need to reissue a new balloon
+			isExpired = isReturningVisitor && lastVisit <= now;
 
-		if ( options.hookOnLoad ) w.addEventListener('load', loaded, false);
-		else if ( !options.hookOnLoad && options.autostart ) loaded();
+			if ( options.hookOnLoad ) w.addEventListener('load', loaded, false);
+			else if ( !options.hookOnLoad && options.autostart ) loaded();
+		}
 	}
 
 	function loaded () {
