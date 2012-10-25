@@ -162,7 +162,7 @@ var addToHome = (function (w) {
 		closeButton = balloon.querySelector('.addToHomeClose');
 		if ( closeButton ) closeButton.addEventListener('click', clicked, false);
 
-		if ( !isIPad && OSVersion > 5 ) window.addEventListener('orientationchange', orientationCheck, false);
+		if ( !isIPad && OSVersion >= 6 ) window.addEventListener('orientationchange', orientationCheck, false);
 
 		setTimeout(show, options.startDelay);
 	}
@@ -206,7 +206,7 @@ var addToHome = (function (w) {
 				balloon.style.top = startY - balloon.offsetHeight - options.bottomOffset + 'px';
 			} else {
 				balloon.style.left = '50%';
-				balloon.style.marginLeft = -Math.round(balloon.offsetWidth / 2) - ( w.orientation%180 && OSVersion > 5 ? 40 : 0 ) + 'px';
+				balloon.style.marginLeft = -Math.round(balloon.offsetWidth / 2) - ( w.orientation%180 && OSVersion >= 6 ? 40 : 0 ) + 'px';
 				balloon.style.bottom = options.bottomOffset + 'px';
 			}
 
@@ -253,7 +253,7 @@ var addToHome = (function (w) {
 			closeButton = balloon.querySelector('.addToHomeClose');
 
 		if ( closeButton ) closeButton.removeEventListener('click', close, false);
-		if ( !isIPad && OSVersion > 5 ) window.removeEventListener('orientationchange', orientationCheck, false);
+		if ( !isIPad && OSVersion >= 6 ) window.removeEventListener('orientationchange', orientationCheck, false);
 
 		if ( OSVersion < 5 ) {
 			posY = isIPad ? w.scrollY - startY : w.scrollY + w.innerHeight - startY;
@@ -336,7 +336,7 @@ var addToHome = (function (w) {
 	}
 
 	function orientationCheck () {
-		balloon.style.marginLeft = -Math.round(balloon.offsetWidth / 2) - ( w.orientation%180 && OSVersion > 5 ? 40 : 0 ) + 'px';
+		balloon.style.marginLeft = -Math.round(balloon.offsetWidth / 2) - ( w.orientation%180 && OSVersion >= 6 ? 40 : 0 ) + 'px';
 	}
 
 	// Bootstrap!
