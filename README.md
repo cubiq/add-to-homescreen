@@ -11,6 +11,7 @@ Include the script and the stylesheet in your page HEAD. That's all. Look at the
 ## Localization
 The script auto-detects the user's locale and shows the message in the appropriate language. Currently the following languages are supported:
 
+- Arabic [ar]: (thanks to [RageZBla](https://github.com/RageZBla))
 - Catalan [ca_es]: Per instal·lar aquesta aplicació al vostre %device premeu '%icon' i llavors 'Afegir a pantalla d'inici'. (thanks to [@canuda10](http://twitter.com/#!/canuda10))
 - Croatian [hr_hr]: Instaliraj ovu aplikaciju na svoj %device: klikni na '%icon' i odaberi 'Dodaj u početni zaslon'. (thanks to Nikola)
 - Danish [da_dk]: Tilføj denne side til din %device: tryk på '%icon' og derefter 'Tilføj til hjemmeskærm'. (thanks to [jimmiw](https://github.com/jimmiw))
