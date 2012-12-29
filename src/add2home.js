@@ -143,6 +143,10 @@ var addToHome = (function (w) {
 						touchIcon = icons[i].href;
 						break;
 					}
+          else if ( !isRetina && sizes == '57x57' ) {
+						touchIcon = icons[i].href;
+						break;
+          }
 				} else {
 					touchIcon = icons[i].href;
 				}
