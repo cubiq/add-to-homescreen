@@ -1,5 +1,5 @@
 /*!
- * Add to Homescreen v2.0.4 ~ Copyright (c) 2012 Matteo Spinelli, http://cubiq.org
+ * Add to Homescreen v2.0.5 ~ Copyright (c) 2013 Matteo Spinelli, http://cubiq.org
  * Released under MIT license, http://cubiq.org/license
  */
 var addToHome = (function (w) {
@@ -35,6 +35,7 @@ var addToHome = (function (w) {
 			touchIcon: false,			// Display the touch icon
 			arrow: true,				// Display the balloon arrow
 			hookOnLoad: true,			// Should we hook to onload event? (really advanced usage)
+			closeButton: true,			// Let the user close the balloon
 			iterations: 100				// Internal/debug use
 		},
 
@@ -63,7 +64,7 @@ var addToHome = (function (w) {
 			ru_ru: 'Установите это веб-приложение на ваш %device: нажмите %icon, затем <strong>Добавить в «Домой»</strong>.',
 			sv_se: 'Lägg till denna webbapplikation på din %device: tryck på %icon och därefter <strong>Lägg till på hemskärmen</strong>.',
 			th_th: 'ติดตั้งเว็บแอพฯ นี้บน %device ของคุณ: แตะ %icon และ <strong>เพิ่มที่หน้าจอโฮม</strong>',
-			tr_tr: '%device için bu uygulamayı kurduktan sonra %icon simgesine dokunarak <strong>Ana Ekrana Ekle</strong>yin.',
+			tr_tr: 'Bu uygulamayı %device\'a eklemek için %icon simgesine sonrasında <strong>Ana Ekrana Ekle</strong> düğmesine basın.',
 			zh_cn: '您可以将此应用程式安装到您的 %device 上。请按 %icon 然后点选<strong>添加至主屏幕</strong>。',
 			zh_tw: '您可以將此應用程式安裝到您的 %device 上。請按 %icon 然後點選<strong>加入主畫面螢幕</strong>。'
 		};
@@ -73,6 +74,7 @@ var addToHome = (function (w) {
 		if ( !isIDevice ) return;
 
 		var now = Date.now(),
+			title,
 			i;
 
 		// Merge local with global options
@@ -112,10 +114,7 @@ var addToHome = (function (w) {
 
 		if ( !overrideChecks && ( !isSafari || !isExpired || isSessionActive || isStandalone || !isReturningVisitor ) ) return;
 
-		var icons = options.touchIcon ? document.querySelectorAll('head link[rel=apple-touch-icon],head link[rel=apple-touch-icon-precomposed]') : [],
-			sizes,
-			touchIcon = '',
-			closeButton,
+		var touchIcon = '',
 			platform = nav.platform.split(' ')[0],
 			language = nav.language.replace('-', '_'),
 			i, l;
@@ -133,35 +132,27 @@ var addToHome = (function (w) {
 			options.message = language in intl ? intl[language] : intl['en_us'];
 		}
 
-		// Search for the apple-touch-icon
-		if ( icons.length ) {
-			for ( i = 0, l = icons.length; i < l; i++ ) {
-				sizes = icons[i].getAttribute('sizes');
+		if ( options.touchIcon ) {
+			touchIcon = isRetina ?
+				document.querySelector('head link[rel^=apple-touch-icon][sizes="114x114"],head link[rel^=apple-touch-icon][sizes="144x144"]') :
+				document.querySelector('head link[rel^=apple-touch-icon][sizes="57x57"],head link[rel^=apple-touch-icon],head link[rel^=apple-touch-icon][sizes="72x72"]');
 
-				if ( sizes ) {
-					if ( isRetina && sizes == '114x114' ) {
-						touchIcon = icons[i].href;
-						break;
-					}
-				} else {
-					touchIcon = icons[i].href;
-				}
+			if ( touchIcon ) {
+				alert(touchIcon.href)
+				touchIcon = '<span style="background-image:url(' + touchIcon.href + ')" class="addToHomeTouchIcon"></span>';
 			}
-
-			touchIcon = '<span style="background-image:url(' + touchIcon + ')" class="addToHomeTouchIcon"></span>';
 		}
 
 		balloon.className = (isIPad ? 'addToHomeIpad' : 'addToHomeIphone') + (touchIcon ? ' addToHomeWide' : '');
 		balloon.innerHTML = touchIcon +
 			options.message.replace('%device', platform).replace('%icon', OSVersion >= 4.2 ? '<span class="addToHomeShare"></span>' : '<span class="addToHomePlus">+</span>') +
 			(options.arrow ? '<span class="addToHomeArrow"></span>' : '') +
-			'<span class="addToHomeClose">\u00D7</span>';
+			(options.closeButton ? '<span class="addToHomeClose">\u00D7</span>' : '');
 
 		document.body.appendChild(balloon);
 
 		// Add the close action
-		closeButton = balloon.querySelector('.addToHomeClose');
-		if ( closeButton ) closeButton.addEventListener('click', clicked, false);
+		if ( options.closeButton ) balloon.addEventListener('click', clicked, false);
 
 		if ( !isIPad && OSVersion >= 6 ) window.addEventListener('orientationchange', orientationCheck, false);
 
@@ -250,10 +241,9 @@ var addToHome = (function (w) {
 		var posY = 0,
 			posX = 0,
 			opacity = '1',
-			duration = '0',
-			closeButton = balloon.querySelector('.addToHomeClose');
+			duration = '0';
 
-		if ( closeButton ) closeButton.removeEventListener('click', close, false);
+		if ( options.closeButton ) balloon.removeEventListener('click', close, false);
 		if ( !isIPad && OSVersion >= 6 ) window.removeEventListener('orientationchange', orientationCheck, false);
 
 		if ( OSVersion < 5 ) {
