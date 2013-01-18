@@ -243,7 +243,7 @@ var addToHome = (function (w) {
 			opacity = '1',
 			duration = '0';
 
-		if ( options.closeButton ) balloon.removeEventListener('click', close, false);
+		if ( options.closeButton ) balloon.removeEventListener('click', clicked, false);
 		if ( !isIPad && OSVersion >= 6 ) window.removeEventListener('orientationchange', orientationCheck, false);
 
 		if ( OSVersion < 5 ) {
