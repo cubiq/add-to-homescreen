@@ -239,9 +239,7 @@ var addToHome = (function (w) {
 		closeTimeout = null;
 
 		// check if the popup is displayed and prevent errors
-		if (!balloon){
-            return null;
-        }
+		if ( !balloon ) return;
 
 		var posY = 0,
 			posX = 0,
