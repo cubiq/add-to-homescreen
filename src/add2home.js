@@ -74,7 +74,6 @@ var addToHome = (function (w) {
 		if ( !isIDevice ) return;
 
 		var now = Date.now(),
-			title,
 			i;
 
 		// Merge local with global options
@@ -116,8 +115,7 @@ var addToHome = (function (w) {
 
 		var touchIcon = '',
 			platform = nav.platform.split(' ')[0],
-			language = nav.language.replace('-', '_'),
-			i, l;
+			language = nav.language.replace('-', '_');
 
 		balloon = document.createElement('div');
 		balloon.id = 'addToHomeScreen';
