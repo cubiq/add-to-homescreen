@@ -258,20 +258,20 @@ var addToHome = (function (w) {
 				if ( isIPad ) {
 					duration = '0.4s';
 					opacity = '0';
-					posY = posY + 50;
+					posY += 50;
 				} else {
 					duration = '0.6s';
-					posY = posY + balloon.offsetHeight + options.bottomOffset + 50;
+					posY += balloon.offsetHeight + options.bottomOffset + 50;
 				}
 				break;
 			case 'bubble':
 				if ( isIPad ) {
 					duration = '0.8s';
-					posY = posY - balloon.offsetHeight - options.bottomOffset - 50;
+					posY -= balloon.offsetHeight + options.bottomOffset + 50;
 				} else {
 					duration = '0.4s';
 					opacity = '0';
-					posY = posY - 50;
+					posY -= 50;
 				}
 				break;
 			default:
