@@ -74,7 +74,6 @@ var addToHome = (function (w) {
 		if ( !isIDevice ) return;
 
 		var now = Date.now(),
-			title,
 			i;
 
 		// Merge local with global options
@@ -116,8 +115,7 @@ var addToHome = (function (w) {
 
 		var touchIcon = '',
 			platform = nav.platform.split(' ')[0],
-			language = nav.language.replace('-', '_'),
-			i, l;
+			language = nav.language.replace('-', '_');
 
 		balloon = document.createElement('div');
 		balloon.id = 'addToHomeScreen';
@@ -260,20 +258,20 @@ var addToHome = (function (w) {
 				if ( isIPad ) {
 					duration = '0.4s';
 					opacity = '0';
-					posY = posY + 50;
+					posY += 50;
 				} else {
 					duration = '0.6s';
-					posY = posY + balloon.offsetHeight + options.bottomOffset + 50;
+					posY += balloon.offsetHeight + options.bottomOffset + 50;
 				}
 				break;
 			case 'bubble':
 				if ( isIPad ) {
 					duration = '0.8s';
-					posY = posY - balloon.offsetHeight - options.bottomOffset - 50;
+					posY -= balloon.offsetHeight + options.bottomOffset + 50;
 				} else {
 					duration = '0.4s';
 					opacity = '0';
-					posY = posY - 50;
+					posY -= 50;
 				}
 				break;
 			default:
