@@ -1,0 +1,7 @@
+{
+  "name": "add-to-homescreen",
+  "description": "The script places a floating balloon to your mobile website inviting the user to add your app to the home screen.",
+  "main": ["src/add2home.js", "style/add2home.css"],
+  "version": "2.0.6",
+  "dependencies": {}
+}
