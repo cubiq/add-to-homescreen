@@ -24,7 +24,7 @@ var addToHome = (function (w) {
 
 		options = {
 			autostart: true,			// Automatically open the balloon
-			returningVisitor: false,	// Show the balloon to returning visitors only (setting this to true is HIGHLY RECCOMENDED)
+			returningVisitor: false,	// Show the balloon to returning visitors only (setting this to true is highly recommended)
 			animationIn: 'drop',		// drop || bubble || fade
 			animationOut: 'fade',		// drop || bubble || fade
 			startDelay: 2000,			// 2 seconds from page load before the balloon appears
@@ -143,7 +143,7 @@ var addToHome = (function (w) {
 
 		balloon.className = (isIPad ? 'addToHomeIpad' : 'addToHomeIphone') + (touchIcon ? ' addToHomeWide' : '');
 		balloon.innerHTML = touchIcon +
-			options.message.replace('%device', platform).replace('%icon', OSVersion >= 4.2 ? '<span class="addToHomeShare"></span>' : '<span class="addToHomePlus">+</span>') +
+			options.message.replace('%device', platform).replace('%icon', OSVersion >= 4.2 ? '<span class="addToHomeShare' + (OSVersion >= 7 ? ' addToHomeShareOS7' : '') + '"></span>' : '<span class="addToHomePlus">+</span>') +
 			(options.arrow ? '<span class="addToHomeArrow"></span>' : '') +
 			(options.closeButton ? '<span class="addToHomeClose">\u00D7</span>' : '');
 
