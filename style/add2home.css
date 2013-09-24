@@ -158,3 +158,34 @@
 	-webkit-background-clip:padding-box;
 	background-clip:padding-box;
 }
+
+/**
+ *
+ * iOS 7 Support
+ *
+ */
+
+@media screen and (device-aspect-ratio: 40/71) {
+	#addToHomeScreen.addToHomeiOS7 {
+		left: 323px !important;
+	}
+}
+
+@media screen and (device-aspect-ratio: 2/3) {
+	#addToHomeScreen.addToHomeiOS7 {
+		left: 279px !important;
+	}
+}
+
+#addToHomeScreen.addToHomePortraitiOS7 {
+	left: 159px !important;
+}
+
+#addToHomeScreen.addToHomeIpadiOS7 {
+	left: 10px !important;
+}
+
+#addToHomeScreen.addToHomeIpadTouchIconiOS7 {
+	width: 268px !important;
+	left: 10px !important;
+}
