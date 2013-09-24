@@ -155,6 +155,13 @@ var addToHome = (function (w) {
 		if ( !isIPad && OSVersion >= 6 ) window.addEventListener('orientationchange', orientationCheck, false);
 
 		setTimeout(show, options.startDelay);
+
+		// Gives suport for iOS 7
+		if ( OSVersion >= 7 ) {
+			setiOS7Support(touchIcon);
+			window.addEventListener('orientationchange', setiOS7Support, touchIcon);
+		}
+
 	}
 
 	function show () {
@@ -329,6 +336,31 @@ var addToHome = (function (w) {
 
 	function orientationCheck () {
 		balloon.style.marginLeft = -Math.round(balloon.offsetWidth / 2) - ( w.orientation%180 && OSVersion >= 6 ? 40 : 0 ) + 'px';
+	}
+
+	// Gives support for iOS 7
+	function setiOS7Support (touchIcon) {
+		if ( isIPad ) {
+			if ( !touchIcon ) {
+				document.getElementById('addToHomeScreen').className = document.getElementById('addToHomeScreen').className + ' addToHomeIpadiOS7';
+			} else  if ( touchIcon ) {
+				document.getElementById('addToHomeScreen').className = document.getElementById('addToHomeScreen').className + ' addToHomeIpadTouchIconiOS7';
+			}
+		} 
+
+		if ( isIDevice && !isIPad ) {
+			if ( w.orientation == 90 || w.orientation == -90 ) {
+				var optclasseslp = document.getElementById('addToHomeScreen').className;
+				var ptclasseslp = optclasseslp.replace(' addToHomePortraitiOS7','');
+				document.getElementById('addToHomeScreen').className = ptclasseslp;
+				document.getElementById('addToHomeScreen').className = document.getElementById('addToHomeScreen').className + ' addToHomeiOS7';
+			} else {
+				var optclasses = document.getElementById('addToHomeScreen').className;
+				var ptclasses = optclasses.replace(' addToHomeiOS7','');
+				document.getElementById('addToHomeScreen').className = ptclasses;
+				document.getElementById('addToHomeScreen').className = document.getElementById('addToHomeScreen').className + ' addToHomePortraitiOS7';
+			}
+		}
 	}
 
 	// Bootstrap!
