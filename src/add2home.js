@@ -1,5 +1,5 @@
 /*!
- * Add to Homescreen v2.0.8 ~ Copyright (c) 2013 Matteo Spinelli, http://cubiq.org
+ * Add to Homescreen v2.0.9 ~ Copyright (c) 2013 Matteo Spinelli, http://cubiq.org
  * Released under MIT license, http://cubiq.org/license
  */
 var addToHome = (function (w) {
@@ -141,7 +141,7 @@ var addToHome = (function (w) {
 			}
 		}
 
-		balloon.className = (isIPad ? 'addToHomeIpad' : 'addToHomeIphone') + (touchIcon ? ' addToHomeWide' : '');
+		balloon.className = (OSVersion >=7 ? 'addToHomeIOS7 ' : '') + (isIPad ? 'addToHomeIpad' : 'addToHomeIphone') + (touchIcon ? ' addToHomeWide' : '');
 		balloon.innerHTML = touchIcon +
 			options.message.replace('%device', platform).replace('%icon', OSVersion >= 4.2 ? '<span class="addToHomeShare' + (OSVersion >= 7 ? ' addToHomeShareOS7' : '') + '"></span>' : '<span class="addToHomePlus">+</span>') +
 			(options.arrow ? '<span class="addToHomeArrow"></span>' : '') +
@@ -168,6 +168,8 @@ var addToHome = (function (w) {
 				startX = w.scrollX;
 			} else if ( OSVersion < 6 ) {
 				iPadXShift = 160;
+			} else if ( OSVersion >= 7 ) {
+				iPadXShift = 143;
 			}
 
 			balloon.style.top = startY + options.bottomOffset + 'px';

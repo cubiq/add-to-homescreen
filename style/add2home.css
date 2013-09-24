@@ -26,6 +26,13 @@
 	-webkit-box-shadow:0 0 4px rgba(0,0,0,0.5);
 }
 
+#addToHomeScreen.addToHomeIOS7 {
+	background:#f2f2f2 !important;
+	-webkit-border-radius:1px !important;
+	border:1px solid #ccc;
+	-webkit-box-shadow:0 0 4px rgba(0,0,0,0.2);
+}
+
 #addToHomeScreen.addToHomeIpad {
 	width:268px;
 	font-size:18px;
@@ -66,6 +73,11 @@
 	-webkit-border-bottom-right-radius:2px;
 }
 
+#addToHomeScreen.addToHomeIOS7 .addToHomeArrow {
+	background-image:-webkit-gradient(linear,0 0,100% 100%,color-stop(0,rgba(204,204,204,0)),color-stop(0.4,rgba(204,204,204,0)),color-stop(0.4,#f2f2f2)) !important;
+	-webkit-box-shadow:inset -1px -1px 0 #fff !important;
+	border-color:#ccc !important;
+}
 
 /**
  *
@@ -96,11 +108,18 @@
 	text-indent:1px;
 	-webkit-border-radius:9px;
 	background:rgba(0,0,0,0.12);
-	color:#707070;
+	color:#888;
 	-webkit-box-shadow:0 1px 0 #fff;
 	font-size:16px;
 }
 
+#addToHomeScreen.addToHomeIOS7 .addToHomeClose {
+	line-height:12px;
+	padding-right:1px;
+	background:transparent;
+	border: 1px solid #888;
+	-webkit-box-shadow:none;
+}
 
 /**
  *

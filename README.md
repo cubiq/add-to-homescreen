@@ -1,9 +1,9 @@
 Add to Home Screen Floating Layer
 =================================
 
-The script places a floating balloon to your mobile website inviting the user to add your app to the home screen. This is compatible with iPhone/4/iPod-touch and iPad, iOS >= 3.1.1.
+The script places a floating balloon to your mobile website inviting the user to add your app to the home screen. This is compatible with iPhone/4/5/iPod-touch and iPad, iOS >= 3.1.1.
 
-Version: 2.0.8 - [Official homepage](http://cubiq.org/add-to-home-screen) - [Video](http://vimeo.com/19090537)
+Version: 2.0.9 - [Official homepage](http://cubiq.org/add-to-home-screen) - [Video](http://vimeo.com/19090537)
 
 ## Usage
 Include the script and the stylesheet in your page HEAD. That's all. Look at the examples for advanced features. Documentation on [cubiq.org](http://cubiq.org/add-to-home-screen).
