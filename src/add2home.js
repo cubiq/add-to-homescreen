@@ -70,6 +70,17 @@ var addToHome = (function (w) {
 			zh_tw: '您可以將此應用程式安裝到您的 %device 上。請按 %icon 然後點選<strong>加入主畫面螢幕</strong>。'
 		};
 
+	var localStorageAvailable = (function(){
+    var key = 'a2h_ls';
+    try {
+      w.localStorage.setItem(key, key);
+      w.localStorage.removeItem(key);
+      return true;
+    } catch(e) {
+      return false;
+    }
+  })();
+
 	function init () {
 		// Preliminary check, all further checks are performed on iDevices only
 		if ( !isIDevice ) return;
@@ -92,7 +103,7 @@ var addToHome = (function (w) {
 		OSVersion = nav.appVersion.match(/OS (\d+_\d+)/i);
 		OSVersion = OSVersion && OSVersion[1] ? +OSVersion[1].replace('_', '.') : 0;
 
-		lastVisit = +w.localStorage.getItem('addToHome');
+		if ( localStorageAvailable ) lastVisit = +w.localStorage.getItem('addToHome');
 
 		isSessionActive = w.sessionStorage.getItem('addToHomeSession');
 		isReturningVisitor = options.returningVisitor ? lastVisit && lastVisit + 28*24*60*60*1000 > now : true;
@@ -109,9 +120,11 @@ var addToHome = (function (w) {
 	function loaded () {
 		w.removeEventListener('load', loaded, false);
 
-		if ( !isReturningVisitor ) w.localStorage.setItem('addToHome', Date.now());
-		else if ( options.expire && isExpired ) w.localStorage.setItem('addToHome', Date.now() + options.expire * 60000);
-
+		if ( localStorageAvailable ) {
+			if ( !isReturningVisitor ) w.localStorage.setItem('addToHome', Date.now());
+			else if ( options.expire && isExpired ) w.localStorage.setItem('addToHome', Date.now() + options.expire * 60000);
+		}
+		
 		if ( !overrideChecks && ( !isSafari || !isExpired || isSessionActive || isStandalone || !isReturningVisitor ) ) return;
 
 		var touchIcon = '',
@@ -325,7 +338,7 @@ var addToHome = (function (w) {
 
 	// Clear local and session storages (this is useful primarily in development)
 	function reset () {
-		w.localStorage.removeItem('addToHome');
+		if ( localStorageAvailable ) w.localStorage.removeItem('addToHome');
 		w.sessionStorage.removeItem('addToHomeSession');
 	}
 
