@@ -1,0 +1,20 @@
+{
+  "name": "add-to-homescreen",
+  "version": "2.0.11",
+  "homepage": "https://github.com/cubiq/add-to-homescreen",
+  "authors": [
+    "Matteo Spinelli <matteo@cubiq.org> (http://cubiq.org)"
+  ],
+  "description": "The script places a floating balloon to your mobile website inviting the user to add your app to the home screen. This is compatible with iPhone/4/5/iPod-touch and iPad, iOS >= 3.1.1..",
+  "main": "src/add2home.js",
+  "keywords": [
+    "iPhone",
+    "iPod",
+    "iPad",
+    "iOS4",
+    "iOS5",
+    "iOS6",
+    "iOS7"
+  ],
+  "license": "MIT"
+}
