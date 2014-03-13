@@ -70,6 +70,17 @@ var addToHome = (function (w) {
 			zh_tw: '您可以將此應用程式安裝到您的 %device 上。請按 %icon 然後點選<strong>加入主畫面螢幕</strong>。'
 		};
 
+	var isStorageAvailable = (function(){
+    var key = 'a2h_storage';
+    try {
+      w.localStorage.setItem(key, key);
+      w.localStorage.removeItem(key);
+      return true;
+    } catch(e) {
+      return false;
+    }
+  })();
+
 	function init () {
 		// Preliminary check, all further checks are performed on iDevices only
 		if ( !isIDevice ) return;
@@ -92,9 +103,11 @@ var addToHome = (function (w) {
 		OSVersion = nav.appVersion.match(/OS (\d+_\d+)/i);
 		OSVersion = OSVersion && OSVersion[1] ? +OSVersion[1].replace('_', '.') : 0;
 
-		lastVisit = +w.localStorage.getItem('addToHome');
+		if ( isStorageAvailable ) {
+			lastVisit = +w.localStorage.getItem('addToHome');
+			isSessionActive = w.sessionStorage.getItem('addToHomeSession');
+		}
 
-		isSessionActive = w.sessionStorage.getItem('addToHomeSession');
 		isReturningVisitor = options.returningVisitor ? lastVisit && lastVisit + 28*24*60*60*1000 > now : true;
 
 		if ( !lastVisit ) lastVisit = now;
@@ -109,8 +122,10 @@ var addToHome = (function (w) {
 	function loaded () {
 		w.removeEventListener('load', loaded, false);
 
-		if ( !isReturningVisitor ) w.localStorage.setItem('addToHome', Date.now());
-		else if ( options.expire && isExpired ) w.localStorage.setItem('addToHome', Date.now() + options.expire * 60000);
+		if ( isStorageAvailable ) {
+			if ( !isReturningVisitor ) w.localStorage.setItem('addToHome', Date.now());
+			else if ( options.expire && isExpired ) w.localStorage.setItem('addToHome', Date.now() + options.expire * 60000);
+		}
 
 		if ( !overrideChecks && ( !isSafari || !isExpired || isSessionActive || isStandalone || !isReturningVisitor ) ) return;
 
@@ -290,7 +305,7 @@ var addToHome = (function (w) {
 
 
 	function clicked () {
-		w.sessionStorage.setItem('addToHomeSession', '1');
+		if ( isStorageAvailable ) w.sessionStorage.setItem('addToHomeSession', '1');
 		isSessionActive = true;
 		close();
 	}
@@ -325,8 +340,10 @@ var addToHome = (function (w) {
 
 	// Clear local and session storages (this is useful primarily in development)
 	function reset () {
-		w.localStorage.removeItem('addToHome');
-		w.sessionStorage.removeItem('addToHomeSession');
+		if ( isStorageAvailable ) { 
+			w.localStorage.removeItem('addToHome');
+			w.sessionStorage.removeItem('addToHomeSession');
+		}
 	}
 
 	function orientationCheck () {
