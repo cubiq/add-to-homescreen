@@ -36,7 +36,8 @@ var addToHome = (function (w) {
 			arrow: true,				// Display the balloon arrow
 			hookOnLoad: true,			// Should we hook to onload event? (really advanced usage)
 			closeButton: true,			// Let the user close the balloon
-			iterations: 100				// Internal/debug use
+			iterations: 100,			// Internal/debug use
+			excludeIDevices: []			// Array of devices where the balloon is disabled (iphone|ipad|ipod)
 		},
 
 		intl = {
@@ -84,6 +85,12 @@ var addToHome = (function (w) {
 			}
 		}
 		if ( !options.autostart ) options.hookOnLoad = false;
+		
+		// Exclude certain devices
+		for (var i = 0; i < options.excludeIDevices.length; i += 1) {
+			var regex = new RegExp(options.excludeIDevices[i], "gi");
+			if ( regex.test(nav.platform) ) return;
+		}
 
 		isIPad = (/ipad/gi).test(nav.platform);
 		isRetina = w.devicePixelRatio && w.devicePixelRatio > 1;
