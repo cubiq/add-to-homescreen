@@ -133,8 +133,8 @@ var addToHome = (function (w) {
 
 		if ( options.touchIcon ) {
 			touchIcon = isRetina ?
-				document.querySelector('head link[rel^=apple-touch-icon][sizes="114x114"],head link[rel^=apple-touch-icon][sizes="144x144"],head link[rel^=apple-touch-icon]') :
-				document.querySelector('head link[rel^=apple-touch-icon][sizes="57x57"],head link[rel^=apple-touch-icon]');
+				document.querySelector('head link[rel^=apple-touch-icon][sizes="152x152"],head link[rel^=apple-touch-icon][sizes="144x144"],head link[rel^=apple-touch-icon][sizes="120x120"],head link[rel^=apple-touch-icon][sizes="114x114"],head link[rel^=apple-touch-icon]') :
+				document.querySelector('head link[rel^=apple-touch-icon][sizes="76x76"],head link[rel^=apple-touch-icon][sizes="60x60"],head link[rel^=apple-touch-icon][sizes="57x57"],head link[rel^=apple-touch-icon]');
 
 			if ( touchIcon ) {
 				touchIcon = '<span style="background-image:url(' + touchIcon.href + ')" class="addToHomeTouchIcon"></span>';
