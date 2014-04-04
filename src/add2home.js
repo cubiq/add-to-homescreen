@@ -137,7 +137,7 @@ var addToHome = (function (w) {
 				document.querySelector('head link[rel^=apple-touch-icon][sizes="57x57"],head link[rel^=apple-touch-icon]');
 
 			if ( touchIcon ) {
-				touchIcon = '<span style="background-image:url(' + touchIcon.href + ')" class="addToHomeTouchIcon"></span>';
+				touchIcon = '<span style="background-image:url(' + "'" + touchIcon.href + "'" + ')" class="addToHomeTouchIcon"></span>';
 			}
 		}
 
