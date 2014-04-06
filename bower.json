@@ -1,0 +1,20 @@
+{
+  "name": "add-to-homescreen",
+  "version": "3.0.0",
+  "homepage": "https://github.com/cubiq/add-to-homescreen",
+  "authors": [
+    "Matteo Spinelli <matteo@cubiq.org> (http://cubiq.org)"
+  ],
+  "description": "'Add to homescreen call out for iOS and Android",
+  "main": "src/addtohomescreen.js",
+  "keywords": [
+    "iPhone",
+    "iPod",
+    "iPad",
+    "iOS6",
+    "iOS7",
+    "android",
+    "mobile"
+  ],
+  "license": "MIT"
+}

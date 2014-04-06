@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Add To Home</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-title" content="Add to Home">
+<link rel="shortcut icon" sizes="16x16" href="../../imgs/icon-16x16.png">
+<link rel="shortcut icon" sizes="196x196" href="../../imgs/icon-196x196.png">
+<link rel="apple-touch-icon-precomposed" href="../../imgs/icon-152x152.png">
+
+<link rel="stylesheet" type="text/css" href="../../style/addToHomescreen.css">
+</head>
+
+<body>
+<p>Perfect debug configuration, ideal in dev phase. The call out is displayed on desktop and on unsupported devices too.</p>
+
+<p>You can clear the user session with <strong>addToHomescreen.removeSession()</strong> or <strong>[instance].clearSession()</strong>. The first completely removes the localStorage variable, the second simply zeros session.</p>
+
+<script src="../../src/addtohomescreen.js"></script>
+<script>
+// addToHomescreen.removeSession();     // use this to remove the localStorage variable
+var ath = addToHomescreen({
+    debug: 'ios',           // activate debug mode in ios emulation
+    skipFirstVisit: false,  // don't skip the first visit
+    startDelay: 0,          // display the message right away
+    lifespan: 0,            // do not automatically kill the call out
+    displayPace: 0,         // do not obey the display pace
+    maxDisplayCount: 0      // do not obey the max display count
+});
+// ath.clearSession();      // reset the user session
+</script>
+</body>
+</html>

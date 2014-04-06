@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Add To Home</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-title" content="Add to Home">
+<link rel="shortcut icon" sizes="16x16" href="../../imgs/icon-16x16.png">
+<link rel="shortcut icon" sizes="196x196" href="../../imgs/icon-196x196.png">
+<link rel="apple-touch-icon-precomposed" href="../../imgs/icon-152x152.png">
+
+<link rel="stylesheet" type="text/css" href="../../style/addToHomescreen.css">
+<script src="../../src/addtohomescreen.js"></script>
+<script>
+var a = addToHomescreen({
+	onAdd: function () {
+		alert('Welcome to the homescreen!');
+	}
+});
+</script>
+</head>
+
+<body>
+<p>This demo shows how to add a custom event fired the first time (and the first time only) you run the application from the homescreen.</p>
+
+<p>Add this page to the homescreen and then run the app from homescreen.</p>
+
+</body>
+</html>

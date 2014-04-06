@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Add To Home</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="apple-mobile-web-app-title" content="Add to Home">
+<link rel="shortcut icon" sizes="16x16" href="../../imgs/icon-16x16.png">
+<link rel="shortcut icon" sizes="196x196" href="../../imgs/icon-196x196.png">
+<link rel="apple-touch-icon-precomposed" href="../../imgs/icon-152x152.png">
+
+<link rel="stylesheet" type="text/css" href="../../style/addToHomescreen.css">
+<script src="../../src/addtohomescreen.js"></script>
+<script>
+addToHomescreen({
+    detectHomescreen: true
+});
+</script>
+</head>
+
+<body>
+<p>This demo tries to detect when the application is added to the homescreen by using a #hash token. You can also use a query string or a smart URL, but they are all guesstimate and there's a 20-30% chances of false positives. The good news is that false negative (ie: the call out being displayed even if the app has been already added to the homescreen) should be very rare.</p>
+<p>Remember that the only 100% safe way to use the add to homescreen feature is by using the <strong>apple-mobile-web-app-capable</strong> meta tag.</p>
+</body>
+</html>
