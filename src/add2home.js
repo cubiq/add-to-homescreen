@@ -290,8 +290,10 @@ var addToHome = (function (w) {
 
 
 	function clicked () {
-		w.sessionStorage.setItem('addToHomeSession', '1');
-		isSessionActive = true;
+		try {
+			w.sessionStorage.setItem('addToHomeSession', '1');
+			isSessionActive = true;
+		} catch (error) {}
 		close();
 	}
 
