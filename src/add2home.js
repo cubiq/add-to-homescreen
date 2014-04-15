@@ -226,10 +226,16 @@ var addToHome = (function (w) {
 		closeTimeout = setTimeout(close, options.lifespan);
 	}
 
-	function manualShow (override) {
+	function manualShow (override, opt) {
 		if ( !isIDevice || balloon ) return;
 
 		overrideChecks = override;
+		// Merge local with global options
+		if (opt) {
+			for ( i in opt ) {
+				options[i] = opt[i];
+			}
+		}
 		loaded();
 	}
 
