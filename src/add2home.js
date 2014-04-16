@@ -138,6 +138,8 @@ var addToHome = (function (w) {
 
 			if ( touchIcon ) {
 				touchIcon = '<span style="background-image:url(' + touchIcon.href + ')" class="addToHomeTouchIcon"></span>';
+			} else {
+				touchIcon = '';
 			}
 		}
 
