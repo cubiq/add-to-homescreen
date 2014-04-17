@@ -63,7 +63,7 @@ var addToHome = (function (w) {
 			pt_pt: 'Para instalar esta aplicação no seu %device, prima o %icon e depois em <strong>Adicionar ao ecrã principal</strong>.',
 			ru_ru: 'Установите это веб-приложение на ваш %device: нажмите %icon, затем <strong>Добавить в «Домой»</strong>.',
 			sv_se: 'Lägg till denna webbapplikation på din %device: tryck på %icon och därefter <strong>Lägg till på hemskärmen</strong>.',
-			th_th: 'ติดตั้งเว็บแอพฯ นี้บน %device ของคุณ: แตะที่ไอคอน %icon และ <strong>เพิ่มไปยังหน้าจอโฮม</strong>โฮม</strong>',
+			th_th: 'ติดตั้งเว็บแอพฯ นี้บน %device ของคุณ: แตะที่ไอคอน %icon และ <strong>เพิ่มไปยังหน้าจอโฮม</strong>',
 			tr_tr: 'Bu uygulamayı %device\'a eklemek için %icon simgesine sonrasında <strong>Ana Ekrana Ekle</strong> düğmesine basın.',
 			uk_ua: 'Встановіть цей веб сайт на Ваш %device: натисніть %icon, а потім <strong>На початковий екран</strong>.',
 			zh_cn: '您可以将此应用安装到您的 %device 上。请按 %icon 然后选择<strong>添加至主屏幕</strong>。',
