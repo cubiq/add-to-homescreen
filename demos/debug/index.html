@@ -13,20 +13,20 @@
 <link rel="shortcut icon" sizes="196x196" href="../../imgs/icon-196x196.png">
 <link rel="apple-touch-icon-precomposed" href="../../imgs/icon-152x152.png">
 
-<link rel="stylesheet" type="text/css" href="../../style/addToHomescreen.css">
+<link rel="stylesheet" type="text/css" href="../../style/addtohomescreen.css">
 </head>
 
 <body>
 <p>Perfect debug configuration, ideal in dev phase. The call out is displayed on desktop and on unsupported devices too.</p>
 
-<p>You can clear the user session with <strong>addToHomescreen.removeSession()</strong> or <strong>[instance].clearSession()</strong>. The first completely removes the localStorage variable, the second simply zeros session.</p>
+<p>You can clear the user session with <strong>addToHomescreen.removeSession()</strong> or <strong>instance.clearSession()</strong>. The first completely removes the localStorage variable, the second simply resets the session to the defaults.</p>
 
 <script src="../../src/addtohomescreen.js"></script>
 <script>
 // addToHomescreen.removeSession();     // use this to remove the localStorage variable
 var ath = addToHomescreen({
     debug: 'ios',           // activate debug mode in ios emulation
-    skipFirstVisit: false,  // don't skip the first visit
+    skipFirstVisit: false,	// show at first access
     startDelay: 0,          // display the message right away
     lifespan: 0,            // do not automatically kill the call out
     displayPace: 0,         // do not obey the display pace

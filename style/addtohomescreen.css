@@ -2,6 +2,11 @@
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
+}
+
+.ath-viewport {
+	position: relative;
+	z-index: 2147483641;
 
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
 	-webkit-touch-callout: none;
@@ -17,7 +22,7 @@
 }
 
 .ath-modal {
-	background: rgba(0,0,0,0.4);
+	background: rgba(0,0,0,0.6);
 }
 
 .ath-mandatory {
@@ -47,8 +52,13 @@
 	margin-left: -9em;
 }
 
-.ath-ios.ath-tablet {
+.ath-ios7.ath-tablet {
 	left: 0.7em;
+	top: 1.8em;
+}
+
+.ath-ios6.ath-tablet {
+	left: 5em;
 	top: 1.8em;
 }
 
@@ -60,9 +70,10 @@
 /* close icon */
 .ath-container:before {
 	content: '×';
-	position: absolute;
-	right: 0;
-	top: 0;
+	position: relative;
+	display: block;
+	float: right;
+	margin: -0.3em -0.25em 0 0.1em;
 	background-color: rgba(255,255,255,0.7);
 	width: 1.2em;
 	height: 1.2em;
@@ -71,6 +82,14 @@
 	font-size: 2.3em;
 	color: #a33;
 	z-index: 2147483642;
+}
+
+.ath-container.ath-icon:before {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 0;
+	float: none;
 }
 
 .ath-mandatory .ath-container:before {
@@ -86,9 +105,18 @@
 }
 
 .ath-container.ath-android:before {
-	left: 0;
-	right: auto;
+	float: left;
+	margin: -0.3em 0.1em 0 -0.2em;
 }
+
+.ath-container.ath-android.ath-icon:before {
+	position: absolute;
+	right: auto;
+	left: 0;
+	margin: 0;
+	float: none;
+}
+
 
 /* applied only if the application icon is shown */
 .ath-container.ath-icon {

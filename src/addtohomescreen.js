@@ -1,7 +1,8 @@
+/* Add to Homescreen v3.0.0 ~ (c) 2014 Matteo Spinelli ~ @license: http://cubiq.org/license */
 (function (window, document) {
 /*
-       _   _ _____     _____                                       
- ___ _| |_| |_   _|___|  |  |___ _____ ___ ___ ___ ___ ___ ___ ___ 
+       _   _ _____     _____
+ ___ _| |_| |_   _|___|  |  |___ _____ ___ ___ ___ ___ ___ ___ ___
 | .'| . | . | | | | . |     | . |     | -_|_ -|  _|  _| -_| -_|   |
 |__,|___|___| |_| |___|__|__|___|_|_|_|___|___|___|_| |___|___|_|_|
                               by Matteo Spinelli ~ http://cubiq.org
@@ -22,11 +23,9 @@ var _reQueryString = /([\?&]ath=[^&]*$|&ath=[^&]*(&))/;
 // singleton
 var _instance;
 function ath (options) {
-	if ( _instance ) {
-		return _instance;
-	}
+	_instance = _instance || new ath.Class(options);
 
-	return new ath.Class(options);
+	return _instance;
 }
 
 // message in all supported languages
@@ -44,18 +43,18 @@ ath.intl = {
 
 // default options
 ath.defaults = {
-	appID: 'org.cubiq.addtohomescreen',		// local storage name (no need to change)
+	appID: 'org.cubiq.addtohome',		// local storage name (no need to change)
+	fontSize: 15,				// base font size, used to properly resize the popup based on viewport scale factor
 	debug: false,				// override browser checks
 	modal: false,				// prevent further actions until the message is closed
 	mandatory: false,			// you can't proceed if you don't add the app to the homescreen
 	autostart: true,			// show the message automatically
 	skipFirstVisit: false,		// show only to returning visitors (ie: skip the first time you visit)
-	startDelay: 2,				// display the message after that many seconds from page load
+	startDelay: 1,				// display the message after that many seconds from page load
 	lifespan: 15,				// life of the message in seconds
 	displayPace: 1440,			// minutes before the message is shown again (0: display every time, default 24 hours)
 	maxDisplayCount: 0,			// absolute maximum number of times the message will be shown to the user (0: no limit)
 	icon: true,					// add touch icon to the message
-	fontSize: 15,				// base font size, used to properly scale the popup based on viewport scale factor
 	message: '',				// the message can be customized
 	validLocation: [],			// list of pages where the message will be shown (array of regexes)
 	onInit: null,				// executed on instance creation
@@ -81,13 +80,13 @@ _extend(ath, {
 ath.isMobileSafari = ath.isIDevice && _ua.indexOf('Safari') > -1 && _ua.indexOf('CriOS') < 0;
 ath.OS = ath.isIDevice ? 'ios' : ath.isMobileChrome ? 'android' : ath.isMobileIE ? 'windows' : 'unsupported';
 
-ath.OSVersion = _ua.match(/(OS|Android) (\d+_\d+)/);
+ath.OSVersion = _ua.match(/(OS|Android) (\d+[_\.]\d+)/);
 ath.OSVersion = ath.OSVersion && ath.OSVersion[2] ? +ath.OSVersion[2].replace('_', '.') : 0;
 
 ath.isStandalone = window.navigator.standalone || ( ath.isMobileChrome && ( screen.height - document.documentElement.clientHeight < 40 ) );	// TODO: check the lame polyfill
 ath.isTablet = (ath.isMobileSafari && _ua.indexOf('iPad') > -1) || (ath.isMobileChrome && _ua.indexOf('Mobile') < 0);
 
-ath.isCompatible = (ath.isIDevice && ath.OSVersion >= 6) || (ath.isMobileChrome && ath.OSVersion >= 4);	// TODO: add winphone
+ath.isCompatible = (ath.isIDevice && ath.OSVersion >= 6) || ath.isMobileChrome;	// TODO: add winphone
 
 // falls back to en_us if language is unsupported
 ath.language = ath.language && ath.language in ath.intl ? ath.language : 'en_us';
@@ -140,6 +139,7 @@ ath.Class = function (options) {
 		_removeToken();
 	}
 
+	// the device is not supported
 	if ( !ath.isCompatible ) {
 		return;
 	}
@@ -168,9 +168,14 @@ ath.Class = function (options) {
 		}
 	}
 
+	// check compatibility with old versions of add to homescreen. Opt-out if an old session is found
+	if ( localStorage.getItem('addToHome') ) {
+		this.optOut();
+	}
+
 	// critical errors:
-	// device is not compatible, user opted out, already added to the homescreen, not a valid location
-	if ( !ath.isCompatible || this.session.optedout || this.session.added || !isValidLocation ) {
+	// user opted out, already added to the homescreen, not a valid location
+	if ( this.session.optedout || this.session.added || !isValidLocation ) {
 		return;
 	}
 
@@ -194,7 +199,7 @@ ath.Class = function (options) {
 		// the URL has the token, we are likely coming from the homescreen
 		if ( ath.hasToken ) {
 			_removeToken();		// we don't actually need the token anymore, we remove it to prevent redistribution
-	
+
 			// this is called the first time the user opens the app from the homescreen
 			if ( !this.session.added ) {
 				this.session.added = true;
@@ -208,7 +213,7 @@ ath.Class = function (options) {
 			return;
 		}
 
-		// URL doesn't have the token, add it
+		// URL doesn't have the token, so add it
 		if ( this.options.detectHomescreen == 'hash' ) {
 			history.replaceState('', window.document.title, document.location.href + '#ath');
 		} else if ( this.options.detectHomescreen == 'smartURL' ) {
@@ -234,6 +239,7 @@ ath.Class = function (options) {
 		return;
 	}
 
+	// all checks passed, ready to display
 	this.ready = true;
 
 	if ( this.options.onInit ) {
@@ -249,11 +255,11 @@ ath.Class.prototype = {
 	// event type to method conversion
 	events: {
 		load: '_delayedShow',
+		error: '_delayedShow',
 		orientationchange: 'resize',
 		resize: 'resize',
 		scroll: 'resize',
 		click: 'remove',
-		error: 'remove',
 		touchmove: '_preventDefault',
 		transitionend: '_removeElements',
 		webkitTransitionEnd: '_removeElements',
@@ -274,24 +280,29 @@ ath.Class.prototype = {
 			return;
 		}
 
-		var now = Date.now();
-		var lastDisplayTime = this.session.lastDisplayTime;
-
-		// we obey the display pace (prevent the message to popup too often)
-		this.ready = now - lastDisplayTime > this.options.displayPace * 60000;
-
-		// obey the maximum number of display count
-		if ( this.options.maxDisplayCount && this.session.displayCount >= this.options.maxDisplayCount ) {
-			this.ready = false;
-		}
-
-		if ( !this.ready && !force ) {
-			return;
-		}
-
 		// message already on screen
 		if ( this.shown ) {
 			return;
+		}
+
+		var now = Date.now();
+		var lastDisplayTime = this.session.lastDisplayTime;
+
+		if ( force !== true ) {
+			// this is needed if autostart is disabled and you programmatically call the show() method
+			if ( !this.ready ) {
+				return;
+			}
+
+			// we obey the display pace (prevent the message to popup too often)
+			if ( now - lastDisplayTime < this.options.displayPace * 60000 ) {
+				return;
+			}
+
+			// obey the maximum number of display count
+			if ( this.options.maxDisplayCount && this.session.displayCount >= this.options.maxDisplayCount ) {
+				return;
+			}
 		}
 
 		this.shown = true;
@@ -368,7 +379,7 @@ ath.Class.prototype = {
 		}
 	},
 
-	_delayedShow: function () {
+	_delayedShow: function (e) {
 		setTimeout(this._show.bind(this), this.options.startDelay * 1000 + 500);
 	},
 
@@ -380,8 +391,8 @@ ath.Class.prototype = {
 
 		// reposition/resize the message on orientation change
 		window.addEventListener('resize', this, false);
-		window.addEventListener('scroll', this, false);	
-		window.addEventListener('orientationchange', this, false);	
+		window.addEventListener('scroll', this, false);
+		window.addEventListener('orientationchange', this, false);
 
 		if ( this.options.modal ) {
 			// lock any other interaction
@@ -416,15 +427,18 @@ ath.Class.prototype = {
 		clearTimeout(this.removeTimer);
 
 		// clear up the event listeners
-		this.img.removeEventListener('load', this, false);
-		this.img.removeEventListener('error', this, false);
+		if ( this.img ) {
+			this.img.removeEventListener('load', this, false);
+			this.img.removeEventListener('error', this, false);
+		}
 
 		window.removeEventListener('resize', this, false);
 		window.removeEventListener('scroll', this, false);
+		window.removeEventListener('orientationchange', this, false);
 		document.removeEventListener('touchmove', this, true);
 		this.element.removeEventListener('click', this, true);
 
-		// we remove the message element on transition end
+		// remove the message element on transition end
 		this.element.addEventListener('transitionend', this, false);
 		this.element.addEventListener('webkitTransitionEnd', this, false);
 		this.element.addEventListener('MSTransitionEnd', this, false);
