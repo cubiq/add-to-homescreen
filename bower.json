@@ -7,6 +7,12 @@
   ],
   "description": "'Add to homescreen call out for iOS and Android",
   "main": "src/addtohomescreen.js",
+  "ignore": [
+    "demos/*",
+    "imgs/*",
+    "./README.md",
+    "bower.json"
+  ],
   "keywords": [
     "iPhone",
     "iPod",
