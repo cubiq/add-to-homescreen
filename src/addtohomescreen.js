@@ -1,4 +1,4 @@
-/* Add to Homescreen v3.0.0 ~ (c) 2014 Matteo Spinelli ~ @license: http://cubiq.org/license */
+/* Add to Homescreen v3.0.1 ~ (c) 2014 Matteo Spinelli ~ @license: http://cubiq.org/license */
 (function (window, document) {
 /*
        _   _ _____     _____
@@ -38,6 +38,11 @@ ath.intl = {
 	it_it: {
 		message: 'Per Aggiungere questa web app alla schermata iniziale: premi %icon e poi <strong>%action</strong>.',
 		action: { ios: 'Aggiungi a Home', android: 'Aggiungi alla homescreen', windows: 'pin to start' }
+	},
+
+	nl_nl: {
+		message: 'Om deze webapp op je telefoon te installeren, klik op %icon en dan <strong>%action</strong>.',
+		action: { ios: 'Voeg toe aan beginscherm', android: 'Toevoegen aan startscherm', windows: 'Aan startscherm vastmaken' }
 	}
 };
 
@@ -76,6 +81,9 @@ _extend(ath, {
 	isMobileIE: _ua.indexOf('Windows Phone') > -1,
 	language: _nav.language && _nav.language.toLowerCase().replace('-', '_')
 });
+
+// normalize language string so it always looks like aa_bb
+ath.language = ath.language.length == 2 && ath.language + '_' + ath.language;
 
 ath.isMobileSafari = ath.isIDevice && _ua.indexOf('Safari') > -1 && _ua.indexOf('CriOS') < 0;
 ath.OS = ath.isIDevice ? 'ios' : ath.isMobileChrome ? 'android' : ath.isMobileIE ? 'windows' : 'unsupported';
