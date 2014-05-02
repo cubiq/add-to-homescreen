@@ -1,4 +1,4 @@
-/* Add to Homescreen v3.0.1 ~ (c) 2014 Matteo Spinelli ~ @license: http://cubiq.org/license */
+/* Add to Homescreen v3.0.2 ~ (c) 2014 Matteo Spinelli ~ @license: http://cubiq.org/license */
 (function (window, document) {
 /*
        _   _ _____     _____
@@ -94,7 +94,7 @@ ath.OSVersion = ath.OSVersion && ath.OSVersion[2] ? +ath.OSVersion[2].replace('_
 ath.isStandalone = window.navigator.standalone || ( ath.isMobileChrome && ( screen.height - document.documentElement.clientHeight < 40 ) );	// TODO: check the lame polyfill
 ath.isTablet = (ath.isMobileSafari && _ua.indexOf('iPad') > -1) || (ath.isMobileChrome && _ua.indexOf('Mobile') < 0);
 
-ath.isCompatible = (ath.isIDevice && ath.OSVersion >= 6) || ath.isMobileChrome;	// TODO: add winphone
+ath.isCompatible = (ath.isMobileSafari && ath.OSVersion >= 6) || ath.isMobileChrome;	// TODO: add winphone
 
 // falls back to en_us if language is unsupported
 ath.language = ath.language && ath.language in ath.intl ? ath.language : 'en_us';
