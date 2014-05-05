@@ -45,7 +45,7 @@ ath.intl = {
 		action: { ios: 'Voeg toe aan beginscherm', android: 'Toevoegen aan startscherm', windows: 'Aan startscherm vastmaken' }
 	},
 
-	es_es: {
+	es: {
 		message: 'Para añadir esta aplicación web a la pantalla de inicio: pulsa %icon y selecciona <strong>%action</strong>.',
 		action: { ios: 'Añadir a pantalla de inicio', android: 'Añadir a pantalla de inicio', windows: 'Añadir a inicio' }
 	}
