@@ -35,19 +35,19 @@ ath.intl = {
 		action: { ios: 'Add to Home Screen', android: 'Add to homescreen', windows: 'pin to start' }
 	},
 
+	es_es: {
+		message: 'Para añadir esta aplicación web a la pantalla de inicio: pulsa %icon y selecciona <strong>%action</strong>.',
+		action: { ios: 'Añadir a pantalla de inicio', android: 'Añadir a pantalla de inicio', windows: 'Añadir a inicio' }
+	},
+
 	it_it: {
 		message: 'Per Aggiungere questa web app alla schermata iniziale: premi %icon e poi <strong>%action</strong>.',
-		action: { ios: 'Aggiungi a Home', android: 'Aggiungi alla homescreen', windows: 'pin to start' }
+		action: { ios: 'Aggiungi a Home', android: 'Aggiungi alla homescreen', windows: 'aggiungi a start' }
 	},
 
 	nl_nl: {
 		message: 'Om deze webapp op je telefoon te installeren, klik op %icon en dan <strong>%action</strong>.',
 		action: { ios: 'Voeg toe aan beginscherm', android: 'Toevoegen aan startscherm', windows: 'Aan startscherm vastmaken' }
-	},
-
-	es_es: {
-		message: 'Para añadir esta aplicación web a la pantalla de inicio: pulsa %icon y selecciona <strong>%action</strong>.',
-		action: { ios: 'Añadir a pantalla de inicio', android: 'Añadir a pantalla de inicio', windows: 'Añadir a inicio' }
 	}
 };
 
