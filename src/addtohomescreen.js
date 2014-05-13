@@ -1,4 +1,4 @@
-/* Add to Homescreen v3.0.4 ~ (c) 2014 Matteo Spinelli ~ @license: http://cubiq.org/license */
+/* Add to Homescreen v3.0.5 ~ (c) 2014 Matteo Spinelli ~ @license: http://cubiq.org/license */
 (function (window, document) {
 /*
        _   _ _____     _____
@@ -48,6 +48,16 @@ ath.intl = {
 	nl_nl: {
 		message: 'Om deze webapp op je telefoon te installeren, klik op %icon en dan <strong>%action</strong>.',
 		action: { ios: 'Voeg toe aan beginscherm', android: 'Toevoegen aan startscherm', windows: 'Aan startscherm vastmaken' }
+	},
+
+	zh_cn: {
+		message: '如要把应用程式加至主屏幕,请点击%icon, 然后<strong>%action</strong>',
+		action: { ios: '加至主屏幕', android: '加至主屏幕', windows: '按住启动' }
+	},
+
+	zh_tw: {
+		message: '如要把應用程式加至主屏幕, 請點擊%icon, 然後<strong>%action</strong>.',
+		action: { ios: '加至主屏幕', android: '加至主屏幕', windows: '按住啟動' }
 	}
 };
 
