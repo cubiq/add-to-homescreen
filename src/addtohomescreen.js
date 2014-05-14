@@ -34,6 +34,11 @@ function ath (options) {
 
 // message in all supported languages
 ath.intl = {
+	de_de: {
+		message: 'Um diese Web-App zum Home-Bildschirm hinzuzufügen, tippen Sie auf %icon und dann <strong>%action</strong>.',
+		action: { ios: 'Zum Home-Bildschirm', android: 'Zum Startbildschirm hinzufügen', windows: 'Auf Startseite' }
+	},
+
 	en_us: {
 		message: 'To add this web app to the home screen: tap %icon and then <strong>%action</strong>.',
 		action: { ios: 'Add to Home Screen', android: 'Add to homescreen', windows: 'pin to start' }
