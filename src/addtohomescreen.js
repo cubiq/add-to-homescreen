@@ -10,14 +10,15 @@
 
 // Check if document is loaded, needed by autostart
 var _DOMReady = false;
-if ( document.readyState === "complete" ) {
+if ( document.readyState === 'complete' ) {
 	_DOMReady = true;
 } else {
 	window.addEventListener('load', loaded, false);
-	function loaded () {
-		window.removeEventListener('load', loaded, false);
-		_DOMReady = true;
-	}
+}
+
+function loaded () {
+	window.removeEventListener('load', loaded, false);
+	_DOMReady = true;
 }
 
 // regex used to detect if app has been added to the homescreen
