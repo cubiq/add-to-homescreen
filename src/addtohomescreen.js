@@ -10,7 +10,12 @@
 
 // Check if document is loaded, needed by autostart
 var _DOMReady = false;
-window.addEventListener('load', loaded, false);
+if ( document.readyState === 'complete' ) {
+	_DOMReady = true;
+} else {
+	window.addEventListener('load', loaded, false);
+}
+
 function loaded () {
 	window.removeEventListener('load', loaded, false);
 	_DOMReady = true;
@@ -30,6 +35,11 @@ function ath (options) {
 
 // message in all supported languages
 ath.intl = {
+	de_de: {
+		message: 'Um diese Web-App zum Home-Bildschirm hinzuzufügen, tippen Sie auf %icon und dann <strong>%action</strong>.',
+		action: { ios: 'Zum Home-Bildschirm', android: 'Zum Startbildschirm hinzufügen', windows: 'Auf Startseite' }
+	},
+
 	en_us: {
 		message: 'To add this web app to the home screen: tap %icon and then <strong>%action</strong>.',
 		action: { ios: 'Add to Home Screen', android: 'Add to homescreen', windows: 'pin to start' }
