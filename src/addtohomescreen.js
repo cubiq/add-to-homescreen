@@ -107,7 +107,7 @@ _extend(ath, {
 	language: _nav.language && _nav.language.toLowerCase().replace('-', '_') || ''
 });
 
-// normalize language string so it always looks like aa_bb
+// search for matching language if browser only provide 2 letter language code
 if ( ath.language.length == 2 ) {
 	for (var languageKey in ath.intl) {
 		if (languageKey.substring(0, 2) == ath.language) {
