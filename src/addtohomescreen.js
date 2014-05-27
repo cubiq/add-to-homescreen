@@ -55,20 +55,20 @@ ath.intl = {
 		action: { ios: 'Aggiungi a Home', android: 'Aggiungi alla homescreen', windows: 'aggiungi a start' }
 	},
 
-    nb_no: {
-        message: 'For å installere denne appen på hjem-skjermen: trykk på %icon og deretter <strong>%action</strong>.',
-        action: { ios: 'Legg til på Hjem-skjerm', android: 'Legg til på startsiden', windows: 'fest til start' }
-    },
+	nb_no: {
+		message: 'For å installere denne appen på hjem-skjermen: trykk på %icon og deretter <strong>%action</strong>.',
+		action: { ios: 'Legg til på Hjem-skjerm', android: 'Legg til på startsiden', windows: 'fest til start' }
+	},
 
 	nl_nl: {
 		message: 'Om deze webapp op je telefoon te installeren, klik op %icon en dan <strong>%action</strong>.',
 		action: { ios: 'Voeg toe aan beginscherm', android: 'Toevoegen aan startscherm', windows: 'Aan startscherm vastmaken' }
 	},
 
-    sv_se: {
-        message: 'För att lägga till denna webbapplikation på hemskärmen: tryck på %icon och därefter <strong>%action</strong>.',
-        action: { ios: 'Lägg till på hemskärmen', android: 'Lägg til på startskärmen', windows: 'fäst på startskärmen' }
-    },
+	sv_se: {
+		message: 'För att lägga till denna webbapplikation på hemskärmen: tryck på %icon och därefter <strong>%action</strong>.',
+		action: { ios: 'Lägg till på hemskärmen', android: 'Lägg til på startskärmen', windows: 'fäst på startskärmen' }
+	},
 
 	zh_cn: {
 		message: '如要把应用程式加至主屏幕,请点击%icon, 然后<strong>%action</strong>',
