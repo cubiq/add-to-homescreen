@@ -50,6 +50,11 @@ ath.intl = {
 		action: { ios: 'Añadir a pantalla de inicio', android: 'Añadir a pantalla de inicio', windows: 'Añadir a inicio' }
 	},
 
+	fr_fr: {
+		message: 'Pour ajouter cette application web sur l\'écran d\'accueil : Appuyez %icon et sélectionnez <strong>%action</strong>.',
+		action: { ios: 'Ajouter sur l\'écran d\'accueil', android: 'Ajouter à l\'écran d\'accueil', windows: 'Épingler à l\'écran d\'accueil' }
+	},
+
 	it_it: {
 		message: 'Per Aggiungere questa web app alla schermata iniziale: premi %icon e poi <strong>%action</strong>.',
 		action: { ios: 'Aggiungi a Home', android: 'Aggiungi alla homescreen', windows: 'aggiungi a start' }
