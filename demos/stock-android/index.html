@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Add To Home</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-title" content="Add to Home">
+
+<link rel="shortcut icon" sizes="16x16" href="../../imgs/icon-16x16.png">
+<link rel="shortcut icon" sizes="196x196" href="../../imgs/icon-196x196.png">
+<link rel="apple-touch-icon-precomposed" href="../../imgs/icon-152x152.png">
+
+<link rel="stylesheet" type="text/css" href="../../style/addtohomescreen.css">
+<script src="../../src/addtohomescreen.js"></script>
+
+<!--
+
+ The following code adds Stock Android Browser (OS version <=4.3)
+ compatibility to Add to Homescreen. The code is a sort of plugin to the
+ original Add to homescreen widget and doesn't interfere with it. You can
+ safely update the official Add to homescreen and this code should keep
+ working.
+
+ This addon has been kindly sponsored by Rapid Data GmbH (www.rapid-data.de)
+ and released under the MIT license for everyone to use.
+
+ USAGE: Include the 'style' and 'script' below anywhere in your page.
+
+//-->
+
+<!-- ************************* START HERE ************************* -->
+<style type="text/css">
+.ath-samsungAndroid {
+	bottom: 1.8em;
+	left: 50%;
+	margin-left: -9em;
+}
+
+.ath-stockAndroid {
+	right: 1.5em;
+	top: 1.8em;
+}
+
+.ath-samsungAndroid:after {
+	content: '';
+	background: #eee;
+	background: -webkit-linear-gradient(135deg, rgba(238,238,238,0) 0%,rgba(238,238,238,0) 50%,rgba(238,238,238,1) 50%,rgba(238,238,238,1) 100%);
+	position: absolute;
+	width: 2em;
+	height: 2em;
+	bottom: -1.5em;
+	left: 0;
+}
+
+.ath-stockAndroid:after {
+	content: '';
+	background: #eee;
+	background: -webkit-linear-gradient(-45deg, rgba(238,238,238,0) 0%,rgba(238,238,238,0) 50%,rgba(238,238,238,1) 50%,rgba(238,238,238,1) 100%);
+	position: absolute;
+	width: 2em;
+	height: 2em;
+	top: -1.5em;
+	right: 0;
+}
+
+.ath-container.ath-stockAndroid:before {
+	float: left;
+	margin: -0.7em 0.5em 0 -0.6em;
+}
+
+.ath-container.ath-stockAndroid.ath-icon:before {
+	position: absolute;
+	right: auto;
+	left: 0;
+	margin: 0;
+	float: none;
+}
+
+/*
+ * The following is not strictly needed and should be customized. If you want you can have an icon inside the message.
+ * All you need to to is to add a special %icon tag in the message string (see below)
+ */
+.ath-stockAndroid .ath-action-icon,
+.ath-samsungAndroid .ath-action-icon {
+	width: 1.2em;
+	height: 1.2em;
+	/* DO NOT include the code below, it's just for the sake of this demo and to demostrate how the %icon tag works */
+	background-image:url(data:image/png;base64,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);
+	background-size: auto 100%;
+}
+</style>
+<script>
+var _ath = addToHomescreen;
+
+// This is the special custom message for stock android, it has to be customized to your needs
+var athMessages = {
+	samsungAndroid: 'Custom message for Samsung Android. Click the menu hardware button and blah blah blah. This is an icon if needed: %icon',
+	stockAndroid: 'Custom message for stock Android. Click the menu hardware button and blah blah blah. This is an icon if needed: %icon'
+};
+
+// Add stock browser compatibility
+var _ua = window.navigator.userAgent;
+
+_ath.isAndroidBrowser = _ua.indexOf('Android') > -1 && !(/Chrome\/[.0-9]*/).test(_ua);
+_ath.isCompatible = _ath.isCompatible || _ath.isAndroidBrowser;
+if ( _ath.OS == 'unsupported' && _ath.isAndroidBrowser ) {
+	// additionally we check for some Samsung devices (not strictly needed)
+	_ath.OS = (/ (GT-I9|GT-P7|SM-T2|GT-P5|GT-P3|SCH-I8)/).test(_ua) ? 'samsungAndroid' : 'stockAndroid';
+}
+
+_ath({
+	message: _ath.OS in athMessages ? athMessages[_ath.OS] : '',
+
+	// the followings are just for debug, customize the options to your needs
+	skipFirstVisit: false,
+	displayPace: false
+});
+</script>
+<!-- ************************* END HERE ************************* -->
+
+</head>
+
+<body>
+</body>
+</html>
