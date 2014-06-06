@@ -71,6 +71,11 @@ ath.intl = {
 	}
 };
 
+// Add 2 characters language support (Android mostly)
+for ( var lang in ath.intl ) {
+	ath.intl[lang.substr(0, 2)] = ath.intl[lang];
+}
+
 // default options
 ath.defaults = {
 	appID: 'org.cubiq.addtohome',		// local storage name (no need to change)
@@ -107,10 +112,6 @@ _extend(ath, {
 	language: _nav.language && _nav.language.toLowerCase().replace('-', '_') || ''
 });
 
-// normalize language string so it always looks like aa_bb
-if ( ath.language.length == 2 ) {
-	ath.language += '_' + ath.language;
-}
 // falls back to en_us if language is unsupported
 ath.language = ath.language && ath.language in ath.intl ? ath.language : 'en_us';
 
