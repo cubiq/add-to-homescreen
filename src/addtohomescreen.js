@@ -124,7 +124,7 @@ _extend(ath, {
 	isIDevice: (/iphone|ipod|ipad/i).test(_ua),
 	isMobileChrome: _ua.indexOf('Android') > -1 && (/Chrome\/[.0-9]*/).test(_ua),
 	isMobileIE: _ua.indexOf('Windows Phone') > -1,
-	chromeVersion : parseInt(window.navigator.appVersion.match(/Chrome\/(\d+)\./)[1], 10),
+	chromeVersion : (_nav.appVersion.test(/Chrome\/(\d+)\./) ? parseInt(_nav.appVersion.match(/Chrome\/(\d+)\./)[1], 10) : 0),
 	language: _nav.language && _nav.language.toLowerCase().replace('-', '_') || ''
 });
 
@@ -140,7 +140,7 @@ ath.OSVersion = ath.OSVersion && ath.OSVersion[2] ? +ath.OSVersion[2].replace('_
 ath.isStandalone = window.navigator.standalone || ( ath.isMobileChrome && ( screen.height - document.documentElement.clientHeight < 40 ) );	// TODO: check the lame polyfill
 ath.isTablet = (ath.isMobileSafari && _ua.indexOf('iPad') > -1) || (ath.isMobileChrome && _ua.indexOf('Mobile') < 0);
 
-ath.isCompatible = (ath.isMobileSafari && ath.OSVersion >= 6) || (ath.isMobileChrome && ath.chromeVersion >= 31);	// TODO: add winphone
+ath.isCompatible = (ath.isMobileSafari && ath.OSVersion >= 6) || (ath.isMobileChrome && (ath.chromeVersion && ath.chromeVersion >= 31));	// TODO: add winphone
 
 var _defaultSession = {
 	lastDisplayTime: 0,			// last time we displayed the message
