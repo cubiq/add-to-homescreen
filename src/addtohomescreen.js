@@ -463,17 +463,15 @@ ath.Class.prototype = {
 		}
 
 		// kick the animation
-		if ( this.options.animate == 'scroll' ) {
-			setTimeout(function () {
-				that.element.style.webkitTransform = 'translate3d(0,0,0)';
-				that.element.style.webkitTransitionDuration = '1.2s';
-			}, 0);
-		} else if ( this.options.animate == 'fade' ) {
-			setTimeout(function () {
-				that.element.style.opacity = '1';
-				that.element.style.webkitTransitionDuration = '0.6s';
-			}, 0);
-		}
+		setTimeout(function () {
+			if ( that.options.animate == 'scroll' ) {
+					that.element.style.webkitTransform = 'translate3d(0,0,0)';
+					that.element.style.webkitTransitionDuration = '1.2s';
+			} else if ( that.options.animate == 'fade' ) {
+					that.element.style.opacity = '1';
+					that.element.style.webkitTransitionDuration = '0.6s';
+			}
+		}, 0);
 
 		// set the destroy timer
 		if ( this.options.lifespan ) {
