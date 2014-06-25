@@ -505,7 +505,7 @@ ath.Class.prototype = {
 		this.element.addEventListener('MSTransitionEnd', this, false);
 
 		// start the fade out animation
-		if ( !!this.options.animate ) {
+		if ( this.options.animate ) {
 			this.element.style.webkitTransitionDuration = '0.3s';
 			this.element.style.opacity = '0';
 		} else {
