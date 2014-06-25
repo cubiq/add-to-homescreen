@@ -113,7 +113,7 @@ ath.defaults = {
 	onAdd: null,				// when the application is launched the first time from the homescreen (guesstimate)
 	onPrivate: null,			// executed if user is in private mode
 	detectHomescreen: false,	// try to detect if the site has been added to the homescreen (false | true | 'hash' | 'queryString' | 'smartURL')
-	animate: 'scroll'			// Change animation style
+	animate: 'drop'			// Change animation style
 };
 
 // browser info and capability
@@ -399,7 +399,7 @@ ath.Class.prototype = {
 		// create the actual message element
 		this.element = document.createElement('div');
 		this.element.className = 'ath-container ath-' + ath.OS + ' ath-' + ath.OS + (ath.OSVersion + '').substr(0,1) + ' ath-' + (ath.isTablet ? 'tablet' : 'phone');
-		if ( this.options.animate == 'scroll' ) {
+		if ( this.options.animate == 'drop' ) {
 			this.element.style.cssText = '-webkit-transition-property:-webkit-transform,opacity;-webkit-transition-duration:0;-webkit-transform:translate3d(0,0,0);transition-property:transform,opacity;transition-duration:0;transform:translate3d(0,0,0);-webkit-transition-timing-function:ease-out';
 			this.element.style.webkitTransform = 'translate3d(0,-' + window.innerHeight + 'px,0)';
 		} else if ( this.options.animate == 'fade' ) {
@@ -464,7 +464,7 @@ ath.Class.prototype = {
 
 		// kick the animation
 		setTimeout(function () {
-			if ( that.options.animate == 'scroll' ) {
+			if ( that.options.animate == 'drop' ) {
 					that.element.style.webkitTransform = 'translate3d(0,0,0)';
 					that.element.style.webkitTransitionDuration = '1.2s';
 			} else if ( that.options.animate == 'fade' ) {
