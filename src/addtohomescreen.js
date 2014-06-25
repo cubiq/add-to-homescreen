@@ -112,8 +112,8 @@ ath.defaults = {
 	onRemove: null,				// executed when the message is removed
 	onAdd: null,				// when the application is launched the first time from the homescreen (guesstimate)
 	onPrivate: null,			// executed if user is in private mode
-	detectHomescreen: false,		// try to detect if the site has been added to the homescreen (false | true | 'hash' | 'queryString' | 'smartURL')
-	animate: 'scroll'				// Change animation style
+	detectHomescreen: false,	// try to detect if the site has been added to the homescreen (false | true | 'hash' | 'queryString' | 'smartURL')
+	animate: 'scroll'			// Change animation style
 };
 
 // browser info and capability
