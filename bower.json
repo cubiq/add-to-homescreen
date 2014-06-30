@@ -6,7 +6,10 @@
     "Matteo Spinelli <matteo@cubiq.org> (http://cubiq.org)"
   ],
   "description": "'Add to homescreen call out for iOS and Android",
-  "main": "src/addtohomescreen.js",
+  "main": [
+    "src/addtohomescreen.js",
+    "style/addtohomescreen.css"
+  ],
   "ignore": [
     "demos",
     "imgs",
