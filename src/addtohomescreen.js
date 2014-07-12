@@ -55,6 +55,11 @@ ath.intl = {
 		action: { ios: 'Ajouter sur l\'écran d\'accueil', android: 'Ajouter à l\'écran d\'accueil', windows: 'Épingler à l\'écran d\'accueil' }
 	},
 
+	he_il: {
+    		message: 'להוספת האפליקציה למסך הבית: ללחוץ על %icon ואז <strong>%action</strong>.',
+		action: { ios: 'הוסף למסך הבית', android: 'הוסף למסך הבית', windows: 'נעץ להתחלה' }
+	},
+
 	it_it: {
 		message: 'Per Aggiungere questa web app alla schermata iniziale: premi %icon e poi <strong>%action</strong>.',
 		action: { ios: 'Aggiungi a Home', android: 'Aggiungi alla homescreen', windows: 'aggiungi a start' }
