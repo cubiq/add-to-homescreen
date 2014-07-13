@@ -56,7 +56,7 @@ ath.intl = {
 	},
 
 	he_il: {
-    		message: 'להוספת האפליקציה למסך הבית: ללחוץ על %icon ואז <strong>%action</strong>.',
+		message: '<span dir="rtl">להוספת האפליקציה למסך הבית: ללחוץ על %icon ואז <strong>%action</strong>.</span>',
 		action: { ios: 'הוסף למסך הבית', android: 'הוסף למסך הבית', windows: 'נעץ להתחלה' }
 	},
 
