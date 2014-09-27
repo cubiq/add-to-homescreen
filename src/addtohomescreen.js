@@ -182,7 +182,8 @@ ath.Class = function (options) {
 	this.container = document.documentElement;
 
 	// load session
-	this.session = JSON.parse(localStorage.getItem(this.options.appID));
+	this.session = localStorage.getItem(this.options.appID);
+	this.session = this.session ? JSON.parse(this.session) : undefined;
 
 	// user most likely came from a direct link containing our token, we don't need it and we remove it
 	if ( ath.hasToken && ( !ath.isCompatible || !this.session ) ) {
@@ -194,7 +195,7 @@ ath.Class = function (options) {
 	if ( !ath.isCompatible ) {
 		return;
 	}
-
+	
 	this.session = this.session || _defaultSession;
 
 	// check if we can use the local storage
