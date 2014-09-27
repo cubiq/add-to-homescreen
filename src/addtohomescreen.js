@@ -117,6 +117,7 @@ ath.defaults = {
 
 // browser info and capability
 var _ua = window.navigator.userAgent;
+
 var _nav = window.navigator;
 _extend(ath, {
 	hasToken: document.location.hash == '#ath' || _reSmartURL.test(document.location.href) || _reQueryString.test(document.location.search),
@@ -174,7 +175,7 @@ ath.Class = function (options) {
 	if ( this.options.debug ) {
 		ath.isCompatible = true;
 		ath.OS = typeof this.options.debug == 'string' ? this.options.debug : ath.OS == 'unsupported' ? 'android' : ath.OS;
-		ath.OSVersion = ath.OS == 'ios' ? '7' : '4';
+		ath.OSVersion = ath.OS == 'ios' ? '8' : '4';
 	}
 
 	// the element the message will be appended to
