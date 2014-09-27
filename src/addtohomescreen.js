@@ -1,4 +1,4 @@
-/* Add to Homescreen v3.0.7 ~ (c) 2014 Matteo Spinelli ~ @license: http://cubiq.org/license */
+/* Add to Homescreen v3.0.8 ~ (c) 2014 Matteo Spinelli ~ @license: http://cubiq.org/license */
 (function (window, document) {
 /*
        _   _ _____     _____
@@ -67,7 +67,7 @@ ath.intl = {
 
 	nl_nl: {
 		message: 'Om deze webapp op je telefoon te installeren, klik op %icon en dan <strong>%action</strong>.',
-		action: { ios: 'Voeg toe aan beginscherm', android: 'Toevoegen aan startscherm', windows: 'Aan startscherm vastmaken' }
+		action: { ios: 'Zet in beginscherm', android: 'Toevoegen aan startscherm', windows: 'Aan startscherm vastmaken' }
 	},
 
 	sv_se: {
