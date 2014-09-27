@@ -195,7 +195,7 @@ ath.Class = function (options) {
 	if ( !ath.isCompatible ) {
 		return;
 	}
-	
+
 	this.session = this.session || _defaultSession;
 
 	// check if we can use the local storage
