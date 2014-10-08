@@ -251,4 +251,11 @@
 		z-index: 2147483641;
 		box-shadow: none;
 	}
+
+	/* iPhone 6 Plus */
+	@media (-webkit-min-device-pixel-ratio: 3) {
+		.ath-ios8.ath-phone:after {
+			left: 66%;
+		}
+	}
 }
