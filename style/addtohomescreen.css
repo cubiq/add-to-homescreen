@@ -237,18 +237,31 @@
 		left: 39%;
 	}
 
-	.ath-ios8.ath-phone {
+	.ath-ios8.ath-phone,
+	.ath-ios9.ath-phone,
+	.ath-ios10.ath-phone {
 		left: auto;
 		bottom: auto;
 		right: 0.4em;
 		top: 1.8em;
 	}
 
-	.ath-ios8.ath-phone:after {
+	.ath-ios8.ath-phone:after,
+	.ath-ios9.ath-phone:after,
+	.ath-ios10.ath-phone:after {
 		bottom: auto;
 		top: -0.9em;
 		left: 68%;
 		z-index: 2147483641;
 		box-shadow: none;
+	}
+
+	/* iPhone 6 Plus */
+	@media (-webkit-min-device-pixel-ratio: 3) {
+		.ath-ios8.ath-phone:after,
+		.ath-ios9.ath-phone:after,
+		.ath-ios10.ath-phone:after {
+			left: 66%;
+		}
 	}
 }

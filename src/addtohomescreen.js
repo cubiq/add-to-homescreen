@@ -399,7 +399,7 @@ ath.Class.prototype = {
 
 		// create the actual message element
 		this.element = document.createElement('div');
-		this.element.className = 'ath-container ath-' + ath.OS + ' ath-' + ath.OS + (ath.OSVersion + '').substr(0,1) + ' ath-' + (ath.isTablet ? 'tablet' : 'phone');
+		this.element.className = 'ath-container ath-' + ath.OS + ' ath-' + ath.OS + (ath.OSVersion + '').split('.')[0] + ' ath-' + (ath.isTablet ? 'tablet' : 'phone');
 		this.element.style.cssText = '-webkit-transition-property:-webkit-transform,opacity;-webkit-transition-duration:0;-webkit-transform:translate3d(0,0,0);transition-property:transform,opacity;transition-duration:0;transform:translate3d(0,0,0);-webkit-transition-timing-function:ease-out';
 		this.element.style.webkitTransform = 'translate3d(0,-' + window.innerHeight + 'px,0)';
 		this.element.style.webkitTransitionDuration = '0s';
