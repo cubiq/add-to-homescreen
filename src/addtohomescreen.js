@@ -96,11 +96,7 @@ ath.defaults = {
 	appID: 'org.cubiq.addtohome',		// local storage name (no need to change)
 	fontSize: 15,				// base font size, used to properly resize the popup based on viewport scale factor
 	debug: false,				// override browser checks
-<<<<<<< HEAD
 	logging: false,				// log reasons for showing or not showing to js console; defaults to true when debug is true
-=======
-	log: false,				// log reasons for showing or not showing to js console
->>>>>>> c20d2a0ac755540156d218b18ac8c2fbb402fb39
 	modal: false,				// prevent further actions until the message is closed
 	mandatory: false,			// you can't proceed if you don't add the app to the homescreen
 	autostart: true,			// show the message automatically
