@@ -8,6 +8,11 @@
                               by Matteo Spinelli ~ http://cubiq.org
 */
 
+// Check for addEventListener browser support (<IE9), otherwise return preventing useless overhead 
+if ( !window.addEventListener ) {
+	return;
+}
+
 // Check if document is loaded, needed by autostart
 var _DOMReady = false;
 if ( document.readyState === 'complete' ) {
