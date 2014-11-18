@@ -8,7 +8,7 @@
                               by Matteo Spinelli ~ http://cubiq.org
 */
 
-// Check for addEventListener browser support (<IE9), otherwise return preventing useless overhead 
+// Check for addEventListener browser support (<IE9)
 if ( !window.addEventListener ) {
 	return;
 }
