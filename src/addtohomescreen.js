@@ -1,4 +1,4 @@
-/* Add to Homescreen v3.1.0 ~ (c) 2014 Matteo Spinelli ~ @license: http://cubiq.org/license */
+﻿/* Add to Homescreen v3.1.0 ~ (c) 2014 Matteo Spinelli ~ @license: http://cubiq.org/license */
 (function (window, document) {
 /*
        _   _ _____     _____
@@ -9,16 +9,17 @@
 */
 
 // Check for addEventListener browser support (<IE9)
-if ( !window.addEventListener ) {
-	return;
-}
+if ( window.addEventListener ) {
 
-// Check if document is loaded, needed by autostart
-var _DOMReady = false;
-if ( document.readyState === 'complete' ) {
-	_DOMReady = true;
-} else {
-	window.addEventListener('load', loaded, false);
+	// Check if document is loaded, needed by autostart
+	var _DOMReady = false;
+	if ( document.readyState === 'complete' ) {
+		_DOMReady = true;
+	} else {
+		window.addEventListener('load', loaded, false);
+	}
+
+
 }
 
 function loaded () {
@@ -180,6 +181,10 @@ ath.removeSession = function (appID) {
 };
 
 ath.Class = function (options) {
+	// Check for addEventListener browser support (<IE9)
+	if ( !window.addEventListener ) {
+		return;
+	}
 	// merge default options with user config
 	this.options = _extend({}, ath.defaults);
 	_extend(this.options, options);
