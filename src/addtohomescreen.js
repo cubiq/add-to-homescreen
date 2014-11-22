@@ -1,4 +1,4 @@
-/* Add to Homescreen v3.1.0 ~ (c) 2014 Matteo Spinelli ~ @license: http://cubiq.org/license */
+/* Add to Homescreen v3.1.1 ~ (c) 2014 Matteo Spinelli ~ @license: http://cubiq.org/license */
 (function (window, document) {
 /*
        _   _ _____     _____
@@ -8,16 +8,14 @@
                               by Matteo Spinelli ~ http://cubiq.org
 */
 
-// Check for addEventListener browser support (<IE9)
-if ( !window.addEventListener ) {
-	return;
-}
+// Check for addEventListener browser support (prevent errors in IE<9)
+var _eventListener = 'addEventListener' in window;
 
 // Check if document is loaded, needed by autostart
 var _DOMReady = false;
 if ( document.readyState === 'complete' ) {
 	_DOMReady = true;
-} else {
+} else if ( _eventListener ) {
 	window.addEventListener('load', loaded, false);
 }
 
@@ -183,6 +181,11 @@ ath.Class = function (options) {
 	// merge default options with user config
 	this.options = _extend({}, ath.defaults);
 	_extend(this.options, options);
+
+	// IE<9 so exit (I hate you, really)
+	if ( !_eventListener ) {
+		return;
+	}
 
 	// normalize some options
 	this.options.mandatory = this.options.mandatory && ( 'standalone' in window.navigator || this.options.debug );
