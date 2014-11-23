@@ -1,4 +1,4 @@
-/* Add to Homescreen v3.1.1 ~ (c) 2014 Matteo Spinelli ~ @license: http://cubiq.org/license */
+﻿/* Add to Homescreen v3.1.1 ~ (c) 2014 Matteo Spinelli ~ @license: http://cubiq.org/license */
 (function (window, document) {
 /*
        _   _ _____     _____
@@ -626,5 +626,12 @@ function _removeToken () {
 
 // expose to the world
 window.addToHomescreen = ath;
+if ( typeof module === "object" && typeof module.exports === "object" ) {
+	// CommonJS, just export
+	module.exports = window.addToHomescreen;
+} else if ( typeof define === "function" && define.amd ) {
+	// AMD support
+	define("addToHomescreen", function() { return window.addToHomescreen; } );
+}
 
 })(window, document);
