@@ -585,6 +585,7 @@ ath.Class.prototype = {
       return localStorage.getItem(item);
     } catch(e) {
       // Preventing exception for some browsers when fetching localStorage key
+      ath.hasLocalStorage = false;
     }
   },
 
