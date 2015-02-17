@@ -40,12 +40,14 @@ function ath (options) {
 ath.intl = {
 	de_de: {
 		ios: 'Um diese Web-App zum Home-Bildschirm hinzuzufügen, tippen Sie auf %icon und dann <strong>Zum Home-Bildschirm</strong>.',
-		android: 'To add this web app to the home screen open the browser option menu and tap on <strong>Add to homescreen</strong>. <small>The menu can be accessed by pressing the menu hardware button if your device has one, or by tapping the top right menu icon <span class="ath-action-icon">icon</span>.</small>',
+		android: 'Um diese Web-App zum Home-Bildschirm hinzuzufügen, öffnen Sie das Browser-Optionsmenü und tippen Sie auf <strong>Zum Startbildschirm hinzufügen</strong>. <small>Das Menü kann über den Hardware-Menüknopf erreicht werden, wenn Ihr Gerät einen solchen hat, oder indem Sie auf das Menü-Icon <span class="ath-action-icon">icon</span> oben rechts tippen.</small>',
+		windows: 'Um diese Web-App zum Home-Bildschirm hinzuzufügen, öffnen Sie das Browser-Optionsmenü und tippen Sie auf <strong>Auf Startseite</strong>.'
 	},
 
 	en_us: {
 		ios: 'To add this web app to the home screen: tap %icon and then <strong>Add to Home Screen</strong>.',
 		android: 'To add this web app to the home screen open the browser option menu and tap on <strong>Add to homescreen</strong>. <small>The menu can be accessed by pressing the menu hardware button if your device has one, or by tapping the top right menu icon <span class="ath-action-icon">icon</span>.</small>',
+		windows: 'To add this web app to the home screen open the browser option menu and tap on <strong>pin to start</strong>.'
 	},
 
 	es_es: {
