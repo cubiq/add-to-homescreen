@@ -101,6 +101,11 @@ ath.intl = {
 	zh_tw: {
 		ios: '如要把應用程式加至主屏幕, 請點擊%icon, 然後<strong>加至主屏幕</strong>.',
 		android: 'To add this web app to the home screen open the browser option menu and tap on <strong>Add to homescreen</strong>. <small>The menu can be accessed by pressing the menu hardware button if your device has one, or by tapping the top right menu icon <span class="ath-action-icon">icon</span>.</small>',
+	},
+
+	ru_ru: {
+		ios: 'Чтобы добавить этот сайт на свой домашний экран нажмите на иконку %icon и затем <strong>На экран "Домой"</strong>.',
+		android: 'Чтобы добавить сайт на свой домашний экрна откройте меню браузера и нажмите на <strong>Добавить на главный экран</strong>. <small>Меню можно вызвать, нажав на кнопку меню вашего телефона, если она есть. Или найдите иконку сверху справа <span class="ath-action-icon">иконка</span>.</small>',
 	}
 };
 
