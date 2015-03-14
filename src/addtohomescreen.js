@@ -151,7 +151,7 @@ _extend(ath, {
 ath.language = ath.language && ath.language in ath.intl ? ath.language : 'en_us';
 
 ath.isMobileSafari = ath.isIDevice && _ua.indexOf('Safari') > -1 && _ua.indexOf('CriOS') < 0;
-ath.OS = ath.isIDevice ? 'ios' : ath.isMobileChrome ? 'android' : ath.isMobileIE ? 'windows' : 'ios';
+ath.OS = ath.isIDevice ? 'ios' : ath.isMobileChrome ? 'android' : ath.isMobileIE ? 'windows' : 'unsupported';
 
 ath.OSVersion = _ua.match(/(OS|Android) (\d+[_\.]\d+)/);
 ath.OSVersion = ath.OSVersion && ath.OSVersion[2] ? +ath.OSVersion[2].replace('_', '.') : 0;
