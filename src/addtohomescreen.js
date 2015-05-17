@@ -1,4 +1,4 @@
-/* Add to Homescreen v3.1.1 ~ (c) 2014 Matteo Spinelli ~ @license: http://cubiq.org/license */
+/* Add to Homescreen v3.1.2 ~ (c) 2015 Matteo Spinelli ~ @license: http://cubiq.org/license */
 (function (window, document) {
 /*
        _   _ _____     _____
@@ -112,12 +112,12 @@ ath.intl = {
 		ios: '如要把應用程式加至主屏幕, 請點擊%icon, 然後<strong>加至主屏幕</strong>.',
 		android: 'To add this web app to the home screen open the browser option menu and tap on <strong>Add to homescreen</strong>. <small>The menu can be accessed by pressing the menu hardware button if your device has one, or by tapping the top right menu icon <span class="ath-action-icon">icon</span>.</small>',
 	},
-		
-	fi_FI: {
+
+	fi_fi: {
 		ios: 'Liitä tämä sovellus kotivalikkoon: klikkaa %icon ja tämän jälkeen <strong>Lisää kotivalikkoon</strong>.',
 		android: 'Lisätäksesi tämän sovelluksen aloitusnäytölle, avaa selaimen valikko ja klikkaa tähti -ikonia tai <strong>Lisää aloitusnäytölle tekstiä</strong>. <small>Valikkoon pääsee myös painamalla menuvalikkoa, jos laitteessasi on sellainen tai koskettamalla oikealla yläkulmassa menu ikonia <span class="ath-action-icon">icon</span>.</small>',
 	}
-		
+
 };
 
 // Add 2 characters language support (Android mostly)
@@ -459,10 +459,10 @@ ath.Class.prototype = {
 
     // Add the application name
     if (this.options.appName) {
-      var appName = document.createElement("h3"); 
+      var appName = document.createElement("h3");
       appName.className = "appName";
       appName.innerHTML = this.options.appName;
-      
+
       this.element.appendChild(appName);
     }
 
