@@ -60,7 +60,7 @@ ath.intl = {
 
 	fr_fr: {
 		ios: 'Pour ajouter cette application web sur l\'écran d\'accueil : Appuyez %icon et sélectionnez <strong>Ajouter sur l\'écran d\'accueil</strong>.',
-		android: 'To add this web app to the home screen open the browser option menu and tap on <strong>Add to homescreen</strong>. <small>The menu can be accessed by pressing the menu hardware button if your device has one, or by tapping the top right menu icon <span class="ath-action-icon">icon</span>.</small>',
+		android: 'Pour ajouter cette application web sur l\'écran d\'accueil : Appuyez sur le bouton "menu", puis sur <strong>Ajouter sur l\'écran d\'accueil</strong>. <small>Le menu peut-être accessible en appyant sur le bouton "menu" du téléphone s\'il en possède un <i class="fa fa-bars"></i>. Sinon, il se trouve probablement dans la coin supérieur droit du navigateur %icon.</small>',
 	},
 
 	he_il: {
@@ -450,6 +450,17 @@ ath.Class.prototype = {
 			this.img.src = this.applicationIcon.href;
 			this.element.appendChild(this.img);
 		}
+
+
+    // Add the application name
+    if (this.options.appName) {
+      var appName = document.createElement("h3"); 
+      appName.className = "appName";
+      appName.innerHTML = this.options.appName;
+      
+      this.element.appendChild(appName);
+    }
+
 
 		this.element.innerHTML += message;
 
