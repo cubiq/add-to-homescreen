@@ -158,7 +158,7 @@ _extend(ath, {
 	hasToken: document.location.hash == '#ath' || _reSmartURL.test(document.location.href) || _reQueryString.test(document.location.search),
 	isRetina: window.devicePixelRatio && window.devicePixelRatio > 1,
 	isIDevice: (/iphone|ipod|ipad/i).test(_ua),
-	isMobileChrome: _ua.indexOf('Android') > -1 && (/Chrome\/[.0-9]*/).test(_ua),
+	isMobileChrome: _ua.indexOf('Android') > -1 && (/Chrome\/[.0-9]*/).test(_ua) && _ua.indexOf("Version") == -1,
 	isMobileIE: _ua.indexOf('Windows Phone') > -1,
 	language: _nav.language && _nav.language.toLowerCase().replace('-', '_') || ''
 });
