@@ -101,6 +101,14 @@ ath.intl = {
 	zh_tw: {
 		ios: '如要把應用程式加至主屏幕, 請點擊%icon, 然後<strong>加至主屏幕</strong>.',
 		android: 'To add this web app to the home screen open the browser option menu and tap on <strong>Add to homescreen</strong>. <small>The menu can be accessed by pressing the menu hardware button if your device has one, or by tapping the top right menu icon <span class="ath-action-icon">icon</span>.</small>',
+	},
+	ko_kr: {
+		ios: '이 웹앱을 홈 스크린에 추가하기 위해서: %icon을 누르시고 <strong>홈 화면에 추가</strong>.',
+		android: 'To add this web app to the home screen open the browser option menu and tap on <strong>Add to homescreen</strong>. <small>The menu can be accessed by pressing the menu hardware button if your device has one, or by tapping the top right menu icon <span class="ath-action-icon">icon</span>.</small>',
+	},
+	ja_jp: {
+		ios: 'このウェプアプリをホーム画面に追加するために%iconを押して<strong>ホーム画面に追加</strong>。',
+		android: 'To add this web app to the home screen open the browser option menu and tap on <strong>Add to homescreen</strong>. <small>The menu can be accessed by pressing the menu hardware button if your device has one, or by tapping the top right menu icon <span class="ath-action-icon">icon</span>.</small>',
 	}
 };
 
