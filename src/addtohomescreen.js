@@ -420,9 +420,13 @@ ath.Class.prototype = {
 
 		var message = '';
 
-		if ( this.options.message in ath.intl ) {		// you can force the locale
+		if ( typeof this.options.message == 'object' && ath.language in this.options.message ) {		// use custom language message
+			message = this.options.message[ath.language][ath.OS];
+		} else if ( typeof this.options.message == 'object' && ath.OS in this.options.message ) {		// use custom os message
+			message = this.options.message[ath.OS];
+		} else if ( this.options.message in ath.intl ) {		// you can force the locale
 			message = ath.intl[this.options.message][ath.OS];
-		} else if ( this.options.message !== '' ) {		// or use a custom message
+		} else if ( this.options.message !== '' ) {		// use a custom message
 			message = this.options.message;
 		} else {										// otherwise we use our message
 			message = ath.intl[ath.language][ath.OS];
