@@ -135,6 +135,7 @@ ath.defaults = {
 	appID: 'org.cubiq.addtohome',		// local storage name (no need to change)
 	fontSize: 15,				// base font size, used to properly resize the popup based on viewport scale factor
 	debug: false,				// override browser checks
+	logging: false,				// log reasons for showing or not showing to js console; defaults to true when debug is true
 	modal: false,				// prevent further actions until the message is closed
 	mandatory: false,			// you can't proceed if you don't add the app to the homescreen
 	autostart: true,			// show the message automatically
@@ -198,10 +199,23 @@ ath.removeSession = function (appID) {
 	}
 };
 
+ath.doLog = function (logStr) {
+	if ( this.options.logging ) {
+		console.log(logStr);
+	}
+};
+
 ath.Class = function (options) {
+	// class methods
+	this.doLog = ath.doLog;
+
 	// merge default options with user config
 	this.options = _extend({}, ath.defaults);
 	_extend(this.options, options);
+	// override defaults that are dependent on each other
+	if ( options.debug && (typeof options.logging === "undefined") ) {
+		this.options.logging = true;
+	}
 
 	// IE<9 so exit (I hate you, really)
 	if ( !_eventListener ) {
@@ -238,6 +252,7 @@ ath.Class = function (options) {
 
 	// the device is not supported
 	if ( !ath.isCompatible ) {
+ 		this.doLog("Add to homescreen: not displaying callout because device not supported");
 		return;
 	}
 
@@ -271,8 +286,16 @@ ath.Class = function (options) {
 	}
 
 	// critical errors:
-	// user opted out, already added to the homescreen, not a valid location
-	if ( this.session.optedout || this.session.added || !isValidLocation ) {
+	if ( this.session.optedout ) {
+		this.doLog("Add to homescreen: not displaying callout because user opted out");
+		return;
+	}
+	if ( this.session.added ) {
+		this.doLog("Add to homescreen: not displaying callout because already added to the homescreen");
+		return;
+	}
+	if ( !isValidLocation ) {
+		this.doLog("Add to homescreen: not displaying callout because not a valid location");
 		return;
 	}
 
@@ -288,6 +311,7 @@ ath.Class = function (options) {
 			}
 		}
 
+		this.doLog("Add to homescreen: not displaying callout because in standalone mode");
 		return;
 	}
 
@@ -307,6 +331,7 @@ ath.Class = function (options) {
 				}
 			}
 
+			this.doLog("Add to homescreen: not displaying callout because URL has token, so we are likely coming from homescreen");
 			return;
 		}
 
@@ -327,12 +352,14 @@ ath.Class = function (options) {
 
 		// we do not show the message if this is your first visit
 		if ( this.options.skipFirstVisit ) {
+			this.doLog("Add to homescreen: not displaying callout because skipping first visit");
 			return;
 		}
 	}
 
 	// we do no show the message in private mode
 	if ( !this.options.privateModeOverride && !ath.hasLocalStorage ) {
+		this.doLog("Add to homescreen: not displaying callout because browser is in private mode");
 		return;
 	}
 
@@ -344,6 +371,7 @@ ath.Class = function (options) {
 	}
 
 	if ( this.options.autostart ) {
+		this.doLog("Add to homescreen: autostart displaying callout");
 		this.show();
 	}
 };
@@ -374,11 +402,14 @@ ath.Class.prototype = {
 		// in autostart mode wait for the document to be ready
 		if ( this.options.autostart && !_DOMReady ) {
 			setTimeout(this.show.bind(this), 50);
+			// we are not displaying callout because DOM not ready, but don't log that because
+			// it would log too frequently
 			return;
 		}
 
 		// message already on screen
 		if ( this.shown ) {
+			this.doLog("Add to homescreen: not displaying callout because already shown on screen");
 			return;
 		}
 
@@ -388,16 +419,19 @@ ath.Class.prototype = {
 		if ( force !== true ) {
 			// this is needed if autostart is disabled and you programmatically call the show() method
 			if ( !this.ready ) {
+				this.doLog("Add to homescreen: not displaying callout because not ready");
 				return;
 			}
 
 			// we obey the display pace (prevent the message to popup too often)
 			if ( now - lastDisplayTime < this.options.displayPace * 60000 ) {
+				this.doLog("Add to homescreen: not displaying callout because displayed recently");
 				return;
 			}
 
 			// obey the maximum number of display count
 			if ( this.options.maxDisplayCount && this.session.displayCount >= this.options.maxDisplayCount ) {
+				this.doLog("Add to homescreen: not displaying callout because displayed too many times already");
 				return;
 			}
 		}
@@ -475,7 +509,9 @@ ath.Class.prototype = {
 		this.container.appendChild(this.viewport);
 
 		// if we don't have to wait for an image to load, show the message right away
-		if ( !this.img ) {
+		if ( this.img ) {
+			this.doLog("Add to homescreen: not displaying callout because waiting for img to load");
+		} else {
 			this._delayedShow();
 		}
 	},
