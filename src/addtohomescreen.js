@@ -1,4 +1,4 @@
-/* Add to Homescreen v3.1.2 ~ (c) 2015 Matteo Spinelli ~ @license: http://cubiq.org/license */
+/* Add to Homescreen v3.2.0 ~ (c) 2015 Matteo Spinelli ~ @license: http://cubiq.org/license */
 (function (window, document) {
 /*
        _   _ _____     _____
@@ -465,17 +465,6 @@ ath.Class.prototype = {
 			this.element.appendChild(this.img);
 		}
 
-
-    // Add the application name
-    if (this.options.appName) {
-      var appName = document.createElement("h3");
-      appName.className = "appName";
-      appName.innerHTML = this.options.appName;
-
-      this.element.appendChild(appName);
-    }
-
-
 		this.element.innerHTML += message;
 
 		// we are not ready to show, place the message out of sight
@@ -616,14 +605,14 @@ ath.Class.prototype = {
 		this.updateSession();
 	},
 
-  getItem: function(item) {
-    try {
-      return localStorage.getItem(item);
-    } catch(e) {
-      // Preventing exception for some browsers when fetching localStorage key
-      ath.hasLocalStorage = false;
-    }
-  },
+	getItem: function(item) {
+		try {
+			return localStorage.getItem(item);
+		} catch(e) {
+			// Preventing exception for some browsers when fetching localStorage key
+			ath.hasLocalStorage = false;
+		}
+	},
 
 	optOut: function () {
 		this.session.optedout = true;
