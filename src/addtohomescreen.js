@@ -227,7 +227,7 @@ ath.Class = function (options) {
 	this.container = document.documentElement;
 
 	// load session
-	this.session = localStorage.getItem(this.options.appID);
+	this.session = this.getItem(this.options.appID);
 	this.session = this.session ? JSON.parse(this.session) : undefined;
 
 	// user most likely came from a direct link containing our token, we don't need it and we remove it
@@ -266,7 +266,7 @@ ath.Class = function (options) {
 	}
 
 	// check compatibility with old versions of add to homescreen. Opt-out if an old session is found
-	if ( localStorage.getItem('addToHome') ) {
+	if ( this.getItem('addToHome') ) {
 		this.optOut();
 	}
 
@@ -615,6 +615,15 @@ ath.Class.prototype = {
 		this.session = _defaultSession;
 		this.updateSession();
 	},
+
+  getItem: function(item) {
+    try {
+      return localStorage.getItem(item);
+    } catch(e) {
+      // Preventing exception for some browsers when fetching localStorage key
+      ath.hasLocalStorage = false;
+    }
+  },
 
 	optOut: function () {
 		this.session.optedout = true;
