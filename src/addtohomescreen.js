@@ -203,6 +203,10 @@ var _defaultSession = {
 
 ath.removeSession = function (appID) {
 	try {
+		if (!localStorage) {
+			throw new Error('localStorage is not defined');
+		}
+
 		localStorage.removeItem(appID || ath.defaults.appID);
 	} catch (e) {
 		// we are most likely in private mode
@@ -270,6 +274,10 @@ ath.Class = function (options) {
 
 	// check if we can use the local storage
 	try {
+		if (!localStorage) {
+			throw new Error('localStorage is not defined');
+		}
+
 		localStorage.setItem(this.options.appID, JSON.stringify(this.session));
 		ath.hasLocalStorage = true;
 	} catch (e) {
@@ -643,7 +651,9 @@ ath.Class.prototype = {
 			return;
 		}
 
-		localStorage.setItem(this.options.appID, JSON.stringify(this.session));
+        if (localStorage) {
+            localStorage.setItem(this.options.appID, JSON.stringify(this.session));
+        }
 	},
 
 	clearSession: function () {
@@ -653,6 +663,10 @@ ath.Class.prototype = {
 
 	getItem: function(item) {
 		try {
+			if (!localStorage) {
+				throw new Error('localStorage is not defined');
+			}
+
 			return localStorage.getItem(item);
 		} catch(e) {
 			// Preventing exception for some browsers when fetching localStorage key
