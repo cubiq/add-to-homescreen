@@ -1,4 +1,4 @@
-/* Add to Homescreen v3.2.1 ~ (c) 2015 Matteo Spinelli ~ @license: http://cubiq.org/license */
+/* Add to Homescreen v3.2.2 ~ (c) 2015 Matteo Spinelli ~ @license: http://cubiq.org/license */
 (function (window, document) {
 /*
        _   _ _____     _____
