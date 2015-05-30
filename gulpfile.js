@@ -21,7 +21,7 @@ gulp.task('scripts', ['lint'], function() {
 });
 
 gulp.task('compress',['scripts'], function() {
-  return gulp.src('./dist/js/*.js')
+  return gulp.src('./dist/js/addtohomescreen.js')
     .pipe(uglify())
     .pipe(rename({suffix: ".min"}))
     .pipe(gulp.dest('./dist/js'));
