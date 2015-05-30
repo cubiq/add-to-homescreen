@@ -1,0 +1,36 @@
+{
+  "name": "add-to-homescreen",
+  "version": "3.2.2",
+  "description": "Add to homescreen call out for iOS and Android",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cubiq/add-to-homescreen.git"
+  },
+  "keywords": [
+    "iPhone",
+    "iPod",
+    "iPad",
+    "iOS6",
+    "iOS7",
+    "android",
+    "mobile"
+  ],
+  "author": "Matteo Spinelli <matteo@cubiq.org> (http://cubiq.org)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cubiq/add-to-homescreen/issues"
+  },
+  "homepage": "https://github.com/cubiq/add-to-homescreen",
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-concat": "^2.5.2",
+    "gulp-jshint": "^1.11.0",
+    "gulp-minify-css": "^1.1.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.2.0"
+  }
+}

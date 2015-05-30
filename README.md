@@ -10,8 +10,8 @@ Add `addtohomescreen.css` and `addtohomescreen.js` to the head of your projects 
 <head>
 <title>Add To Home</title>
 ...
-<link rel="stylesheet" type="text/css" href="../../style/addtohomescreen.css">
-<script src="../../src/addtohomescreen.js"></script>
+<link rel="stylesheet" type="text/css" href="../../dist/css/addtohomescreen.min.css">
+<script src="../../dist/js/addtohomescreen.min.js"></script>
 <script>
 addToHomescreen();
 </script>
