@@ -222,7 +222,7 @@ ath.Class = function (options) {
 	this.options = _extend({}, ath.defaults);
 	_extend(this.options, options);
 	// override defaults that are dependent on each other
-	if ( options.debug && (typeof options.logging === "undefined") ) {
+	if ( options && options.debug && (typeof options.logging === "undefined") ) {
 		this.options.logging = true;
 	}
 
