@@ -127,6 +127,16 @@ ath.intl = {
 		ios: '如要把應用程式加至主屏幕, 請點擊%icon, 然後<strong>加至主屏幕</strong>.',
 		android: 'To add this web app to the home screen open the browser option menu and tap on <strong>Add to homescreen</strong>. <small>The menu can be accessed by pressing the menu hardware button if your device has one, or by tapping the top right menu icon <span class="ath-action-icon">icon</span>.</small>',
 	},
+	
+	sk_sk: {
+		ios: 'Pre pridanie tejto webovej aplikácie na úvodnú obrazovku: stlačte %icon a potom <strong>Pridať na úvodnú obrazovku</strong>.',
+		android: 'Pre pridanie tejto webovej aplikácie na úvodnú obrazovku otvorte menu nastavenia prehliadača a stlačte <strong>Pridať na úvodnú obrazovku</strong>. <small>K menu sa dostanete stlačením hardwaroveho tlačidla, ak ho vaše zariadenie má, alebo stlačením pravej hornej menu ikony <span class="ath-action-icon">icon</span>.</small>',
+	},
+	
+	cs_cs: {
+		ios: 'Pro přidáni této webové aplikace na úvodní obrazovku: stlačte %icon a pak <strong>Přidat na úvodní obrazovku</strong>.',
+		android: 'Pro přidáni této webové aplikace na úvodní obrazovku otevřete menu nastavení prohlížeče a stlačte <strong>Přidat na úvodní obrazovku</strong>. <small>K menu se dostanete stlačením hardwaroveho tlačítka, když ho vaše zařízení má, nebo stlačením pravé horní menu ikony <span class="ath-action-icon">icon</span>.</small>',
+	},
 
 };
 
