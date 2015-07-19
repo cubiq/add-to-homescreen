@@ -79,8 +79,8 @@ ath.intl = {
 	},
 
 	ja_jp: {
-		ios: 'このウェプアプリをホーム画面に追加するために%iconを押して<strong>ホーム画面に追加</strong>。',
-		android: 'To add this web app to the home screen open the browser option menu and tap on <strong>Add to homescreen</strong>. <small>The menu can be accessed by pressing the menu hardware button if your device has one, or by tapping the top right menu icon <span class="ath-action-icon">icon</span>.</small>',
+	  ios: 'このWebアプリをより一層便利に使うために、%iconを押して<strong>ホーム画面に追加</strong>ボタンを押して下さい',
+		android: 'このWebアプリをより一層便利に使うために、ブラウザのオプションメニューから<strong>ホーム画面に追加</strong>を押して下さい.<small>オプションメニュ-はハードウェアボタンや右上のメニューアイコン<span class="ath-action-icon">icon</span>を押すと表示されます.</small>',
  	},
 
 	ko_kr: {
