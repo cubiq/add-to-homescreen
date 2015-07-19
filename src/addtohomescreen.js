@@ -59,8 +59,8 @@ ath.intl = {
 	},
 
 	fi_fi: {
-		ios: 'Liitä tämä sovellus kotivalikkoon: klikkaa %icon ja tämän jälkeen <strong>Lisää kotivalikkoon</strong>.',
-		android: 'Lisätäksesi tämän sovelluksen aloitusnäytölle, avaa selaimen valikko ja klikkaa tähti -ikonia tai <strong>Lisää aloitusnäytölle tekstiä</strong>. <small>Valikkoon pääsee myös painamalla menuvalikkoa, jos laitteessasi on sellainen tai koskettamalla oikealla yläkulmassa menu ikonia <span class="ath-action-icon">icon</span>.</small>',
+		ios: 'Liitä tämä sovellus kotivalikkoon: napsauta %icon ja tämän jälkeen <strong>Lisää kotivalikkoon</strong>.',
+		android: 'Lisätäksesi tämän sovelluksen aloitusnäytölle avaa selaimen valikko ja napsauta tähti-ikonia tai <strong>Lisää aloitusnäytölle -tekstiä</strong>. <small>Valikkoon pääsee myös painamalla menu-nappia, jos laitteessasi on sellainen tai koskettamalla oikeassa yläkulmassa menu-ikonia <span class="ath-action-icon">icon</span>.</small>',
 	},
 
 	fr_fr: {
