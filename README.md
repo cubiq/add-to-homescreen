@@ -21,7 +21,7 @@ addToHomescreen();
 For more, consult the [project website](http://cubiq.org/add-to-home-screen).
 
 ## Development
-npm install
+`npm install`
 build running `grunt`
 
 ## License
