@@ -1,6 +1,7 @@
 {
   "name": "add-to-homescreen",
   "title": "add-to-homescreen",
+  "main": "dist/addtohomescreen.min.js",
   "description": "Add to homescreen call out for iOS and Android",
   "keywords": [
     "iPhone",
