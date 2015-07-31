@@ -1,0 +1,36 @@
+{
+  "name": "add-to-homescreen",
+  "title": "add-to-homescreen",
+  "description": "Add to homescreen call out for iOS and Android",
+  "keywords": [
+    "iPhone",
+    "iPod",
+    "iPad",
+    "iOS6",
+    "iOS7",
+    "android",
+    "mobile"
+  ],
+  "version": "3.2.2",
+  "homepage": "https://github.com/cubiq/add-to-homescreen",
+  "author": {
+    "name": "Matteo Spinelli <matteo@cubiq.org>",
+    "url": "http://cubiq.org"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://opensource.org/licenses/mit-license.php"
+    }
+  ],
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-concurrent": "^2.0.1",
+    "grunt-contrib-imagemin": "^0.9.4",
+    "grunt-contrib-uglify": "^0.9.1",
+    "load-grunt-tasks": "^3.2.0"
+  }
+}

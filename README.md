@@ -20,6 +20,10 @@ addToHomescreen();
 
 For more, consult the [project website](http://cubiq.org/add-to-home-screen).
 
+## Development
+npm install
+build running `grunt`
+
 ## License
 
 Copyright (c) 2014 Matteo Spinelli, http://cubiq.org/
