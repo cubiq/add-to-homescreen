@@ -571,8 +571,8 @@
 
 			// kick the animation
 			setTimeout(function () {
-				that.element.style.webkitTransitionDuration = '1.2s';
-				that.element.style.transitionDuration = '1.2s';
+				that.element.style.webkitTransitionDuration = '0.5s ease-in';
+				that.element.style.transitionDuration = '0.5s ease-in';
 				that.element.style.webkitTransform = 'translate3d(0,0,0)';
 				that.element.style.transform = 'translate3d(0,0,0)';
 			}, 0);
