@@ -192,6 +192,11 @@ ath.isTablet = (ath.isMobileSafari && _ua.indexOf('iPad') > -1) || (ath.isMobile
 
 ath.isCompatible = (ath.isMobileSafari && ath.OSVersion >= 6) || ath.isMobileChrome;	// TODO: add winphone
 
+if (ath.isMobileSafari) {
+       ath.OSVersion = parseInt(ath.OSVersion, 10);
+       ath.OSVersion = Math.min(ath.OSVersion, 8);
+}
+
 var _defaultSession = {
 	lastDisplayTime: 0,			// last time we displayed the message
 	returningVisitor: false,	// is this the first time you visit
