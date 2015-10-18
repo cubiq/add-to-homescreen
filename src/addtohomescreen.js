@@ -123,7 +123,7 @@ ath.intl = {
 		android: 'För att lägga till den här webbappen på hemskärmen öppnar du webbläsarens alternativ-meny och väljer <strong>Lägg till på startskärmen</strong>. <small>Man hittar menyn genom att trycka på hårdvaruknappen om din enhet har en sådan, eller genom att trycka på menyikonen högst upp till höger %icon.</small>'
 	},
 
-	ua_uk: {
+	uk_ua: {
 		ios: 'Щоб додати цей сайт на початковий екран, натисніть %icon, а потім <strong>На початковий екран</strong>.',
 		android: 'Щоб додати цей сайт на домашній екран, відкрийте меню браузера та виберіть <strong>Додати на головний екран</strong>. <small>Це можливо зробити, натиснувши кнопку меню на вашому смартфоні, якщо така є. Або ж на іконці зверху справа %icon.</small>'
 	},
