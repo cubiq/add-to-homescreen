@@ -256,7 +256,7 @@ ath.Class = function (options) {
 	}
 
 	// the element the message will be appended to
-	this.container = document.documentElement;
+	this.container = document.body;
 
 	// load session
 	this.session = this.getItem(this.options.appID);
