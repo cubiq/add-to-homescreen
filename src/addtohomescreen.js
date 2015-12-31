@@ -100,7 +100,7 @@ ath.intl = {
 
 	pt_br: {
 		ios: 'Para adicionar este app à tela de início: clique %icon e então <strong>Tela de início</strong>.',
-		android: 'To add this web app to the home screen open the browser option menu and tap on <strong>Add to homescreen</strong>. <small>The menu can be accessed by pressing the menu hardware button if your device has one, or by tapping the top right menu icon %icon.</small>'
+		android: 'Para adicionar este app à tela de início abra o menu do navegador e clique em <strong>Adicionar à tela de início</strong>. <small>O menu pode ser acessado pressionando-se o botão físico, caso o dispositivo possua, ou pelo ícone %icon no canto superior direito da tela.</small>'
 	},
 
 	pt_pt: {
