@@ -6,7 +6,7 @@ Script for mobile devices, it automatically shows an overlaying message encourag
 
 Add `addtohomescreen.css` and `addtohomescreen.js` to the head of your projects index file. Then, call `addToHomescreen();` as soon as possible. For example:
 
-```
+```html
 <head>
 <title>Add To Home</title>
 ...
