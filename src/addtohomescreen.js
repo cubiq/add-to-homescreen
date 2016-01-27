@@ -48,6 +48,11 @@ ath.intl = {
 		android: 'For at tilføje denne web app til hjemmeskærmen, åbn browser egenskaber menuen og tryk på <strong>Føj til hjemmeskærm</strong>. <small>Denne menu kan tilgås ved at trykke på menu knappen, hvis din enhed har en, eller ved at trykke på det øverste højre menu ikon %icon.</small>'
 	},
 
+	el_gr: {
+		ios: 'Για να προσθέσετε την εφαρμογή στην αρχική οθόνη: πατήστε το %icon και μετά <strong>Πρόσθεσε στην αρχική οθόνη</strong>.',
+		android: 'Για να προσθέσετε την εφαρμογή στην αρχική οθόνη, ανοίξτε τις επιλογές του browser σας και πατήστε το <strong>Προσθήκη στην αρχική οθόνη</strong>. <small>Μπορείτε να έχετε πρόσβαση στο μενού, πατώντας το κουμπί του μενού του κινητού σας ή το πάνω δεξιά κουμπί του μενού %icon.</small>'
+	},
+
 	en_us: {
 		ios: 'To add this web app to the home screen: tap %icon and then <strong>Add to Home Screen</strong>.',
 		android: 'To add this web app to the home screen open the browser option menu and tap on <strong>Add to homescreen</strong>. <small>The menu can be accessed by pressing the menu hardware button if your device has one, or by tapping the top right menu icon %icon.</small>'
