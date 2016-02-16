@@ -47,6 +47,11 @@ ath.intl = {
 		ios: 'For at tilføje denne web app til hjemmeskærmen: Tryk %icon og derefter <strong>Føj til hjemmeskærm</strong>.',
 		android: 'For at tilføje denne web app til hjemmeskærmen, åbn browser egenskaber menuen og tryk på <strong>Føj til hjemmeskærm</strong>. <small>Denne menu kan tilgås ved at trykke på menu knappen, hvis din enhed har en, eller ved at trykke på det øverste højre menu ikon %icon.</small>'
 	},
+	
+	el_el: {
+		ios: 'Για να προσθέσετε την ιστοσελίδα σαν εφαρμογή στην οθόνη αφετηρίας: πατήστε %icon και μετά <strong>Προσθήκη σε Οθόνη Αφετηρίας</strong>.',
+		android: 'Για να προσθέσετε την ιστοσελίδα σαν εφαρμογή στην οθόνη εκκίνησης ανοίξτε το μενού επιλογών του φυλλομετρητή και μετά πατήστε <strong>Προσθήκη στην αρχική οθόνη</strong>. <small>Το μενού είναι προσβάσιμο πιέζοντας το κουμπί επιλογών της συσκευής ή πατώντας το εικονίδιο πάνω δεξιά %icon.</small>'
+	},
 
 	en_us: {
 		ios: 'To add this web app to the home screen: tap %icon and then <strong>Add to Home Screen</strong>.',
