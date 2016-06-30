@@ -37,16 +37,13 @@
 	z-index: 2147483641;
 	padding: 0.7em 0.6em;
 	width: 18em;
-
 	background: #eee;
 	background-size: 100% auto;
-
-	box-shadow: 0 0.2em 0 #d1d1d1;
-
 	font-family: sans-serif;
-	font-size: 15px;
+	font-size: px;
 	line-height: 1.5em;
 	text-align: center;
+	border-radius: 8px;
 }
 
 .ath-container small {
@@ -90,14 +87,13 @@
 	position: relative;
 	display: block;
 	float: right;
-	margin: -0.7em -0.6em 0 0.5em;
+	margin: -0.3em -0.3em 0 0;
 	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIQAAACECAMAAABmmnOVAAAAdVBMVEUAAAA5OTkzMzM7Ozs3NzdBQUFAQEA/Pz8+Pj5BQUFAQEA/Pz8+Pj5BQUFAQEA/Pz9BQUE+Pj4/Pz8/Pz8+Pj4/Pz8/Pz8/Pz8+Pj4/Pz8+Pj4/Pz8/Pz8/Pz8/Pz8/Pz8+Pj4/Pz8/Pz8/Pz8/Pz9AQEA/Pz+fdCaPAAAAJnRSTlMACQoNDjM4OTo7PEFCQ0RFS6ytsbS1tru8vcTFxu7x8vX19vf4+C5yomAAAAJESURBVHgBvdzLTsJAGEfxr4C2KBcVkQsIDsK8/yPaqIsPzVlyzrKrX/5p0kkXEz81L23otc9NpIbbWia2YVLqdnhlqFlhGWpSDHe1aopsSIpRb8gK0dC3G30b9rVmhWZIimTICsvQtx/FsuYOrWHoDjX3Gu31gzJxdki934WrAIOsAIOsAIOiAMPhPsJTgKGN0BVsYIVsYIVpYIVpYIVpYIVpYIVpYIVpYIVpYIVlAIVgEBRs8BRs8BRs8BRs8BRs8BRs8BRs8BRTNmgKNngKNngKNngKNngKNhiKGxgiOlZoBlaYBlaYBlaYBlaYBlaYBlaYBlaYBlZIBlBMfQMrVAMr2KAqBENSHFHhGEABhi5CV6gGUKgGUKgGUKgGUFwuqgEUvoEVsoEVpoEUpgEUggF+gKTKY+h1fxSlC7/Z+RrxOQ3fcEoAPPHZBlaYBlaYBlaYBlZYBlYIhvLBCstw7PgM7hkiWOEZWGEaWGEaWGEaIsakEAysmHkGVpxmvoEVqoEVpoEVpoEVpoEVpoEVpoEVkoEVgkFQsEFSsEFQsGEcoSvY4CnY4CnY4CnY4CnY4CnY4CnY4CnY4CnY4CnY4CnY4CnY4CnY4CnY4CnY4CnY4CnY4CnY4CnmbNAUT2c2WAo2eAo2eAo2eAo2eAo2eArNEPFACjZ4CjZ4CjZ4CjaIird/rBvFH6llNCvewdli1URWCIakSIZesUaDoFg36dKFWk9zCZDei3TtwmCj7pC22AwikiIZPEU29IpFNliKxa/hC9DFITjQPYhcAAAAAElFTkSuQmCC);
-	background-color: rgba(255,255,255,0.8);
 	background-size: 50%;
 	background-repeat: no-repeat;
 	background-position: 50%;
-	width: 2.7em;
-	height: 2.7em;
+	width: 1.8em;
+	height: 1.8em;
 	text-align: center;
 	overflow: hidden;
 	color: #a33;
@@ -175,7 +171,7 @@
 	position: relative;
 	z-index: 2147483642;
 	text-shadow: 0 0.1em 0 #fff;
-	font-size: 1.1em;
+	font-size: 0.9em;
 }
 
 .ath-ios.ath-phone:after {
@@ -189,7 +185,6 @@
 	margin-left: -1em;
 	-webkit-transform: scaleX(0.9) rotate(45deg);
 	transform: scaleX(0.9) rotate(45deg);
-	box-shadow: 0.2em 0.2em 0 #d1d1d1;
 }
 
 .ath-ios.ath-tablet:after {
