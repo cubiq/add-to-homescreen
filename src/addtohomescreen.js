@@ -511,7 +511,7 @@ ath.Class.prototype = {
 
 		// create the actual message element
 		this.element = document.createElement('div');
-		this.element.className = 'ath-container ath-' + ath.OS + ' ath-' + ath.OS + (ath.OSVersion + '').substr(0,1) + ' ath-' + (ath.isTablet ? 'tablet' : 'phone');
+		this.element.className = 'ath-container ath-' + ath.OS + ' ath-' + ath.OS + (parseInt(ath.OSVersion) || '') + ' ath-' + (ath.isTablet ? 'tablet' : 'phone');
 		this.element.style.cssText = '-webkit-transition-property:-webkit-transform,opacity;-webkit-transition-duration:0s;-webkit-transition-timing-function:ease-out;transition-property:transform,opacity;transition-duration:0s;transition-timing-function:ease-out;';
 		this.element.style.webkitTransform = 'translate3d(0,-' + window.innerHeight + 'px,0)';
 		this.element.style.transform = 'translate3d(0,-' + window.innerHeight + 'px,0)';
