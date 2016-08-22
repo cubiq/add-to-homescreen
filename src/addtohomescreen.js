@@ -275,9 +275,6 @@ ath.Class = function (options) {
 		ath.OSVersion = ath.OS == 'ios' ? '8' : '4';
 	}
 
-	// the element the message will be appended to
-	this.container = document.body;
-
 	// load session
 	this.session = this.getItem(this.options.appID);
 	this.session = this.session ? JSON.parse(this.session) : undefined;
@@ -549,6 +546,7 @@ ath.Class.prototype = {
 		this.viewport.style.left = '-99999em';
 
 		// attach all elements to the DOM
+		this.container = document.body;
 		this.viewport.appendChild(this.element);
 		this.container.appendChild(this.viewport);
 
