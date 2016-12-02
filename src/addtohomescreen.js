@@ -87,6 +87,11 @@ ath.intl = {
 		ios: 'Ha hozzá szeretné adni ezt az alkalmazást a kezdőképernyőjéhez, érintse meg a következő ikont: %icon , majd a <strong>Hozzáadás a kezdőképernyőhöz</strong> menüpontot.',
 		android: 'Ha hozzá szeretné adni ezt az alkalmazást a kezdőképernyőjéhez, a böngésző menüjében kattintson a <strong>Hozzáadás a kezdőképernyőhöz</strong> menüpontra. <small>A böngésző menüjét a következő ikon megérintésével tudja megnyitni: %icon.</small>'
 	},
+	
+	fr_fr: {
+		message: "Pour ajouter ce site à l'écran d'accueil : appuyez sur %icon et sélectionnez <strong>%action</strong>.",
+		action: { ios: "Ajouter à l'écran d'accueil", android: "Ajouter à l'écran d'accueil", windows: "Épingler à l'écran d'accueil"}
+	},
 
 	it_it: {
 		ios: 'Per aggiungere questa web app alla schermata iniziale: premi %icon e poi <strong>Aggiungi a Home</strong>.',
