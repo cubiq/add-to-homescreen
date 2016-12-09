@@ -1,0 +1,16 @@
+{
+  "name": "add-to-homescreen",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/addtohomescreen.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sdeprez/add-to-homescreen.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sdeprez/add-to-homescreen/issues"
+  },
+  "homepage": "https://github.com/sdeprez/add-to-homescreen#readme"
+}
