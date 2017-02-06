@@ -187,7 +187,8 @@ ath.defaults = {
 	onAdd: null,				// when the application is launched the first time from the homescreen (guesstimate)
 	onPrivate: null,			// executed if user is in private mode
 	privateModeOverride: false,	// show the message even in private mode (very rude)
-	detectHomescreen: false		// try to detect if the site has been added to the homescreen (false | true | 'hash' | 'queryString' | 'smartURL')
+	detectHomescreen: false, // try to detect if the site has been added to the homescreen (false | true | 'hash' | 'queryString' | 'smartURL')
+	useInlineAnimations: true // enable/disable inline animations. If false the widget will not be animated ( tarnslated from top to bottom for example )
 };
 
 // browser info and capability
@@ -527,9 +528,12 @@ ath.Class.prototype = {
 		// create the actual message element
 		this.element = document.createElement('div');
 		this.element.className = 'ath-container ath-' + ath.OS + ' ath-' + ath.OS + (parseInt(ath.OSVersion) || '') + ' ath-' + (ath.isTablet ? 'tablet' : 'phone');
-		this.element.style.cssText = '-webkit-transition-property:-webkit-transform,opacity;-webkit-transition-duration:0s;-webkit-transition-timing-function:ease-out;transition-property:transform,opacity;transition-duration:0s;transition-timing-function:ease-out;';
-		this.element.style.webkitTransform = 'translate3d(0,-' + window.innerHeight + 'px,0)';
-		this.element.style.transform = 'translate3d(0,-' + window.innerHeight + 'px,0)';
+		
+		if( this.options.useInlineAnimations ) {
+		  this.element.style.cssText = '-webkit-transition-property:-webkit-transform,opacity;-webkit-transition-duration:0s;-webkit-transition-timing-function:ease-out;transition-property:transform,opacity;transition-duration:0s;transition-timing-function:ease-out;';
+		  this.element.style.webkitTransform = 'translate3d(0,-' + window.innerHeight + 'px,0)';
+		  this.element.style.transform = 'translate3d(0,-' + window.innerHeight + 'px,0)';
+		}
 
 		// add the application icon
 		if ( this.options.icon && this.applicationIcon ) {
@@ -587,13 +591,15 @@ ath.Class.prototype = {
 			}, 1000);
 		}
 
-		// kick the animation
-		setTimeout(function () {
-			that.element.style.webkitTransitionDuration = '1.2s';
-			that.element.style.transitionDuration = '1.2s';
-			that.element.style.webkitTransform = 'translate3d(0,0,0)';
-			that.element.style.transform = 'translate3d(0,0,0)';
-		}, 0);
+		if( this.options.useInlineAnimations ) {
+			// kick the animation
+			setTimeout(function () {
+				that.element.style.webkitTransitionDuration = '1.2s';
+				that.element.style.transitionDuration = '1.2s';
+				that.element.style.webkitTransform = 'translate3d(0,0,0)';
+				that.element.style.transform = 'translate3d(0,0,0)';
+			}, 0);
+		}
 
 		// set the destroy timer
 		if ( this.options.lifespan ) {
