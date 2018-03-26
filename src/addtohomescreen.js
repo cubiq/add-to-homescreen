@@ -536,6 +536,7 @@ ath.Class.prototype = {
 			this.element.className += ' ath-icon';
 			this.img = document.createElement('img');
 			this.img.className = 'ath-application-icon';
+			this.img.alt = 'Add to Homescreen application icon';
 			this.img.addEventListener('load', this, false);
 			this.img.addEventListener('error', this, false);
 
