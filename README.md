@@ -1,3 +1,5 @@
+**Repository is now archived**
+
 # Add to Homescreen call out
 
 Script for mobile devices, it automatically shows an overlaying message encouraging to add the web app to the homescreen. Compatible with iOS 6+ and Chrome for Android (soon WinPhone).
