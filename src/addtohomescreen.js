@@ -181,6 +181,7 @@ ath.defaults = {
 	icon: true,					// add touch icon to the message
 	message: '',				// the message can be customized
 	validLocation: [],			// list of pages where the message will be shown (array of regexes)
+	onNotSupported: null,
 	onInit: null,				// executed on instance creation
 	onShow: null,				// executed when the message is shown
 	onRemove: null,				// executed when the message is removed
@@ -216,6 +217,11 @@ ath.isStandalone = 'standalone' in window.navigator && window.navigator.standalo
 ath.isTablet = (ath.isMobileSafari && _ua.indexOf('iPad') > -1) || (ath.isMobileChrome && _ua.indexOf('Mobile') < 0);
 
 ath.isCompatible = (ath.isMobileSafari && ath.OSVersion >= 6) || ath.isMobileChrome;	// TODO: add winphone
+
+if (ath.isMobileSafari) {
+       ath.OSVersion = parseInt(ath.OSVersion, 10);
+       ath.OSVersion = Math.min(ath.OSVersion, 8);
+}
 
 var _defaultSession = {
 	lastDisplayTime: 0,			// last time we displayed the message
@@ -290,6 +296,9 @@ ath.Class = function (options) {
 
 	// the device is not supported
 	if ( !ath.isCompatible ) {
+		if ( this.options.onNotSupported ) {
+			this.options.onNotSupported.call(this);
+		}
  		this.doLog("Add to homescreen: not displaying callout because device not supported");
 		return;
 	}
