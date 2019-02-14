@@ -6,7 +6,7 @@ Script for mobile devices, it automatically shows an overlaying message encourag
 
 ## Installation
 
-Add `addtohomescreen.css` and `addtohomescreen.js` to the head of your projects index file. Then, call `addToHomescreen();` as soon as possible. For example:
+Add `addtohomescreen.css` and `addtohomescreen.js` to the head of your projects index file. Then, call `addToHomescreen();` as soon as possible within the `<body>` tag. For example:
 
 ```html
 <head>
@@ -14,10 +14,11 @@ Add `addtohomescreen.css` and `addtohomescreen.js` to the head of your projects 
 ...
 <link rel="stylesheet" type="text/css" href="../../style/addtohomescreen.css">
 <script src="../../src/addtohomescreen.js"></script>
+</head>
+<body>
 <script>
 addToHomescreen();
 </script>
-</head>
 ```
 
 For more, consult the [project website](http://cubiq.org/add-to-home-screen).
