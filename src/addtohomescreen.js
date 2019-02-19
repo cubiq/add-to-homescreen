@@ -455,6 +455,8 @@ ath.Class.prototype = {
 			return;
 		}
 
+		this.session || (this.session = _defaultSession);
+
 		var now = Date.now();
 		var lastDisplayTime = this.session.lastDisplayTime;
 
