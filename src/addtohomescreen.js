@@ -441,6 +441,11 @@ ath.Class.prototype = {
 	},
 
 	show: function (force) {
+		 // don not start if session not exist
+		if(!this.session) {
+	    		return
+   	 	}
+		
 		// in autostart mode wait for the document to be ready
 		if ( this.options.autostart && !_DOMReady ) {
 			setTimeout(this.show.bind(this), 50);
